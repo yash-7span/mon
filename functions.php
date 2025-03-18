@@ -149,6 +149,88 @@ function mrs_oil_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'mrs_oil_scripts' );
 
+// Register Blocks function 
+function register_acf_block_types()
+{
+
+	// Register a Header block
+	acf_register_block_type(array(
+		'name'              => 'page-header', // Block name
+		'title'             => ('Page Header'), // Title shown in the block editor
+		'description'       => ('A custom block for page header content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/page-header/page-header.php', // Path to HTML template file
+		'category'          => 'isoclima', // Category where the block will appear (you can use your own category)
+		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('header', 'page', 'title'),
+		'mode'				=> 'preview',
+		'enqueue_assets' => function () {
+			wp_enqueue_style(
+				'page-header-block-style',
+				get_stylesheet_directory_uri() . '/blocks/page-header/block.css',
+				array(),
+				THEME_VERSION
+			);
+			wp_enqueue_script('page_header_js', get_stylesheet_directory_uri() . '/blocks/page-header/block.js', array('jquery'), THEME_VERSION, true);
+		},
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/page-header/page-header.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	//Hero slider Block register
+	acf_register_block_type(array(
+		'name'              => 'hero_slider',
+		'title'             => __('Hero Slider'),
+		'render_template'   => get_stylesheet_directory() . '/blocks/hero-slider/hero-slider.php',
+		'category'          => 'isoclima',
+		'icon'              => 'images-alt2',
+		'keywords'          => array('carousel', 'slider', 'hero'),
+		'mode'				=> 'preview',
+		'enqueue_assets' => function () {
+			wp_enqueue_style(
+				'page_hero_css',
+				get_stylesheet_directory_uri() . '/blocks/hero-slider/block.css',
+				array(),
+				THEME_VERSION
+			);
+			wp_enqueue_script(
+				'page_hero_js',
+				get_stylesheet_directory_uri() . '/blocks/hero-slider/block.js',
+				array('jquery'),
+				THEME_VERSION,
+				true
+			);
+		},
+		// Support widget functionality by setting these parameters:
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-slider/hero-slider.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+}
+
 /**
  * Implement the Custom Header feature.
  */
