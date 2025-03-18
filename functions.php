@@ -9,9 +9,10 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', '1.0.1' );
 }
-
+// define version
+define('THEME_VERSION', wp_get_theme(get_stylesheet())->get('Version'));
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -134,20 +135,52 @@ function mrs_oil_widgets_init() {
 }
 add_action( 'widgets_init', 'mrs_oil_widgets_init' );
 
+// Allow svg images 
+function allow_svg_uploads($mime_types)
+{
+	if (current_user_can('administrator')) {  // Only for admins
+		$mime_types['svg'] = 'image/svg+xml';
+		$mime_types['svgz'] = 'image/svg+xml';  // For SVGZ files
+	}
+	return $mime_types;
+}
+add_filter('upload_mimes', 'allow_svg_uploads');
 /**
  * Enqueue scripts and styles.
  */
+
 function mrs_oil_scripts() {
-	wp_enqueue_style( 'mrs-oil-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'mrs-oil-style', 'rtl', 'replace' );
+    
+    // Enqueue external and local CSS files
+	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());
+	wp_enqueue_script('bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), true);
+	wp_enqueue_script('jquery-script', 'https://code.jquery.com/jquery-1.12.1.min.js', array(), true);
+	
+    wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), time());
+    wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
+    wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', array(), time());
+    wp_enqueue_style('icons-css', get_stylesheet_directory_uri() . '/css/icons.css', array(), time());
+    wp_enqueue_style('select2-css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), time());
+    wp_enqueue_style('style-css', get_stylesheet_directory_uri() . '/css/style.css', array(), time());
+    wp_enqueue_style('aos-css', 'https://unpkg.com/aos@next/dist/aos.css', array(), time());
+    wp_enqueue_style('responsive-css', get_stylesheet_directory_uri() . '/css/responsive.css', array(), time());
+    wp_enqueue_style('splitting-css','https://unpkg.com/splitting/dist/splitting.css', array(), time());
+    wp_enqueue_style('splitting-cells-css','https://unpkg.com/splitting/dist/splitting-cells.css', array(), time());
+	wp_enqueue_style('page-header-block-style', get_stylesheet_directory_uri() . '/blocks/page-header/block.css', array(),time());
+    // Enqueue JavaScript files
+    wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
 
-	wp_enqueue_script( 'mrs-oil-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// Enqueue the main stylesheet
+    wp_enqueue_style('mrs-oil-style', get_stylesheet_directory_uri(), array(), time());
+    wp_style_add_data('mrs-oil-style', 'rtl', 'replace');
 
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
+	// Enqueue comment reply script if needed
+    if (is_singular() && comments_open() && get_option('thread_comments')) {
+        wp_enqueue_script('comment-reply');
+    }
 }
-add_action( 'wp_enqueue_scripts', 'mrs_oil_scripts' );
+add_action('wp_enqueue_scripts', 'mrs_oil_scripts');
+
 
 // Register Blocks function 
 function register_acf_block_types()
@@ -164,12 +197,12 @@ function register_acf_block_types()
 		'keywords'          => array('header', 'page', 'title'),
 		'mode'				=> 'preview',
 		'enqueue_assets' => function () {
-			wp_enqueue_style(
-				'page-header-block-style',
-				get_stylesheet_directory_uri() . '/blocks/page-header/block.css',
-				array(),
-				THEME_VERSION
-			);
+			// wp_enqueue_style(
+			// 	'page-header-block-style',
+			// 	get_stylesheet_directory_uri() . '/blocks/page-header/block.css',
+			// 	array(),
+			// 	THEME_VERSION
+			// );
 			wp_enqueue_script('page_header_js', get_stylesheet_directory_uri() . '/blocks/page-header/block.js', array('jquery'), THEME_VERSION, true);
 		},
 		// Add example for the preview image
@@ -194,12 +227,12 @@ function register_acf_block_types()
 		'keywords'          => array('carousel', 'slider', 'hero'),
 		'mode'				=> 'preview',
 		'enqueue_assets' => function () {
-			wp_enqueue_style(
-				'page_hero_css',
-				get_stylesheet_directory_uri() . '/blocks/hero-slider/block.css',
-				array(),
-				THEME_VERSION
-			);
+			// wp_enqueue_style(
+			// 	'page_hero_css',
+			// 	get_stylesheet_directory_uri() . '/blocks/hero-slider/block.css',
+			// 	array(),
+			// 	THEME_VERSION
+			// );
 			wp_enqueue_script(
 				'page_hero_js',
 				get_stylesheet_directory_uri() . '/blocks/hero-slider/block.js',
@@ -230,6 +263,22 @@ function register_acf_block_types()
 		),
 	));
 }
+
+// Header widget register
+function header_widget_init()
+{
+	register_sidebar(array(
+		'name'          => __('Header Widget', 'genesis-block-theme-child'),
+		'id'            => 'header-widget',
+		'description'   => __('Widgets in this area will appear in the header.', 'genesis-block-theme-child'),
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h4 class="widget-title">',
+		'after_title'   => '</h4>',
+	));
+}
+add_action('acf/init', 'register_acf_block_types');
+add_action('widgets_init', 'header_widget_init');
 
 /**
  * Implement the Custom Header feature.
