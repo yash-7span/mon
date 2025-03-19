@@ -133,7 +133,7 @@ function mrs_oil_widgets_init() {
 	);
 }
 add_action( 'widgets_init', 'mrs_oil_widgets_init' );
-
+    
 /**
  * Enqueue scripts and styles.
  */
