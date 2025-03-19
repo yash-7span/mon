@@ -180,7 +180,14 @@ function mrs_oil_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'mrs_oil_scripts');
-
+function register_my_menus() {
+    register_nav_menus(
+        array(
+            'header-menu' => __( 'Header Menu' ), // Register the Header Menu
+        )
+    );
+}
+add_action( 'init', 'register_my_menus' );
 
 // Register Blocks function 
 function register_acf_block_types()
@@ -203,7 +210,7 @@ function register_acf_block_types()
 			// 	array(),
 			// 	THEME_VERSION
 			// );
-			wp_enqueue_script('page_header_js', get_stylesheet_directory_uri() . '/blocks/page-header/block.js', array('jquery'), THEME_VERSION, true);
+			// wp_enqueue_script('page_header_js', get_stylesheet_directory_uri() . '/blocks/page-header/block.js', array('jquery'), THEME_VERSION, true);
 		},
 		// Add example for the preview image
 		'example' => array(

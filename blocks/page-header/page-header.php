@@ -100,7 +100,47 @@ if ($contact_button) {
     $contact_button_title = esc_html($contact_button['title']);
     $contact_button_target = esc_html($contact_button['target']) ? $contact_button['target'] : '_self';
 }
-
+class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
+     // Start the element output
+     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
+         // Ensure $args is an object
+         if (is_array($args)) {
+             $args = (object) $args;
+         }
+ 
+         $classes = empty($item->classes) ? array() : (array) $item->classes;
+         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
+ 
+         // Add custom classes or attributes here
+         $class_names = $class_names ? ' class="nav-item dropdown ' . esc_attr($class_names) . '"' : '';
+ 
+         $output .= '<li' . $class_names . '>';
+ 
+         $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+         $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+         $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+         $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
+         $attributes .= ' class="nav-link"';
+ 
+         $item_output = $args->before;
+         $item_output .= '<a' . $attributes . '>';
+         $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+         $item_output .= '</a>';
+         $item_output .= $args->after;
+ 
+         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+     }
+ 
+     // Start the submenu output
+     function start_lvl(&$output, $depth = 0, $args = array()) {
+         $output .= '<ul class="dropdown-menu">';
+     }
+ 
+     // End the submenu output
+     function end_lvl(&$output, $depth = 0, $args = array()) {
+         $output .= '</ul>';
+     }
+ }
 ?>
 
 <div class="add-full-block">
@@ -611,8 +651,20 @@ if ($contact_button) {
           </button>
      </div>
 
-
-         <div class="header-menus desk-block">
+     <div class="header-menus desk-block">
+          <div class="collapse navbar-collapse" id="navbarNav">
+               <?php
+               wp_nav_menu( array(
+                    'theme_location' => 'header-menu', // Use the registered menu location
+                    'menu_class'     => 'navbar-nav', // Add the class for the menu container
+                    'container'      => false, // Remove the default container
+                    'depth'          => 3, // Set the depth of the menu (3 levels: menu, submenu, sub-submenu)
+                    'walker'         => new Custom_Walker_Nav_Menu(), // Use a custom walker if needed
+               ) );
+               ?>
+          </div>
+     </div>
+         <!-- <div class="header-menus desk-block">
               <div class="collapse navbar-collapse" id="navbarNav">
                    <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -755,8 +807,11 @@ if ($contact_button) {
                         </li>
                    </ul>
               </div>
-         </div>
+         </div> -->
 
+
+
+         
          <div class="header-menus mobile-block">
               <div class="collapse navbar-collapse" id="navbarNav">
                    <ul class="navbar-nav">
