@@ -1,0 +1,166 @@
+/* Hero slider Css Start */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.247905) 48.75%, rgba(255, 255, 255, 0.5) 98.33%);
+    z-index: 0;
+}
+
+.carousel-item {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-item .section-spacing {
+    padding: 73px;
+}
+
+#carouselExampleCaptions,
+.carousel-inner,
+.carousel-item {
+    min-height: calc(100vh - 80px);
+}
+
+.carousel-content-inner {
+    background: #FFFFFFBF;
+    padding: 54px;
+}
+
+.carousel-content-heading {
+    font-size: 72px;
+    line-height: 74px;
+}
+
+.carousel-content-description {
+    border-top: 1px solid #BFC9CF;
+
+}
+
+.carousel-indicators {
+    margin-bottom: 40px;
+    margin-left: 10%;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: #18252E;
+    width: 16px !important;
+    height: 4px !important;
+    border-radius: 16px;
+    border: none !important;
+    opacity: 1 !important;
+}
+
+.carousel-indicators .active {
+    background-color: #E9A23E;
+    width: 32px !important;
+    height: 4px !important;
+}
+
+.slide-title {
+    position: absolute;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    margin-right: 15%;
+    margin-left: 11%;
+    margin-bottom: 50px;
+}
+
+.language-dropdown ul.dropdown-menu {
+    min-width: 50px;
+
+}
+
+.language-dropdown ul.dropdown-menu li {
+    text-align: center;
+}
+
+.hero-btn button {
+    margin-top: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+a.hero-btn:hover button {
+    background-color: #05202E;
+    color: #E9A23E !important;
+}
+
+@media (max-width: 1200px) {
+
+
+    .carousel-indicators {
+        margin-left: 40%;
+    }
+
+    .slide-title {
+        margin-left: 45%;
+    }
+
+}
+
+@media (max-width: 1023px) {
+    .carousel-content-inner {
+        border: none;
+    }
+}
+
+@media (max-width: 1025px) {
+    .hero-overlay {
+        background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.247905) 49.58%, rgba(255, 255, 255, 0.5) 100%);
+    }
+
+    #carouselExampleCaptions,
+    .carousel-inner,
+    .carousel-item {
+        min-height: 700px;
+    }
+
+    .hero-fluid {
+        position: static !important;
+    }
+}
+
+@media (max-width: 769px) {
+
+    .carousel-indicators {
+        margin-left: 29%;
+    }
+
+    .slide-title {
+        margin-left: 36%;
+    }
+
+    .carousel-content-heading {
+        font-size: 35px;
+        line-height: 44px;
+    }
+
+    .carousel-item .section-spacing {
+        padding: 24px;
+    }
+
+    .carousel-content-inner {
+        padding: 24px;
+    }
+
+    .hero-btn button {
+        margin-top: 24px;
+    }
+}
+
+@media (max-width:426px) {
+
+    .carousel-indicators,
+    .slide-title {
+        left: 16px;
+        right: auto;
+        justify-content: start;
+        margin-left: 0;
+    }
+}
+
+/* Hero slider Css End */
