@@ -76,7 +76,7 @@ if (function_exists('the_msls')) {
 // Header Block code Start
 
 // Fetch Site logo from Acf Field
-$site_logo = get_field('site_logo');
+$site_logo = get_field('header_logo');
 
 // Fetch Site Tagline
 $site_tagline = get_field('site_tagline');
@@ -633,13 +633,9 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
     <div class="navbar-logo position-relative">
           <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
                <?php 
-               if (has_custom_logo()) {
-                    the_custom_logo(); // Fetches the logo set in WordPress Customizer
-               } else { 
-               ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/logo-svg.svg" class="img-fluid logo-img" alt="Site Logo">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/logo-mobile.svg" class="img-fluid logo-img device" alt="Mobile Logo">
-               <?php 
+               if ($site_logo) { ?>
+                    <img src="<?php echo $site_logo;?>" class="img-fluid logo-img" alt="Site Logo">
+                   <?php
                } 
                ?>
           </a>
@@ -651,7 +647,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
           </button>
      </div>
 
-     <div class="header-menus desk-block">
+     <!-- <div class="header-menus desk-block">
           <div class="collapse navbar-collapse" id="navbarNav">
                <?php
                wp_nav_menu( array(
@@ -663,8 +659,8 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                ) );
                ?>
           </div>
-     </div>
-         <!-- <div class="header-menus desk-block">
+     </div> -->
+         <div class="header-menus desk-block">
               <div class="collapse navbar-collapse" id="navbarNav">
                    <ul class="navbar-nav">
                         <li class="nav-item dropdown">
@@ -807,7 +803,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                         </li>
                    </ul>
               </div>
-         </div> -->
+         </div>
 
 
 
@@ -1005,7 +1001,14 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
          </div>
     </div>
 </div>
+<?php 
+// Fetch ACF group field
+$login_popup = get_field('login_popup'); 
 
+// Extract fields from the group
+$popup_logo = $login_popup['login_popup_logo'] ?? ''; 
+$login_buttons = $login_popup['login_buttons'] ?? [];
+?>
 <div class="login-popup">
     <div class="modal fade" id="LoginPopup" tabindex="-1" aria-labelledby="LoginPopupLabel" aria-hidden="true">
          <div class="modal-dialog">
@@ -1015,31 +1018,39 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                    </div>
                    <div class="modal-body bg_popup">
                         <div class="mrs-logo">
-                             <img src="./images/logo-svg.svg" alt="" class="img-fluid">
+                             <img src="<?php echo $popup_logo;?>" alt="login popup logo" class="img-fluid">
                         </div>
 
                        <form class="contact-us LoginForm" method="post" role="form">
-                             <div class="c_login">
-                                  <div class="nav-item login_btn">
-                                       <a href="https://dauth.mrsholdings.com/" target="_blank" class="nav-link contact-btn b-padding join-us-btn red-btn max_width">
-                                            <div class="join-us white-text">Customer login</div>
-                                            <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                 <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                            </svg>
-                                       </a>
-                                  </div>
-                             </div>
+                         <?php 
+                         if (!empty($login_buttons)): ?>
+                              
+                                   <?php foreach ($login_buttons as $index => $button): 
 
-                             <div class="staff_login">
-                                  <div class="nav-item login_btn mt-0">
-                                       <a href="https://dauth.mrsholdings.com/" target="_blank" class="nav-link contact-btn b-padding join-us-btn red-btn max_width">
-                                            <div class="join-us white-text">staff login</div>
-                                            <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                 <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="#74253A" />
-                                            </svg>
-                                       </a>
-                                  </div>
-                             </div>
+                                        // Extract subfields
+                                        $button_text = $button['login_buttons']['title'] ?? 'Login';
+                                        $button_url = $button['login_buttons']['url'] ?? '#';
+                                        $new_tab = $button['login_buttons']['target'] ?? '';
+
+                                        if($index == 0){
+                                             $class="c_login";
+                                        }else{
+                                             $class="staff_login";
+                                        }
+                                   ?>
+                                   <div class="<?php echo $class;?>">
+                                        <div class="nav-item login_btn">
+                                             <a href="<?php echo esc_url($button_url); ?>" target="<?php echo $new_tab;?>" class="nav-link contact-btn b-padding join-us-btn red-btn max_width">
+                                                  <div class="join-us white-text"><?php echo esc_html($button_text); ?></div>
+                                                  <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                  <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                  </svg>
+                                             </a>
+                                        </div>
+                                   </div>
+                                   <?php endforeach; ?>
+                             
+                         <?php endif; ?>
                         </form>
                    </div>
               </div>
