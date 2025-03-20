@@ -13,6 +13,29 @@ if ( ! defined( '_S_VERSION' ) ) {
 }
 // define version
 define('THEME_VERSION', wp_get_theme(get_stylesheet())->get('Version'));
+
+// Fixed Container sized align
+add_theme_support( 'align-wide' );
+
+// Full Width Alignment
+add_theme_support( 'align-full' );
+
+// Register Blocks Category
+function mrs_block_category($categories)
+{
+	// Add the new category at the beginning of the array
+	array_unshift(
+		$categories,
+		[
+			'slug'  => 'mrs',
+			'title' => __('MRS', 'text-domain'),
+		]
+	);
+
+	return $categories;
+}
+add_filter('block_categories_all', 'mrs_block_category');
+
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -149,13 +172,10 @@ add_filter('upload_mimes', 'allow_svg_uploads');
  * Enqueue scripts and styles.
  */
 
-function mrs_oil_scripts() {
+ function mrs_oil_scripts() {
     
     // Enqueue external and local CSS files
-	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());
-	wp_enqueue_script('bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), true);
-	wp_enqueue_script('jquery-script', 'https://code.jquery.com/jquery-1.12.1.min.js', array(), true);
-	
+	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());	
     wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), time());
     wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
     wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', array(), time());
@@ -164,11 +184,31 @@ function mrs_oil_scripts() {
     wp_enqueue_style('style-css', get_stylesheet_directory_uri() . '/css/style.css', array(), time());
     wp_enqueue_style('aos-css', 'https://unpkg.com/aos@next/dist/aos.css', array(), time());
     wp_enqueue_style('responsive-css', get_stylesheet_directory_uri() . '/css/responsive.css', array(), time());
+	wp_enqueue_style('vanilla-calender', get_stylesheet_directory_uri() . '/css/vanilla-calendar.min.css', array(), time());
     wp_enqueue_style('splitting-css','https://unpkg.com/splitting/dist/splitting.css', array(), time());
     wp_enqueue_style('splitting-cells-css','https://unpkg.com/splitting/dist/splitting-cells.css', array(), time());
-	wp_enqueue_style('page-header-block-style', get_stylesheet_directory_uri() . '/blocks/page-header/block.css', array(),time());
-    // Enqueue JavaScript files
+
+	// // Enqueue External and Local Script File
+	wp_enqueue_script('header-js', get_stylesheet_directory_uri() . '/js/header.js', array(), time(), true);
+	wp_enqueue_script('footer-js', get_stylesheet_directory_uri() . '/js/footer.js', array(), time(), true);
+	wp_enqueue_script('aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array(), time(), true);
+	wp_enqueue_script('jquery-min-js', get_stylesheet_directory_uri() . '/js/jquery-3.6.4.min.js', array(), time(), true);
+	wp_enqueue_script('jqueryajax-js', get_stylesheet_directory_uri() . '/js/jquery-ajax.min.js', array(), time(), true);
+	wp_enqueue_script('smoothscroll-js', get_stylesheet_directory_uri() . '/js/SmoothScroll.js', array(), time(), true);
+	wp_enqueue_script('bootstrap-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array(), time(), true);
+	wp_enqueue_script('swiper-bundle-js', get_stylesheet_directory_uri() . '/js/swiper-bundle.min.js', array(), time(), true);
+	wp_enqueue_script('marquee-js', get_stylesheet_directory_uri() . '/js/jquery.marquee.min.js', array(), time(), true);
+	wp_enqueue_script('form-js', get_stylesheet_directory_uri() . '/js/form.js', array(), time(), true);
+	wp_enqueue_script('formsubscriber-js', get_stylesheet_directory_uri() . '/js/formsubscriber.js', array(), time(), true);
+	wp_enqueue_script('gsap-js', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?r=5426', array(), time(), true);
+	wp_enqueue_script('scrollTrigger-js', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js', array(), time(), true);
+	wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), time(), true);
+	wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array(), time(), true);
+	wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
+          
+	// Enqueue JavaScript files
     wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
+	
 
 	// Enqueue the main stylesheet
     wp_enqueue_style('mrs-oil-style', get_stylesheet_directory_uri(), array(), time());
@@ -180,6 +220,7 @@ function mrs_oil_scripts() {
     }
 }
 add_action('wp_enqueue_scripts', 'mrs_oil_scripts');
+
 function register_my_menus() {
     register_nav_menus(
         array(
@@ -199,19 +240,10 @@ function register_acf_block_types()
 		'title'             => ('Page Header'), // Title shown in the block editor
 		'description'       => ('A custom block for page header content'), // Block description
 		'render_template'   => get_stylesheet_directory() . '/blocks/page-header/page-header.php', // Path to HTML template file
-		'category'          => 'isoclima', // Category where the block will appear (you can use your own category)
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('header', 'page', 'title'),
 		'mode'				=> 'preview',
-		'enqueue_assets' => function () {
-			// wp_enqueue_style(
-			// 	'page-header-block-style',
-			// 	get_stylesheet_directory_uri() . '/blocks/page-header/block.css',
-			// 	array(),
-			// 	THEME_VERSION
-			// );
-			// wp_enqueue_script('page_header_js', get_stylesheet_directory_uri() . '/blocks/page-header/block.js', array('jquery'), THEME_VERSION, true);
-		},
 		// Add example for the preview image
 		'example' => array(
 			'attributes' => array(
@@ -229,26 +261,44 @@ function register_acf_block_types()
 		'name'              => 'hero_slider',
 		'title'             => __('Hero Slider'),
 		'render_template'   => get_stylesheet_directory() . '/blocks/hero-slider/hero-slider.php',
-		'category'          => 'isoclima',
+		'category'          => 'mrs',
 		'icon'              => 'images-alt2',
 		'keywords'          => array('carousel', 'slider', 'hero'),
 		'mode'				=> 'preview',
-		'enqueue_assets' => function () {
-			// wp_enqueue_style(
-			// 	'page_hero_css',
-			// 	get_stylesheet_directory_uri() . '/blocks/hero-slider/block.css',
-			// 	array(),
-			// 	THEME_VERSION
-			// );
-			wp_enqueue_script(
-				'page_hero_js',
-				get_stylesheet_directory_uri() . '/blocks/hero-slider/block.js',
-				array('jquery'),
-				THEME_VERSION,
-				true
-			);
-		},
 		// Support widget functionality by setting these parameters:
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-slider/hero-slider.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+
+	// Register a CTA Banner block
+	acf_register_block_type(array(
+		'name'              => 'cta-banner', // Block name
+		'title'             => ('CTA Banner'), // Title shown in the block editor
+		'description'       => ('A custom block CTA Banner content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/CTA-banner/cta-banner.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('CTA', 'banner', 'contact'),
+		'mode'				=> 'preview',
 		'supports' => array(
 			'align' => true,          // Allow alignment options
 			'anchor' => true,         // Enable anchor links
@@ -263,7 +313,7 @@ function register_acf_block_types()
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-slider/hero-slider.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/CTA-banner/CTA-banner-img.svg', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

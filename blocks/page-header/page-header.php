@@ -1,87 +1,16 @@
 <?php
+// Header Block code Start
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
-?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/page-header/page-header.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
-<?php
+     ?>
+     <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/page-header/page-header.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+     <?php
     return;
 endif;
-?>
-<?php
-if (function_exists('the_msls')) {
-    function msls_lang_switcher()
-    {
-        ob_start(); // Start output buffering to capture the MSLS output
-        the_msls(); // Render MSLS language links
-        $links = ob_get_clean(); // Capture the output
-
-        // Parse the links using DOMDocument
-        $dom = new DOMDocument();
-        libxml_use_internal_errors(true); // Suppress warnings for malformed HTML
-        $dom->loadHTML($links);
-        libxml_clear_errors();
-
-        $items = $dom->getElementsByTagName('a'); // Get all anchor elements
-
-        // Array to hold language options
-        $languages = [];
-        $current_url = home_url($_SERVER['REQUEST_URI']); // Get the current page URL
-
-        // Populate the array with links
-        foreach ($items as $item) {
-            $url = $item->getAttribute('href');
-            $label = $item->textContent;
-            $languages[] = [
-                'url' => $url,
-                'label' => $label,
-                'selected' => ($current_url === $url), // Check if it's the current language
-            ];
-        }
-
-        // If the current language is missing, add it manually
-        if (!array_filter($languages, fn($lang) => $lang['selected'])) {
-            $languages[] = [
-                'url' => $current_url,
-                'label' => substr(get_locale(), 3), // Get the current locale (e.g., 'en_US')
-                'selected' => true,
-            ];
-        }
-
-        // Build the dropdown
-        echo '<div class="switcher-wrap position-relative">';
-        echo '<p class="selected-language p-2"><span></span><img class="ms-2 lang-dropdown-icon" src="' . get_stylesheet_directory_uri() . '/includes/assets/images/dropdown-icon.svg" alt="dropdown-icon"></p>';
-        echo '<select class="d-none" id="language-switcher" onchange="location = this.value;">';
-        foreach ($languages as $language) {
-            $selected = $language['selected'] ? 'selected' : '';
-            echo '<option value="' . esc_url($language['url']) . '" ' . $selected . '>';
-            echo esc_html($language['label']);
-            echo '</option>';
-        }
-        echo '</select>';
-        echo '<ul class="language-switcher font-navy bg-white list-unstyled m-0 p-2">';
-        foreach ($languages as $language) {
-            $selected = $language['selected'] ? 'selected' : '';
-            echo '<li class="lang-option">';
-            echo '<a class="text-decoration-none d-block" href="' . esc_url($language['url']) . '" ' . $selected . '>';
-            echo esc_html($language['label']);
-            echo '</a>';
-            echo '</li>';
-        }
-        echo '</ul>';
-        echo '</div>';
-    }
-}
-?>
-<?php
-// Header Block code Start
 
 // Fetch Site logo from Acf Field
 $site_logo = get_field('header_logo');
 
-// Fetch Site Tagline
-$site_tagline = get_field('site_tagline');
-$tagline_background = get_field('tagline_background');
-$tagline_color = get_field('tagline_color');
 
 // Fetch Menu ID from Acf Field
 $menu_term_id = get_field('select_menu');
@@ -90,9 +19,7 @@ $menu_items = wp_get_nav_menu_items($menu_term_id);
 
 // Fetch Text Url from Acf Field
 $contact_button = get_field('contact_us');
-$contact_button_url = '';
-$contact_button_title = '';
-$contact_button_target = '';
+
 if ($contact_button) {
 
 
@@ -100,50 +27,10 @@ if ($contact_button) {
     $contact_button_title = esc_html($contact_button['title']);
     $contact_button_target = esc_html($contact_button['target']) ? $contact_button['target'] : '_self';
 }
-class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
-     // Start the element output
-     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
-         // Ensure $args is an object
-         if (is_array($args)) {
-             $args = (object) $args;
-         }
- 
-         $classes = empty($item->classes) ? array() : (array) $item->classes;
-         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
- 
-         // Add custom classes or attributes here
-         $class_names = $class_names ? ' class="nav-item dropdown ' . esc_attr($class_names) . '"' : '';
- 
-         $output .= '<li' . $class_names . '>';
- 
-         $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
-         $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
-         $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
-         $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-         $attributes .= ' class="nav-link"';
- 
-         $item_output = $args->before;
-         $item_output .= '<a' . $attributes . '>';
-         $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-         $item_output .= '</a>';
-         $item_output .= $args->after;
- 
-         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-     }
- 
-     // Start the submenu output
-     function start_lvl(&$output, $depth = 0, $args = array()) {
-         $output .= '<ul class="dropdown-menu">';
-     }
- 
-     // End the submenu output
-     function end_lvl(&$output, $depth = 0, $args = array()) {
-         $output .= '</ul>';
-     }
- }
+
 ?>
 
-<div class="add-full-block">
+<!-- <div class="add-full-block">
     <div class="inner-addfull">
          <p class="mb-0 text-black text-center">
          Log In and get up to<button class="head_btn cursor_def">
@@ -155,7 +42,7 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
               <img src="./images/add-close-v.svg" alt="" class="img-fluid">
          </div>
     </div>
-</div>
+</div> -->
 
 <div class="header-container">
     <div class="marquee-block create-marquee">
@@ -646,20 +533,6 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                <span></span>
           </button>
      </div>
-
-     <!-- <div class="header-menus desk-block">
-          <div class="collapse navbar-collapse" id="navbarNav">
-               <?php
-               wp_nav_menu( array(
-                    'theme_location' => 'header-menu', // Use the registered menu location
-                    'menu_class'     => 'navbar-nav', // Add the class for the menu container
-                    'container'      => false, // Remove the default container
-                    'depth'          => 3, // Set the depth of the menu (3 levels: menu, submenu, sub-submenu)
-                    'walker'         => new Custom_Walker_Nav_Menu(), // Use a custom walker if needed
-               ) );
-               ?>
-          </div>
-     </div> -->
          <div class="header-menus desk-block">
               <div class="collapse navbar-collapse" id="navbarNav">
                    <ul class="navbar-nav">
@@ -951,7 +824,28 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
          </div>  
     </nav>
 </header>
+<?php 
+// Fetch ACF group field
+$quick_app_popup = get_field('quick_app_popup'); 
+$title_quick_app = $quick_app_popup['title'];
+$description = $quick_app_popup['description'];
+$android_title_text = $quick_app_popup['android_title_text'];
+$android_description = $quick_app_popup['android_description'];
+$android_qr = $quick_app_popup['android_qr_code_image'];
+$android_play_store_text = $quick_app_popup['android_play_store_text'];
+$android_play_store_icon = $quick_app_popup['android_play_store_icon'];
+$android_play_store_app_link = $quick_app_popup['android_play_store_app_link'];
 
+$ios_title_text = $quick_app_popup['ios_title_text'];
+$ios_description = $quick_app_popup['ios_description'];
+$ios_qr = $quick_app_popup['ios_qr_code_image'];
+$ios_app_store_text = $quick_app_popup['ios_app_store_text'];
+$ios_app_store_app_link = $quick_app_popup['ios_app_store_app_link'];
+$ios_play_store_icon = $quick_app_popup['ios_play_store_icon'];
+
+
+if($quick_app_popup){
+?>
 <div class="download-popup">
     <div class="modal fade" id="openPopup" tabindex="-1" aria-labelledby="openPopupLabel" aria-hidden="true">
          <div class="modal-dialog">
@@ -962,33 +856,43 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
                                   <div class="col_7 col-lg-7">
                                        <div class="popup-title">
                                             <h1 class="title_text">
-                                                 Download the
-                                                 <span class="d-block">
+                                                 <?php 
+                                                  if($title_quick_app){
+                                                       echo $title_quick_app;
+                                                  }
+                                                 ?>
+                                                 <!-- <span class="d-block">
                                                       QuickmArt app
-                                                 </span>
+                                                 </span> -->
                                             </h1>
-                                            <p class="mb-0">Download the <a href="https://quickmart.com/" class="text-black" target="_blank">Quick Mart</a> Application to get exclusive benefits. Scan the QR Code to download the Application</p>
+                                            <p class="mb-0">
+                                             <?php 
+                                                  if($description){
+                                                       echo $description;
+                                                  }
+                                             ?>
+                                            </p>
                                        </div>
                                   </div>
                                   <div class="col_5 col-lg-5">
                                        <div class="app-qr-body mr_right">
                                             <div class="qr-image">
-                                                 <img src="./images/playstore-qr.png" alt="" class="qr_app">
+                                                 <img src="<?php echo $android_qr;?>" alt="QR image" class="qr_app">
                                                  <div class="which-app">
-                                                      <h5 class="fw-bold mb-0">Android</h5>
-                                                      <p class="mb-0">Scan this code to download</p>
-                                                      <a href="https://play.google.com/store/apps/details?id=com.quick.mart&hl=en&gl=US" class="flex_name" target="_blank"><img src="./images/play-store.png" alt="" class="mini-icons">
-                                                           <p class="mb-0"> Play Store</p>
+                                                      <h5 class="fw-bold mb-0"><?php echo $android_title_text;?></h5>
+                                                      <p class="mb-0"><?php echo $android_description;?></p>
+                                                      <a href="<?php echo $android_play_store_app_link;?>" class="flex_name" target="_blank"><img src="<?php echo $android_play_store_icon;?>" alt="Android icon" class="mini-icons">
+                                                           <p class="mb-0"><?php echo $android_play_store_text;?></p>
                                                       </a>
                                                  </div>
                                             </div>
                                             <div class="qr-image second">
-                                                 <img src="./images/ios-app-qr.png" alt="" class="qr_app">
+                                                 <img src="<?php echo $ios_qr;?>" alt="QR image" class="qr_app">
                                                  <div class="which-app">
-                                                      <h5 class="fw-bold mb-0">ios</h5>
-                                                      <p class="mb-0">Scan this code to download</p>
-                                                      <a href="https://apps.apple.com/ng/app/quickmart/id1614636080" class="flex_name" target="_blank"><img src="./images/ios-appstore.png" alt="" class="mini-icons">
-                                                           <p class="mb-0"> App Store</p>
+                                                      <h5 class="fw-bold mb-0"><?php echo $ios_title_text;?></h5>
+                                                      <p class="mb-0"><?php echo $ios_description;?></p>
+                                                      <a href="<?php echo $ios_app_store_app_link;?>" class="flex_name" target="_blank"><img src="<?php echo $ios_play_store_icon;?>" alt="Ios App QA" class="mini-icons">
+                                                           <p class="mb-0"><?php echo $ios_app_store_text;?></p>
                                                       </a>
                                                  </div>
                                             </div>
@@ -1001,6 +905,8 @@ class Custom_Walker_Nav_Menu extends Walker_Nav_Menu {
          </div>
     </div>
 </div>
+<?php 
+}?>
 <?php 
 // Fetch ACF group field
 $login_popup = get_field('login_popup'); 

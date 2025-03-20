@@ -447,6 +447,32 @@
                     },
                     "return_format": "url",
                     "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_67dc00d7584a7",
+                    "label": "ios Play Store Icon",
+                    "name": "ios_play_store_icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 1,
+                    "preview_size": "medium"
                 }
             ]
         },
@@ -555,5 +581,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742393757
+    "modified": 1742472082
 }
