@@ -15,11 +15,7 @@ $button = get_field('section_button');
 $button_url = $button['url'];
 $button_title = $button['title'];
 $button_target = $button['target'];
-$image = get_field('image_group');
-$image1 = $image['image_1'];
-$image1_url = $image['image_1_url'];
-$image2 = $image['image_2'];
-$image2_url = $image['image_2_url'];
+
 ?>
 
 <div class="aboutus-sec container-fluid overflow-hidden" id="RedirectAboutUs">
@@ -49,29 +45,3 @@ $image2_url = $image['image_2_url'];
         <?php endif;?>
     </div>
 </div>
-
-<?php if(!empty($image1) && !empty($image2) == 1):?>
-    <div class="our-counting-sec">
-        <div class="row">
-            <?php if(!empty($image1)):?>
-                <div class="col-lg-6 col-md-12 pb-0 px-1">
-                    <div class="about-right-img">
-                        <a href="<?php echo $image1_url;?>" target="_blank">
-                            <img src="<?php echo $image1['url'];?>" class="img-fluid" alt="stallion-diesel" />
-                        </a>
-                    </div>
-                </div>
-            <?php endif;?>
-
-            <?php if(!empty($image2)):?>
-                <div class="col-lg-6 col-md-12 pb-0 px-1">
-                    <div class="about-right-img">
-                        <a href="<?php echo $image2_url;?>" target="_blank">
-                            <img src="<?php echo $image2['url'];?>" class="img-fluid" alt="transmission-gear-oil" />
-                        </a>
-                    </div>
-                </div>
-            <?php endif;?>
-        </div>
-    </div>
-<?php endif;?>

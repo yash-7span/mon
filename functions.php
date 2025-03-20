@@ -46,6 +46,13 @@ function mrs_oil_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
+	// Fixed Container sized align
+	add_theme_support( 'align-wide' );
+
+	// Full Width Alignment
+	add_theme_support( 'align-full' );
+
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -140,10 +147,7 @@ add_action( 'widgets_init', 'mrs_oil_widgets_init' );
 function mrs_oil_scripts() {
     
     // Enqueue external and local CSS files
-	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());
-	wp_enqueue_script('bootstrap-script', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', array(), true);
-	wp_enqueue_script('jquery-script', 'https://code.jquery.com/jquery-1.12.1.min.js', array(), true);
-	
+	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());	
     wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), time());
     wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
     wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', array(), time());
@@ -152,10 +156,11 @@ function mrs_oil_scripts() {
     wp_enqueue_style('style-css', get_stylesheet_directory_uri() . '/css/style.css', array(), time());
     wp_enqueue_style('aos-css', 'https://unpkg.com/aos@next/dist/aos.css', array(), time());
     wp_enqueue_style('responsive-css', get_stylesheet_directory_uri() . '/css/responsive.css', array(), time());
+	wp_enqueue_style('vanilla-calender', get_stylesheet_directory_uri() . '/css/vanilla-calendar.min.css', array(), time());
     wp_enqueue_style('splitting-css','https://unpkg.com/splitting/dist/splitting.css', array(), time());
     wp_enqueue_style('splitting-cells-css','https://unpkg.com/splitting/dist/splitting-cells.css', array(), time());
 
-	// Enqueue External and Local Script File
+	// // Enqueue External and Local Script File
 	wp_enqueue_script('header-js', get_stylesheet_directory_uri() . '/js/header.js', array(), time(), true);
 	wp_enqueue_script('footer-js', get_stylesheet_directory_uri() . '/js/footer.js', array(), time(), true);
 	wp_enqueue_script('aos-js', 'https://unpkg.com/aos@next/dist/aos.js', array(), time(), true);
@@ -171,7 +176,7 @@ function mrs_oil_scripts() {
 	wp_enqueue_script('scrollTrigger-js', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js', array(), time(), true);
 	wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), time(), true);
 	wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array(), time(), true);
-	
+	wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
           
 	// Enqueue JavaScript files
     wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
@@ -235,14 +240,13 @@ function register_acf_block_types() {
 		'title'             => __('Page Footer'), // Title shown in the block editor
 		'description'       => __('A custom block for page Footer content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/page-footer/page-footer.php', // Path to HTML template file
-		'category'          => 'mon', // Category where the block will appear (you can use your own category)
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'admin-multisite', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('footer', 'page', 'foot'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
 		),
-		'mode' => 'preview',
 		// Add example for the preview image
 		'example' => array(
 			'attributes' => array(
@@ -262,16 +266,14 @@ function register_acf_block_types() {
 		'title'             => __('Hero Slider'), // Title shown in the block editor
 		'description'       => __('A custom block for Hero slider content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/hero-slider/hero-slider.php', // Path to HTML template file
-		'category'          => 'mon', // Category where the block will appear (you can use your own category)
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'slides', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('hero','banner','page', 'slider', 'slide'),
 		'mode'				=> 'preview',
 		'supports'      => array(
-			'align'      => 'full',
+			'align'      => true,
 			
 		),
-		'mode' => 'preview',
-
 		// Add example for the preview image
 		'example' => array(
 			'attributes' => array(
@@ -290,12 +292,11 @@ function register_acf_block_types() {
 		'title'             => __('About Us'), // Title shown in the block editor
 		'description'       => __('A custom block for About Us content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/about-us/about-us.php', // Path to HTML template file
-		'category'          => 'mon', // Category where the block will appear (you can use your own category)
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'editor-insertmore', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','about','us', 'image', 'product'),
-		'mode'				=> 'preview',
 		'supports'      => array(
-			'align'      => 'full',
+			'align'      => true,
 		),
 		'mode' => 'preview',
 		// Add example for the preview image
@@ -310,45 +311,309 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register Services Accordian Block
+	// Register Star Image Product Block
 	acf_register_block_type(array(
-		'name'              => 'services-accordian', // Block name
-		'title'             => __('Services Accordian'), // Title shown in the block editor
-		'description'       => __('A custom block for Services Accordian content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/services-accordian/services-accordian.php', // Path to HTML template file
-		'category'          => 'mon', // Category where the block will appear (you can use your own category)
-		'icon'              => 'insert', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','about','us', 'image', 'product'),
+		'name'              => 'star-image-section', // Block name
+		'title'             => __('Star Image Product'), // Title shown in the block editor
+		'description'       => __('A custom block for Star Image Product content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/star-image-section/star-image-section.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'star-filled', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','Star', 'image', 'product', 'section'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
-			
 		),
-		'mode' => 'preview',
-		'enqueue_assets' => function () {
-			// wp_enqueue_style(
-			// 	'services-accordian-block-style',
-			// 	get_stylesheet_directory_uri() . '/blocks/services-accordian/block.css',
-			// 	array(),
-			// 	THEME_VERSION
-			// );
-			// wp_enqueue_script('services-accordian_js', get_stylesheet_directory_uri() . '/blocks/services-accordian/block.js', array('jquery'), THEME_VERSION, true);
-		},
-
 		// Add example for the preview image
 		'example' => array(
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/services-accordian/services-accordian.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/star-image-section/star-image-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register Product and Services Accordian Block
+	acf_register_block_type(array(
+		'name'              => 'product-and-services-accordian', // Block name
+		'title'             => __('Product and Services Accordian'), // Title shown in the block editor
+		'description'       => __('A custom block for Product and Services Accordian content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/product-and-services-accordian/product-and-services-accordian.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'insert', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','services','accordian', 'section', 'product'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-and-services-accordian/product-and-services-accordian.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
 		),
 	));
 	
+	// Register USPS Section Block
+	acf_register_block_type(array(
+		'name'              => 'usps-section', // Block name
+		'title'             => __('USPS Section'), // Title shown in the block editor
+		'description'       => __('A custom block for USPS Section content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/usps-section/usps-section.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'plus', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','usps','us', 'section'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/usps-section/usps-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register Industry Section Block
+	acf_register_block_type(array(
+		'name'              => 'industry-section', // Block name
+		'title'             => __('Industry Section'), // Title shown in the block editor
+		'description'       => __('A custom block for Industry Section content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/industry-section/industry-section.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','Industry','build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/industry-section/industry-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register policy Section Block
+	acf_register_block_type(array(
+		'name'              => 'policy-section', // Block name
+		'title'             => __('Policy Section'), // Title shown in the block editor
+		'description'       => __('A custom block for policy Section content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/policy-section/policy-section.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'editor-ol', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','policy','build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/policy-section/policy-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register blogs Section Block
+	acf_register_block_type(array(
+		'name'              => 'blogs-section', // Block name
+		'title'             => __('Blogs Section'), // Title shown in the block editor
+		'description'       => __('A custom block for blogs Section content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/blogs-section/blogs-section.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'grid-view', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','blogs','build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs-section/blogs-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 }
 add_action('acf/init', 'register_acf_block_types');
+
+
+// Fetch Acf field of Product services taxonomy
+function get_category_acf_field( $field_name, $category_id = 0 ) {
+    if ( ! $category_id ) {
+        $category_id = get_queried_object_id();
+    }
+    if ( ! $category_id ) {
+        return null;
+    }
+    $term_id = 'category_' . $category_id;
+    $field_value = get_field( $field_name, $term_id );
+    return $field_value;
+}
+
+// Fetch The permalink of Post Taxonomy
+function get_term_link_by_slug_default( $term_slug, $taxonomy = 'category' ) {
+    $term_slug = sanitize_title( $term_slug );
+
+    $term = get_term_by( 'slug', $term_slug, $taxonomy );
+
+    if ( ! $term || is_wp_error( $term ) ) {
+        return new WP_Error( 'term_not_found', 'Term not found with slug: ' . $term_slug . ' and taxonomy: ' . $taxonomy );
+    }
+
+    $term_link = get_term_link( $term );
+
+    if ( is_wp_error( $term_link ) ) {
+        return $term_link; 
+    }
+    return $term_link;
+}
+
+function get_post_taxonomy_terms( $post_id, $taxonomy = 'category' ) {
+    $post_id = intval( $post_id );
+	$terms = wp_get_post_terms( $post_id, $taxonomy );
+    if ( is_wp_error( $terms ) ) {
+        return $terms; 
+    }
+	return $terms;
+}
+
+// Define Global Color to fetch color from  Block Editor
+define('CUSTOM_COLOR_PALETTE',array(
+    'white' => '#FFFFFF',
+    'wild-sand' => '#F5F5F5',
+    'grey' => '#B0B0B0',
+    'dove-gray' => '#666666',
+    'emperor' => '#555555',
+    'sun' => '#F7A209',
+    'tawny-port' => '#74253A',
+    'zeus' => '#1E1916',
+    'cod-gray' => '#111111',
+    'black' => '#000000'
+));
+// Rewrite the Color Of Block Editor 
+function my_custom_block_editor_palette() {
+    add_theme_support('editor-color-palette', array(
+        array(
+            'name'  => __('White', 'textdomain'),
+            'slug'  => 'white',
+            'color' => '#FFFFFF',
+        ),
+		array(
+            'name'  => __('Wild Sand', 'textdomain'),
+            'slug'  => 'wild-sand',
+            'color' => '#F5F5F5',
+        ),
+		array(
+            'name'  => __('Grey', 'textdomain'),
+            'slug'  => 'grey',
+            'color' => '#B0B0B0',
+        ),
+        array(
+            'name'  => __('Dove Gray', 'textdomain'),
+            'slug'  => 'dove-gray',
+            'color' => '#666666',
+        ),
+		array(
+            'name'  => __('Emperor', 'textdomain'),
+            'slug'  => 'emperor',
+            'color' => '#555555',
+        ),
+        array(
+            'name'  => __('Sun', 'textdomain'),
+            'slug'  => 'sun',
+            'color' => '#F7A209',
+        ),
+        array(
+            'name'  => __('Tawny Port', 'textdomain'),
+            'slug'  => 'tawny-port',
+            'color' => '#74253A',
+        ),
+        array(
+            'name'  => __('Zeus', 'textdomain'),
+            'slug'  => 'zeus',
+            'color' => '#1E1916',
+        ),
+        array(
+            'name'  => __('Cod Gray', 'textdomain'),
+            'slug'  => 'cod-gray',
+            'color' => '#111111',
+        ),
+		array(
+            'name'  => __('Black', 'textdomain'),
+            'slug'  => 'black',
+            'color' => '#000000',
+        ),
+    ));
+}
+add_action('after_setup_theme', 'my_custom_block_editor_palette');
+
+
+// Add Gutenberg Block Category
+function my_custom_block_category($categories, $post) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'mrs',
+				'title' => __('MRS', 'textdomain'),
+			),
+		)
+	);
+}
+function my_custom_blocks() {
+	add_filter('block_categories', 'my_custom_block_category', 10, 2);
+}
+add_action('init', 'my_custom_blocks');
+
+
 
 /**
  * Implement the Custom Header feature.

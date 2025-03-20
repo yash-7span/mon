@@ -2,28 +2,35 @@
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/services-accordian/services-accordian.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/product-and-services-accordian/product-and-services-accordian.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;
 
-// Fetch Acf Field 
+// Fetch Background Color From Block Editor
+$background_key = isset($block['backgroundColor']) ? $block['backgroundColor'] : 'white';
+if (array_key_exists($background_key, CUSTOM_COLOR_PALETTE)):
+   $background_color =  CUSTOM_COLOR_PALETTE[$background_key];
+else:
+  $background_color = !empty($block['style']['color']['background']) ? $block['style']['color']['background'] : '#fff';
+endif;
 
+
+// Fetch Acf Field 
 $i = 0;
 $section_title = get_field('section_title');
 $section_heading = get_field('section_heading');
 $service_source = get_field('services_source');
 
 if ($service_source == "Custom Services") :
+    // Store Repeater Field Data into Array
     $services_data = array(); 
-
     if (have_rows('products_and_services')) :
         while (have_rows('products_and_services')) :
             the_row();
-            $content = get_sub_field('content');
-            $title = $content['title']; 
-            $description = $content['description'];
-            $link = $content['link'];
+            $title = get_sub_field('title'); 
+            $description = get_sub_field('description');
+            $link = get_sub_field('link');
             $image = get_sub_field('image'); 
 
             if (!empty($title)) {
@@ -37,28 +44,26 @@ if ($service_source == "Custom Services") :
         endwhile;
     endif;
 else :
-    $taxonomy = get_field('select_taxonomy');
-    $service_taxonomy = $taxonomy['services_taxonomy'];
-    $product_taxonomy = $taxonomy['product_taxonomy'];
-    if (is_array($taxonomy)) {
-        // Safely get the service and product taxonomies, handling potential missing keys
-        $service_taxonomy = isset($taxonomy['services_taxonomy']) && is_array($taxonomy['services_taxonomy']) ? $taxonomy['services_taxonomy'] : array();
-        $product_taxonomy = isset($taxonomy['product_taxonomy']) && is_array($taxonomy['product_taxonomy']) ? $taxonomy['product_taxonomy'] : array();
-      
-        // Merge the two arrays using array_merge()
-        $merged_taxonomy = array_merge($service_taxonomy, $product_taxonomy);
-      
-        // $merged_taxonomy now contains all the elements from both arrays
-        echo '<pre>';
-        print_r($merged_taxonomy);
-        echo '</pre>';
-      } else {
-        echo "Error: 'select_taxonomy' field is not an array or doesn't exist.";
-      }
+    // Store Product Services Data into an array
+    $product_services = get_field('select_product_services');
+    foreach($product_services as $services):
+        $services_data[] = array(
+            'title' => $services->name,
+            'description' => $services->description,
+            'link' => array(
+                'url' => get_term_link_by_slug_default( $services -> slug, $services -> taxonomy ),
+                'title' => get_category_acf_field('button_title', $services->term_id),
+            ),
+            'image' => array(
+                'url' => get_category_acf_field('featured_image', $services->term_id)['url'],
+                'title' => get_category_acf_field('featured_image', $services->term_id)['title'],
+            )
+        );
+    endforeach;
 endif;
 
 ?>
-<div class="our-offerings sec-padding container-fluid bg-grey" id="RedirectOurOfferings">
+<div class="our-offerings sec-padding container-fluid" id="RedirectOurOfferings" style="background-color:<?php echo $background_color;?>;">
     <div class="title-offerings">
         <div class="row align-items-center">
             <div class="col-lg-4">
@@ -67,16 +72,25 @@ endif;
                 </h5>
             </div>
             <div class="col-lg-8">
-                <h2 class="h-title mb-0"><?php $section_heading;?></h2>
+                <h2 class="h-title mb-0"><?php echo $section_heading;?></h2>
             </div>
         </div>
     </div>
     
-    <div class="accordion" id="ourOfferings">
-        <?php foreach($services_data as $data): $i++;?>
-            <div class="accordion-item">
+    <div class="accordion" id="ourOfferings" style="background-color:<?php echo $background_color;?>;">
+        <?php 
+        foreach($services_data as $data): 
+        $i++;
+        if($i == 1){ 
+            $flag = ' show';
+        }
+        else{
+            $flag = '';
+        }
+        ?>
+            <div class="accordion-item" style="background-color:<?php echo $background_color;?>;">
                 <div class="accordion-header">
-                    <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item<?php echo $i;?>" aria-expanded="true">
+                    <div class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item<?php echo $i;?>" aria-expanded="true" style="background-color:<?php echo $background_color;?>;">
                         <div class="col-xl-4 col-lg-3 col-md-1">
                             <h3 class="mb-0 light-grey"><?php echo ($i < 10) ? '0' . $i : $i; ?></h3>
                         </div>
@@ -95,7 +109,7 @@ endif;
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-collapse collapse <?php if($i==1){echo 'show';}?>" data-bs-parent="#ourOfferings" id="item<?php echo $i;?>">
+                    <div class="accordion-collapse collapse<?php echo $flag;?>" data-bs-parent="#ourOfferings" id="item<?php echo $i;?>">
                         <div class="accordion-body row">
                             <div class="column_4 col-p">
 
@@ -114,7 +128,6 @@ endif;
                                                 </svg>
                                             </a>
                                         </div>
-
                                     </div>
                                     <div class="img-product">
                                         <img src="<?php echo $data['image']['url'];?>" class="img-fluid" alt="<?php echo $data['image']['title'];?>" />
@@ -128,3 +141,5 @@ endif;
         <?php endforeach;?>
     </div>
 </div>
+
+
