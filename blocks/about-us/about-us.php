@@ -1,4 +1,6 @@
 <?php
+// About Us Block Code Start 
+
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
@@ -45,3 +47,5 @@ $button_target = $button['target'];
         <?php endif;?>
     </div>
 </div>
+
+<!-- About Us Block Code Start  -->

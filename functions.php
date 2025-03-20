@@ -138,6 +138,23 @@ function mrs_oil_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+	register_sidebar(array(
+        'name'          => 'Header Widget',
+        'id'            => 'header_widget',
+        'before_widget' => '<div class="header-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ));
+
+    register_sidebar(array(
+        'name'          => 'Footer Widget',
+        'id'            => 'footer_widget',
+        'before_widget' => '<div class="footer-widget">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>',
+    ));
 }
 add_action( 'widgets_init', 'mrs_oil_widgets_init' );
 
@@ -193,34 +210,23 @@ function mrs_oil_scripts() {
 }
 add_action('wp_enqueue_scripts', 'mrs_oil_scripts');
 
-
-//  Add Custom Widgets
-function custom_widgets_init() {
-    register_sidebar(array(
-        'name'          => 'Header Widget',
-        'id'            => 'header_widget',
-        'before_widget' => '<div class="header-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>',
-    ));
-
-    register_sidebar(array(
-        'name'          => 'Footer Widget',
-        'id'            => 'footer_widget',
-        'before_widget' => '<div class="footer-widget">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>',
-    ));
+function allow_svg_uploads($mime_types)
+{
+	if (current_user_can('administrator')) {  // Only for admins
+		$mime_types['svg'] = 'image/svg+xml';
+		$mime_types['svgz'] = 'image/svg+xml';  // For SVGZ files
+	}
+	return $mime_types;
 }
-add_action('widgets_init', 'custom_widgets_init');
+add_filter('upload_mimes', 'allow_svg_uploads');
+
+
 
 
 // Set the Menu Choices to ACf Field 
 function set_menu_list_to_acf_footer($field) {
 	$menus = wp_get_nav_menus();
-	$menu_fields = array('footer_menu_1', 'footer_menu_2', 'footer_menu_3', 'footer_menu_4');
+	$menu_fields = array('select_header_menu', 'footer_menu_1', 'footer_menu_2', 'footer_menu_3', 'footer_menu_4');
 	if (in_array($field['name'], $menu_fields)) {
 		$field['choices'] = array();
 		foreach ($menus as $menu) {
@@ -234,6 +240,29 @@ add_filter('acf/load_field', 'set_menu_list_to_acf_footer');
 
 // Register Custom Block
 function register_acf_block_types() { 
+
+	// Register a Header block
+	acf_register_block_type(array(
+		'name'              => 'page-header', // Block name
+		'title'             => ('Page Header'), // Title shown in the block editor
+		'description'       => ('A custom block for page header content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/page-header/page-header.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('header', 'page', 'title'),
+		'mode'				=> 'preview',
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/page-header/page-header.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 	// Register Page Footer Block
 	acf_register_block_type(array(
 		'name'              => 'page-footer', // Block name
@@ -475,6 +504,37 @@ function register_acf_block_types() {
 				'mode' => 'preview',
 				'data' => array(
 					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs-section/blogs-section.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a CTA Banner block
+	acf_register_block_type(array(
+		'name'              => 'cta-banner', // Block name
+		'title'             => ('CTA Banner'), // Title shown in the block editor
+		'description'       => ('A custom block CTA Banner content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/CTA-banner/cta-banner.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('CTA', 'banner', 'contact'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/CTA-banner/CTA-banner-img.svg', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

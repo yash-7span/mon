@@ -1,4 +1,6 @@
 <?php
+// Start Image Section Block Code Start 
+
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
@@ -38,3 +40,5 @@ if(!empty($image1) && !empty($image2) == 1):?>
         </div>
     </div>
 <?php endif;?>
+
+<!-- Star Image Section Block Code End  -->

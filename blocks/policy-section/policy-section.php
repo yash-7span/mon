@@ -1,4 +1,7 @@
 <?php
+// Policy Section Block Code Start 
+
+// Check if the block Preview is exits or not
 if (!empty($block['data']['is_preview'])):
 ?>
     <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/policy-section/policy-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
@@ -49,3 +52,6 @@ $heading = get_field('section_heading');
         <div class="swiper-pagination"></div>
     </div>
 </div>
+
+
+<!-- Policy Section Block End  -->

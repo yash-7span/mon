@@ -1,4 +1,7 @@
 <?php
+// USPS Section Block Code Start 
+
+// Check if the preview is exists or not
 if (!empty($block['data']['is_preview'])):
 ?>
     <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/usps-section/usps-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
@@ -16,7 +19,7 @@ $heading = get_field('section_heading');
         <h2 class="mb-0 h-title">Standing Tall With Distinction</h2>
     </div>
 
-    <!-- Desktop Layout  -->
+    <!-- Desktop Layout Start  -->
     <div class="usps-verticle-slider desktop">
         <div class="uspsMain">
             <?php 
@@ -85,8 +88,9 @@ $heading = get_field('section_heading');
             ?>
         </div>
     </div>
+    <!-- Desktop Layout End  -->
 
-    <!-- Mobile Layout  -->
+    <!-- Mobile Layout Start  -->
     <div class="usps-verticle-slider mobile">
         <div class="row">
             <div class="col-12">
@@ -130,4 +134,8 @@ $heading = get_field('section_heading');
             </div>
         </div>
     </div>
+    <!-- Mobile Layout End  -->
 </div>
+
+
+<!-- USPS Section Block Code End  -->

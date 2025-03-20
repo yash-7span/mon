@@ -1,4 +1,5 @@
 <?php
+// Blog Section Block Code Start
 
 // set Preview for Block
 if (!empty($block['data']['is_preview'])):
@@ -21,31 +22,30 @@ $blog_post =  array_slice($blogs, 0, 2);
         <h2 class="mb-0 h-title"><?php echo $heading;?></h2>
     </div>
 
-    <?php 
-        $i = 1;
-        foreach($blog_post as $data): 
-        if($i % 2 == 1){
-            echo '<div class="row">';
-        }
-
-        // Fetch Taxonomy List Using Post if and convert it into a string
-        $post_id = $data->ID;
-        $taxonomy = 'category';
-        $terms_data = get_post_taxonomy_terms( $post_id, $taxonomy );
-        $taxonomy_string = '';
-        if ( ! is_wp_error( $terms_data ) && ! empty( $terms_data ) ) { 
-            foreach ( $terms_data as $term ) :
-                $taxonomy_string .= esc_html( $term->name ) . ' '; 
-            endforeach;
-            $taxonomy_string = trim( $taxonomy_string );
-        }
-
-        // Remove html tag from the content
-        $text_content = strip_tags( $data-> post_content);
-        $text_content = html_entity_decode( $text_content );
-        $text_content = trim( $text_content );
+    <div class="row">
+        <?php 
         
-        ?>
+        foreach($blog_post as $data): 
+        
+
+            // Fetch Taxonomy List Using Post if and convert it into a string
+            $post_id = $data->ID;
+            $taxonomy = 'category';
+            $terms_data = get_post_taxonomy_terms( $post_id, $taxonomy );
+            $taxonomy_string = '';
+            if ( ! is_wp_error( $terms_data ) && ! empty( $terms_data ) ) { 
+                foreach ( $terms_data as $term ) :
+                    $taxonomy_string .= esc_html( $term->name ) . ' '; 
+                endforeach;
+                $taxonomy_string = trim( $taxonomy_string );
+            }
+
+            // Remove html tag from the content
+            $text_content = strip_tags( $data-> post_content);
+            $text_content = html_entity_decode( $text_content );
+            $text_content = trim( $text_content );
+            
+            ?>
             <div class="col-lg-6">
                 <img src="<?php echo get_the_post_thumbnail_url($post_id); ?>" class="img-fluid" alt="" />
                 <div class="news-conent mr-b">
@@ -62,10 +62,8 @@ $blog_post =  array_slice($blogs, 0, 2);
 
                 </div>
             </div>
-        <?php
-        if($i % 2 == 0){
-            echo '</div">';
-        }
-        $i++;
-    endforeach;?>
+        <?php endforeach;?>
+    </div>
 </div>
+
+<!-- Blog Section Block Code End  -->

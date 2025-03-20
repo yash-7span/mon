@@ -1,4 +1,6 @@
 <?php
+// Hero Slider Block Code Start
+
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
@@ -63,3 +65,5 @@ endif;
         <div class="swiper-pagination"></div>
     </div>
 </div>
+
+<!-- Hero Slider Block Code Start -->

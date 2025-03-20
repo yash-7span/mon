@@ -1,4 +1,6 @@
 <?php
+// Industry Section Block Code Start
+
 if (!empty($block['data']['is_preview'])):
 ?>
     <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/industry-section/industry-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
@@ -109,3 +111,4 @@ $heading = get_field('section_heading');
      </div>
 </div>
 
+<!-- Industry Section Block Code End -->

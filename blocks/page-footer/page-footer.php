@@ -1,4 +1,6 @@
 <?php
+// Page Footer Block Code Start 
+
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
@@ -210,3 +212,5 @@ $creater_company_target= $copyright['created_by']['target'];
 <?php
 endif;
 ?>
+
+<!-- Page Footer Block Code End -->
