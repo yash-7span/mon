@@ -15,9 +15,20 @@ $site_logo = get_field('header_logo');
 // Fetch Menu ID from Acf Field
 $menu_term_id = get_field('select_header_menu');
 $menu_items = wp_get_nav_menu_items($menu_term_id);
-foreach($menu_items as $items):
-endforeach;
 
+$nav_menu = array();
+foreach($menu_items as $items):
+     $nav_menu[] = array(
+          'id' => $items -> ID,
+          'title' => $items-> title,
+          'url' => $items-> url,
+          'menu_item_parent' => $items-> menu_item_parent,
+     );
+endforeach;
+// echo '<pre>';
+// var_dump($nav_menu);
+// echo '</pre>';
+// exit;
 // Fetch Text Url from Acf Field
 $contact_button = get_field('contact_us');
 
@@ -30,16 +41,16 @@ if ($contact_button) {
 ?>
 
 <div class="header-container">
-     <div class="marquee-block create-marquee">
-          <div class="marquee-inner flex">
-               <div class="marquee-text flex">
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+     <div class="create-marquee marquee-block">
+          <div class="flex marquee-inner">
+               <div class="flex marquee-text">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -49,13 +60,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -65,13 +76,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -81,20 +92,20 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -104,14 +115,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -121,13 +132,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -137,21 +148,21 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
 
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -161,14 +172,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -178,13 +189,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -194,21 +205,21 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
 
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -218,14 +229,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -235,13 +246,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -252,15 +263,15 @@ if ($contact_button) {
                     </span>
 
                </div>
-               <div class="marquee-text flex">
+               <div class="flex marquee-text">
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -270,14 +281,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -287,13 +298,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -303,21 +314,21 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
 
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -327,14 +338,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -344,13 +355,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -360,21 +371,21 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
 
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -384,14 +395,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -401,13 +412,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -417,21 +428,21 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
+                    <span class="flex m-item">
                          <div class="yellow_dot"></div>
-                         <span class="text_price title-highlight d-inline-block">Check out the
+                         <span class="d-inline-block text_price title-highlight">Check out the
                               latest prices!</span>
                          <div class="yellow_dot"></div>
 
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_blue">PMS</span>
                               <span class="hover_blue">₦26.75</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -441,14 +452,14 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_green">AGO</span>
                               <span class="hover_green">₦25.75</span>
 
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -458,13 +469,13 @@ if ($contact_button) {
                          </ul>
                     </span>
 
-                    <span class="m-item flex">
-                         <span class="title title-highlight grand-bold d-inline-block">
+                    <span class="flex m-item">
+                         <span class="d-inline-block grand-bold title title-highlight">
                               <span class="t_yellow"> LPG</span>
                               <span class="hover_yellow"> ₦25.78</span>
                          </span>
                          <ul class="dropdown tooltip_btn">
-                              <li class="mb-0 option_text text-black">
+                              <li class="text-black mb-0 option_text">
                                    <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
                                         target="_blank">Are you a retail customer?</a>
                                    OR
@@ -520,17 +531,17 @@ if ($contact_button) {
           </div>
           
           <!-- Nav Menu  -->
-          <div class="header-menus desk-block">
+          <div class="desk-block header-menus">
                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                         <!-- <li class="nav-item dropdown">
-                              <a href="index.html" class="myElement nav-link">Home
+                         <!-- <li class="dropdown nav-item">
+                              <a href="index.html" class="nav-link myElement">Home
                               </a>
 
                          </li>
 
-                         <li class="nav-item dropdown">
-                              <a href="about-us.html" class="myElement2 nav-link dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">About Us
+                         <li class="dropdown nav-item">
+                              <a href="about-us.html" class="dropdown-toggle nav-link dt-none myElement2" data-bs-hover="dropdown" aria-expanded="false">About Us
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -558,8 +569,8 @@ if ($contact_button) {
                               </ul>
                          </li>
 
-                         <li class="nav-item dropdown">
-                              <a class="myElement3 nav-link" href="products.html" data-bs-hover="dropdown" aria-expanded="false">Products
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement3" href="products.html" data-bs-hover="dropdown" aria-expanded="false">Products
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -572,8 +583,8 @@ if ($contact_button) {
                               </ul>
                          </li>
 
-                         <li class="nav-item dropdown">
-                              <a class="myElement4 nav-link" href="service.html" data-bs-hover="dropdown" aria-expanded="false">Services
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement4" href="service.html" data-bs-hover="dropdown" aria-expanded="false">Services
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -589,8 +600,8 @@ if ($contact_button) {
                               </ul>
                          </li>
 
-                         <li class="nav-item dropdown">
-                              <a class="myElement5 nav-link" href="investor-relation.html" data-bs-hover="dropdown" aria-expanded="false">Investor Relations
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement5" href="investor-relation.html" data-bs-hover="dropdown" aria-expanded="false">Investor Relations
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -606,15 +617,23 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="company-events.html">Company Events</a></li>
                                    <li><a class="dropdown-item" href="investor-relation.html#governace_main">Corporate Governance</a></li>
                               </ul>
-                         </li> -->
+                         </li>
 
-                         <!-- <li class="nav-item dropdown">
-                              <a class="myElement6 nav-link" href="blogs.html" aria-expanded="false">Blogs
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement6" href="blogs.html" aria-expanded="false">Blogs
                               </a>
                          </li> -->
+                         <!-- < ?php get_nested_menu_items($nav_menu);?> -->
+
+                         <?php 
+                         
+                        
+                         mrs_nav_menu($nav_menu);
+                        
+                         ?>
 
                          <li class="nav-item login_btn pop-btn">
-                              <button type="button" class="btn nav-link contact-btn b-padding" data-bs-toggle="modal"
+                              <button type="button" class="btn nav-link b-padding contact-btn" data-bs-toggle="modal"
                                    data-bs-target="#openPopup">
                                    <svg width="30" height="22" viewBox="0 0 30 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -641,7 +660,7 @@ if ($contact_button) {
                               </button>
                          </li>
                          <li class="nav-item login_btn">
-                              <a href="contact.html" class="nav-link contact-btn b-padding join-us-btn red-btn">
+                              <a href="contact.html" class="nav-link b-padding contact-btn join-us-btn red-btn">
                                    <div class="join-us white-text">Contact</div>
                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
                                         viewBox="0 0 21 12" fill="none">
@@ -651,7 +670,7 @@ if ($contact_button) {
                               </a>
                          </li>
                          <li class="nav-item login_btn">
-                              <a class="nav-link contact-btn b-padding join-us-btn red-btn" data-bs-toggle="modal"
+                              <a class="nav-link b-padding contact-btn join-us-btn red-btn" data-bs-toggle="modal"
                                    data-bs-target="#LoginPopup">
                                    <div class="join-us white-text">Login</div>
                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
@@ -678,12 +697,12 @@ if ($contact_button) {
           <div class="header-menus mobile-block">
                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                         <li class="nav-item dropdown">
-                              <a href="index.html" class="myElement nav-link">Home
+                         <li class="dropdown nav-item">
+                              <a href="index.html" class="nav-link myElement">Home
                               </a>
                          </li>
-                         <li class="nav-item dropdown">
-                              <a href="about-us.html" class="myElement2 nav-link dropdown-toggle dt-none" data-bs-toggle="dropdown" aria-expanded="false">About Us
+                         <li class="dropdown nav-item">
+                              <a href="about-us.html" class="dropdown-toggle nav-link dt-none myElement2" data-bs-toggle="dropdown" aria-expanded="false">About Us
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -695,7 +714,7 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="about-us.html#RedirectValues">Corporate Values</a></li>
                                    <li><a class="dropdown-item" href="about-us.html#RedirectOurHistory">Our History & Legacy</a></li>
                                    <li class="nav-item dropend">
-                                        <a class="dropdown-item nav-link dropdown-toggle dt-none" href="about-us.html#RedirectOurLeaders" data-bs-toggle="dropdown" aria-expanded="false">Our Leaders
+                                        <a class="dropdown-item dropdown-toggle nav-link dt-none" href="about-us.html#RedirectOurLeaders" data-bs-toggle="dropdown" aria-expanded="false">Our Leaders
                                              <div class="arrow">
                                                   <div class="arrow-line left"></div>
                                                   <div class="arrow-line right"></div>
@@ -710,8 +729,8 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="about-us.html#RedirectResponsibility">Our Responsibility</a></li>
                               </ul>
                          </li>
-                         <li class="nav-item dropdown">
-                              <a class="myElement3 nav-link" href="products.html" data-bs-toggle="dropdown" aria-expanded="false">Products
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement3" href="products.html" data-bs-toggle="dropdown" aria-expanded="false">Products
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -723,8 +742,8 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="products.html#IBCproduct">Corporate & Industrial</a></li>
                               </ul>
                          </li>
-                         <li class="nav-item dropdown">
-                              <a class="myElement4 nav-link" href="service.html" data-bs-toggle="dropdown" aria-expanded="false">Services
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement4" href="service.html" data-bs-toggle="dropdown" aria-expanded="false">Services
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -739,8 +758,8 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="service.html#Lubricants">Lubricants and Greases</a></li>
                               </ul>
                          </li>
-                         <li class="nav-item dropdown">
-                              <a class="myElement5 nav-link" href="investor-relation.html" data-bs-toggle="dropdown" aria-expanded="false">Investor Relations
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement5" href="investor-relation.html" data-bs-toggle="dropdown" aria-expanded="false">Investor Relations
                                    <div class="arrow">
                                         <div class="arrow-line left"></div>
                                         <div class="arrow-line right"></div>
@@ -757,14 +776,14 @@ if ($contact_button) {
                                    <li><a class="dropdown-item" href="investor-relation.html#governace_main">Corporate Governance</a></li>
                               </ul>
                          </li>
-                         <li class="nav-item dropdown">
-                              <a class="myElement6 nav-link" href="blogs.html" aria-expanded="false">Blogs
+                         <li class="dropdown nav-item">
+                              <a class="nav-link myElement6" href="blogs.html" aria-expanded="false">Blogs
                               </a>
                          </li>
                     </ul>
                     <div class="mobile-menu">
                          <li class="nav-item login_btn pop-btn">
-                              <button type="button" class="btn nav-link contact-btn b-padding" data-bs-toggle="modal"
+                              <button type="button" class="btn nav-link b-padding contact-btn" data-bs-toggle="modal"
                                    data-bs-target="#openPopup">
                                    <svg width="30" height="22" viewBox="0 0 30 22" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -792,7 +811,7 @@ if ($contact_button) {
                          </li>
                          <div class="fix-menu-btn">
                               <li class="nav-item login_btn">
-                                   <a href="contact.html" class="nav-link contact-btn b-padding join-us-btn red-btn">
+                                   <a href="contact.html" class="nav-link b-padding contact-btn join-us-btn red-btn">
                                         <div class="join-us white-text">Contact</div>
                                         <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
                                              viewBox="0 0 21 12" fill="none">
@@ -802,7 +821,7 @@ if ($contact_button) {
                                    </a>
                               </li>
                               <li class="nav-item login_btn">
-                                   <a class="nav-link contact-btn b-padding join-us-btn red-btn" data-bs-toggle="modal"
+                                   <a class="nav-link b-padding contact-btn join-us-btn red-btn" data-bs-toggle="modal"
                                         data-bs-target="#LoginPopup">
                                         <div class="join-us white-text">Login</div>
                                         <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
@@ -915,7 +934,7 @@ $login_buttons = $login_popup['login_buttons'] ?? [];
           <div class="modal-dialog">
                <div class="modal-content">
                     <div class="modal-header bg_popup">
-                         <button type="button" class="btn-close order-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                         <button type="button" class="order-1 btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body bg_popup">
                          <div class="mrs-logo">
@@ -939,9 +958,9 @@ $login_buttons = $login_popup['login_buttons'] ?? [];
                                              $class = "staff_login";
                                         }
                                    ?>
-                                        <div class="<?php echo $class; ?>">
+                                        <div class="<?php echo $class;?> ">
                                              <div class="nav-item login_btn">
-                                                  <a href="<?php echo esc_url($button_url); ?>" target="<?php echo $new_tab; ?>" class="nav-link contact-btn b-padding join-us-btn red-btn max_width">
+                                                  <a href="<?php echo esc_url($button_url); ?>" target="<?php echo $new_tab; ?>" class="nav-link b-padding contact-btn join-us-btn max_width red-btn">
                                                        <div class="join-us white-text"><?php echo esc_html($button_text); ?></div>
                                                        <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
                                                             <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />

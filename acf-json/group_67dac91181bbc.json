@@ -29,8 +29,6 @@
             "preview_size": "medium"
         },
         {
-<<<<<<< HEAD
-=======
             "key": "field_67dc0ee3e01a4",
             "label": "Select Header Menu",
             "name": "select_header_menu",
@@ -45,11 +43,7 @@
                 "id": ""
             },
             "choices": {
-                "4": "Company",
-                "13": "Header Menu",
-                "2": "Partners",
-                "5": "Usefull Links",
-                "3": "What We Do"
+                "2": "Header Menu"
             },
             "default_value": false,
             "return_format": "value",
@@ -61,7 +55,6 @@
             "placeholder": ""
         },
         {
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
             "key": "field_67dac9709fb8d",
             "label": "Header Buttons",
             "name": "header_buttons",
@@ -239,11 +232,7 @@
                     "default_value": "",
                     "allow_in_bindings": 0,
                     "tabs": "all",
-<<<<<<< HEAD
-                    "toolbar": "basic",
-=======
                     "toolbar": "full",
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
                     "media_upload": 1,
                     "delay": 0
                 },
@@ -618,9 +607,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-<<<<<<< HEAD
-    "modified": 1742479865
-=======
-    "modified": 1742479518
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
+    "modified": 1742540259
 }

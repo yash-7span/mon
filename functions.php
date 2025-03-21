@@ -244,18 +244,6 @@ function mrs_oil_scripts() {
 }
 add_action('wp_enqueue_scripts', 'mrs_oil_scripts');
 
-function allow_svg_uploads($mime_types)
-{
-	if (current_user_can('administrator')) {  // Only for admins
-		$mime_types['svg'] = 'image/svg+xml';
-		$mime_types['svgz'] = 'image/svg+xml';  // For SVGZ files
-	}
-	return $mime_types;
-}
-add_filter('upload_mimes', 'allow_svg_uploads');
-
-
-
 
 // Set the Menu Choices to ACf Field 
 function set_menu_list_to_acf_footer($field) {
@@ -575,6 +563,68 @@ function register_acf_block_types() {
 		),
 	));
 
+	// Register a Innner Hero Banner block
+	acf_register_block_type(array(
+		'name'              => 'hero-banner', // Block name
+		'title'             => ('Hero Banner'), // Title shown in the block editor
+		'description'       => ('A custom block Hero Banner Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/hero-banner/hero-banner.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'cover-image', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('hero banner', 'banner', 'hero','hero section'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-banner/hero-banner-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a Our Mission & Vision Banner block
+	acf_register_block_type(array(
+		'name'              => 'our-mission-vision', // Block name
+		'title'             => ('Our Mission & Vision'), // Title shown in the block editor
+		'description'       => ('A custom block For Our Misson & Vision'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/our-mission-vision/our-mission-vision.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'lightbulb', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('our mission & vision', 'mission', 'vision','goal','target'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-mission-vision/our-mission-vision-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 }
 add_action('acf/init', 'register_acf_block_types');
 
@@ -735,4 +785,52 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+function mrs_nav_menu($navmenu, $menu_parent = 0) {
+    $menu_items = $navmenu;
+    foreach ($menu_items as $items) {
+        if ($items['menu_item_parent'] == $menu_parent) {
+            echo '<li class="nav-item dropdown">';
+            echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
+            echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
+            echo '</li>';
+        }
+    }
+}
+
+function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
+    $sub_items = array_filter($navmenu, function($item) use ($parent_id) {
+        return $item['menu_item_parent'] == $parent_id;
+    });
+
+    if (!empty($sub_items)) {
+        $sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
+        echo '<ul class="dropdown-menu">';
+
+        foreach ($sub_items as $sub_item) {
+            $has_children = array_filter($navmenu, function($item) use ($sub_item) {
+                return $item['menu_item_parent'] == $sub_item['id'];
+            });
+
+            if (($level === 2 || $level === 1) && !empty($has_children)) {
+				
+                echo '<li class="nav-item ' . $sub_menu_class . '">';
+                echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
+                echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            } else {
+                echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
+            }
+
+            // Recursive call for deeper levels, increasing the level
+            mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
+
+            echo '</li>';
+        }
+
+        echo '</ul>';
+    }
+}
+
+
 
