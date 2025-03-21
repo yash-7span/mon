@@ -1,15 +1,15 @@
 {
-    "key": "group_67dbdc677fd92",
-    "title": "CTA Banner",
+    "key": "group_67da9c4c63c17",
+    "title": "About us",
     "fields": [
         {
-            "key": "field_67dbdc684bcd3",
-            "label": "Banner Heading Text",
-            "name": "banner_heading_text",
+            "key": "field_67da9c4cb8dd8",
+            "label": "Section Title",
+            "name": "section_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -24,9 +24,51 @@
             "append": ""
         },
         {
-            "key": "field_67dbdcf3e75de",
-            "label": "Button Text & Link",
-            "name": "button_text_link",
+            "key": "field_67da9c6b0f71d",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67da9c7b0f71e",
+            "label": "Description",
+            "name": "description",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 1,
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_67da9c8e0f71f",
+            "label": "Section Button",
+            "name": "section_button",
             "aria-label": "",
             "type": "link",
             "instructions": "",
@@ -39,32 +81,6 @@
             },
             "return_format": "array",
             "allow_in_bindings": 0
-        },
-        {
-            "key": "field_67dbdd48e75df",
-            "label": "Background Image",
-            "name": "background_image",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
         }
     ],
     "location": [
@@ -72,7 +88,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cta-banner"
+                "value": "acf\/about-us"
             }
         ]
     ],
@@ -85,9 +101,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-<<<<<<< HEAD
-    "modified": 1742465224
-=======
-    "modified": 1742478606
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
+    "modified": 1742479886
 }

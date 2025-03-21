@@ -23,14 +23,12 @@
 </head>
 
 <body <?php body_class(); ?>>
-
-	<?php if (is_active_sidebar('header-widget')) : ?>
+	<?php wp_body_open(); ?>
+	<?php if (is_active_sidebar('header_widget')) : ?>
 		<div class="header-widget-area sticky-xl-top">
 			<?php dynamic_sidebar('header-widget'); ?>
 			<div class="submenu-overlay"></div>
 		</div>
 	<?php endif; ?>
-
-
-	<div id="page" class="hfeed site container">
-		<div id="content" class="site-content">
+	<div id="page" class="site">
+	
