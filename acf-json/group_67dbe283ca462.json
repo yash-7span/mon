@@ -1,6 +1,6 @@
 {
     "key": "group_67dbe283ca462",
-    "title": "Industry Section",
+    "title": "Auto Carousel",
     "fields": [
         {
             "key": "field_67dbe284df2ff",
@@ -30,7 +30,7 @@
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -45,6 +45,32 @@
             "append": ""
         },
         {
+            "key": "field_67dd27f0cfc69",
+            "label": "Select Type",
+            "name": "select_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Custom": "Custom",
+                "Leaders": "Leaders"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 1,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_67dbe2b9bb46d",
             "label": "Industry Services",
             "name": "industry_services",
@@ -52,7 +78,15 @@
             "type": "repeater",
             "instructions": "",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67dd27f0cfc69",
+                        "operator": "==",
+                        "value": "Custom"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -134,7 +168,7 @@
                     "name": "featured_image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "File Allowed : jpg, png, jpeg, webp",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -150,12 +184,46 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": "",
+                    "mime_types": "jpg, png, jpeg, webp",
                     "allow_in_bindings": 0,
                     "preview_size": "medium",
                     "parent_repeater": "field_67dbe2b9bb46d"
                 }
             ]
+        },
+        {
+            "key": "field_67dd2b664479e",
+            "label": "Select Leaders",
+            "name": "select_leaders",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67dd27f0cfc69",
+                        "operator": "==",
+                        "value": "Leaders"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "leader-categories",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "checkbox",
+            "allow_in_bindings": 1,
+            "bidirectional": 0,
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -163,7 +231,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/industry-section"
+                "value": "acf\/auto-carousel"
             }
         ]
     ],
@@ -176,5 +244,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742479275
+    "modified": 1742556625
 }

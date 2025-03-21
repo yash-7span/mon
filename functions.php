@@ -594,12 +594,12 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register a Our Mission & Vision Banner block
+	// Register a Our Mission & Vision block
 	acf_register_block_type(array(
 		'name'              => 'our-mission-vision', // Block name
 		'title'             => ('Our Mission & Vision'), // Title shown in the block editor
 		'description'       => ('A custom block For Our Misson & Vision'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/our-mission-vision/our-mission-vision.php', // Path to HTML template file
+		'render_template'   => get_stylesheet_directory() . '/blocks/our-mission-and-vision/our-mission-and-vision.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'lightbulb', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('our mission & vision', 'mission', 'vision','goal','target'),
@@ -618,13 +618,104 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-mission-vision/our-mission-vision-img.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-mission-and-vision/our-mission-and-vision-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
 		),
 	));
 
+	// Register a Who We Are block
+	acf_register_block_type(array(
+		'name'              => 'who-we-are', // Block name
+		'title'             => ('Who We Are'), // Title shown in the block editor
+		'description'       => ('A custom block For Who We Are Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/who-we-are/who-we-are.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'info-outline', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('who we are', 'image and text', 'image','text','about'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/who-we-are/who-we-are-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a Corporate Values block
+	acf_register_block_type(array(
+		'name'              => 'corporate-values', // Block name
+		'title'             => ('Corporate Values'), // Title shown in the block editor
+		'description'       => ('A custom block For Corporate values Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/corporate-values/corporate-values.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'admin-site-alt3', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('corporate values', 'values', 'key points','corporate','key values'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/corporate-values/corporate-values.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+
+	// Register Auto Carousel Block
+    acf_register_block_type(array(
+        'name'              => 'auto-carousel', // Block name
+        'title'             => __('Auto Carousel'), // Title shown in the block editor
+        'description'       => __('A custom block for Auto Carousel content'), // Block description
+        'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
+        'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+        'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
+        'keywords'          => array('home','Industry','build', 'image'),
+        'mode'                => 'preview',
+        'supports'      => array(
+            'align'      => true,
+            'color'      => array(
+                'text' => false,
+                'background' => true,
+            ),
+        ),
+        // Add example for the preview image
+        'example' => array(
+            'attributes' => array(
+                'mode' => 'preview',
+                'data' => array(
+                    'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
+                    'is_preview'    => true
+                ),
+            ),
+        ),
+    ));
 }
 add_action('acf/init', 'register_acf_block_types');
 
@@ -832,5 +923,46 @@ function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
     }
 }
 
+function mrs_mobile_nav_menu($navmenu, $menu_parent = 0, $level = 0) {
+    $menu_items = $navmenu;
+    $has_dropdown_class = ($level > 0) ? 'dropend' : 'dropdown';
 
+    echo '<ul class="navbar-nav">';
 
+    foreach ($menu_items as $item) {
+        if ($item['menu_item_parent'] == $menu_parent) {
+            $has_submenu = !empty(array_filter($menu_items, function($child) use ($item) {
+                return $child['menu_item_parent'] == $item['id'];
+            }));
+
+            $dropdown_toggle = $has_submenu ? 'dropdown-toggle' : '';
+            $aria_expanded = $has_submenu ? 'aria-expanded="false"' : '';
+            $data_toggle = $has_submenu ? 'data-bs-toggle="dropdown"' : '';
+            $nav_link_class = $has_submenu ? 'nav-link dt-none myElement' . ($level + 1) : 'nav-link';
+
+            echo '<li class="' . esc_attr($has_dropdown_class) . ' nav-item">';
+
+            echo '<a href="' . esc_url($item['url']) . '" class="' . esc_attr($nav_link_class) . '" ' . $data_toggle . ' ' . $aria_expanded . '>';
+            echo esc_html($item['title']);
+
+            if ($has_submenu) {
+                echo '<div class="arrow">
+                        <div class="arrow-line left"></div>
+                        <div class="arrow-line right"></div>
+                      </div>';
+            }
+
+            echo '</a>';
+
+            if ($has_submenu) {
+                echo '<ul class="dropdown-menu">';
+                mrs_mobile_nav_menu($menu_items, $item['id'], $level + 1);
+                echo '</ul>';
+            }
+
+            echo '</li>';
+        }
+    }
+
+    echo '</ul>';
+}
