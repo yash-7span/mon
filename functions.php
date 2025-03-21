@@ -135,16 +135,24 @@ function mrs_oil_widgets_init() {
 }
 add_action( 'widgets_init', 'mrs_oil_widgets_init' );
 
-// Allow svg images 
-function allow_svg_uploads($mime_types)
-{
-	if (current_user_can('administrator')) {  // Only for admins
-		$mime_types['svg'] = 'image/svg+xml';
-		$mime_types['svgz'] = 'image/svg+xml';  // For SVGZ files
-	}
-	return $mime_types;
+
+//svg mime type upload permission
+define('ALLOW_UNFILTERED_UPLOADS', true);
+function svg_mime_types_perm($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
 }
-add_filter('upload_mimes', 'allow_svg_uploads');
+add_filter('upload_mimes', 'svg_mime_types_perm');
+
+//permission of uploaded svg file display on media library
+function custom_admin_head_display_svg_perm() {
+  $css = '';
+  $css = 'td.media-icon img[src$=".svg"] { width: 100% !important; height: auto !important; }';
+  echo '<style type="text/css">'.$css.'</style>';
+}
+add_action('admin_head', 'custom_admin_head_display_svg_perm');
+//END - svg mime type upload permission
+
 /**
  * Enqueue scripts and styles.
  */
