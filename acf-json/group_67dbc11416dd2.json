@@ -116,7 +116,7 @@
                     "name": "featured_image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "File Allowed : jpg, png, jpeg, webp",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -132,7 +132,7 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": "",
+                    "mime_types": "jpg, png, jpeg, webp",
                     "allow_in_bindings": 0,
                     "preview_size": "medium",
                     "parent_repeater": "field_67dbc13340d5b"
@@ -158,5 +158,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742479337
+    "modified": 1742531636
 }

@@ -24,10 +24,12 @@ $heading = get_field('section_heading');
 
 <div class="industry-sec sec-padding container-fluid overflow-hidden" id="RedirectIndustry" style="background-color:<?php echo $background_color;?>;">
      <div class="industry-title">
-          <h5 class="red-text text-uppercase mb-1">Industry</h5>
-          <h2 class="mb-0 h-title">
-               Industry Focal Points
-          </h2>
+     <?php if (!empty($title)): ?>
+            <h5 class="red-text text-uppercase mb-1"><?php echo esc_html($title); ?></h5>
+        <?php endif; ?>
+        <?php if (!empty($heading)): ?>
+            <h2 class="mb-0 h-title"><?php echo esc_html($heading); ?></h2>
+        <?php endif; ?>
      </div>
      <div class="inner-height">
           <div class="row">

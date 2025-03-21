@@ -25,7 +25,9 @@ endif;
                     $button_title = $button_title_and_url['title'];
                     $button_url = $button_title_and_url['url'];
                     $button_target = $button_title_and_url['target'];
-                    $description = $slider_content['description'];
+                    $full_description = $slider_content['description'];
+                    
+                    $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
                     ?>
                     <div class="swiper-slide one-slide">
                         <div class="main-hero-banner homepage" style="background-image: url(<?php echo $background_image; ?>);">

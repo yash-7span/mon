@@ -8,7 +8,7 @@
             "name": "site_logo",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "FIle Allowed : svg",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -24,7 +24,7 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": "",
+            "mime_types": "svg",
             "allow_in_bindings": 0,
             "preview_size": "medium"
         },
@@ -415,5 +415,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742479290
+    "modified": 1742531502
 }
