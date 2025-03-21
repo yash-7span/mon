@@ -207,7 +207,7 @@ function mrs_oil_scripts() {
     
     // Enqueue external and local CSS files
 	wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array());	
-    wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), time());
+    // wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), time());
     wp_enqueue_style('swiper-css', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
     wp_enqueue_style('slick-css', get_stylesheet_directory_uri() . '/css/slick.css', array(), time());
     wp_enqueue_style('icons-css', get_stylesheet_directory_uri() . '/css/icons.css', array(), time());
@@ -235,8 +235,16 @@ function mrs_oil_scripts() {
 	wp_enqueue_script('scrollTrigger-js', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js', array(), time(), true);
 	wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), time(), true);
 	wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array(), time(), true);
-	wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
-          
+	
+	// Enqueue Script to index page only
+	if ( is_page( 79 ) ) {
+		wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
+	}
+
+	// Enqueue Script to about page
+	if ( is_page( 529 ) ) {
+		wp_enqueue_script('about-js', get_stylesheet_directory_uri() . '/js/about.js', array(), time(), true);
+	}
 	// Enqueue JavaScript files
     wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
 	
@@ -453,7 +461,35 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register Industry Section Block
+	// Register Auto Carousel Block
+	acf_register_block_type(array(
+		'name'              => 'auto-carousel', // Block name
+		'title'             => __('Auto Carousel'), // Title shown in the block editor
+		'description'       => __('A custom block for Auto Carousel content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','Industry','build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+	
 	acf_register_block_type(array(
 		'name'              => 'industry-section', // Block name
 		'title'             => __('Industry Section'), // Title shown in the block editor
@@ -759,6 +795,7 @@ function get_term_link_by_slug_default( $term_slug, $taxonomy = 'category' ) {
     return $term_link;
 }
 
+// Fetch Taxonomy using post ID
 function get_post_taxonomy_terms( $post_id, $taxonomy = 'category' ) {
     $post_id = intval( $post_id );
 	$terms = wp_get_post_terms( $post_id, $taxonomy );
@@ -767,6 +804,7 @@ function get_post_taxonomy_terms( $post_id, $taxonomy = 'category' ) {
     }
 	return $terms;
 }
+
 
 // Define Global Color to fetch color from  Block Editor
 define('CUSTOM_COLOR_PALETTE',array(
@@ -856,6 +894,52 @@ function my_custom_blocks() {
 }
 add_action('init', 'my_custom_blocks');
 
+
+// Function to Set Nav menu in header Section 
+function mrs_nav_menu($navmenu, $menu_parent = 0) {
+    $menu_items = $navmenu;
+    foreach ($menu_items as $items) {
+        if ($items['menu_item_parent'] == $menu_parent) {
+            echo '<li class="nav-item dropdown">';
+            echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
+            echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
+            echo '</li>';
+        }
+    }
+}
+function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
+    $sub_items = array_filter($navmenu, function($item) use ($parent_id) {
+        return $item['menu_item_parent'] == $parent_id;
+    });
+
+    if (!empty($sub_items)) {
+        $sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
+        echo '<ul class="dropdown-menu">';
+
+        foreach ($sub_items as $sub_item) {
+            $has_children = array_filter($navmenu, function($item) use ($sub_item) {
+                return $item['menu_item_parent'] == $sub_item['id'];
+            });
+
+            if (($level === 2 || $level === 1) && !empty($has_children)) {
+
+                echo '<li class="nav-item ' . $sub_menu_class . '">';
+                echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
+                echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            } else {
+                echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
+            }
+
+            // Recursive call for deeper levels, increasing the level
+            mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
+
+            echo '</li>';
+        }
+
+        echo '</ul>';
+    }
+}
 
 
 /**

@@ -27,9 +27,7 @@ foreach($menu_items as $items):
      );
 endforeach;
 
-// Fetch Text Url from Acf Field
 $contact_button = get_field('contact_us');
-
 if ($contact_button) {
      $contact_button_url = esc_html($contact_button['url']);
      $contact_button_title = esc_html($contact_button['title']);
@@ -551,11 +549,10 @@ if($header_cta_button){
           <div class="desk-block header-menus">
                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
+                         
+                         <!-- Set Nav Menu  -->
+                         <?php mrs_nav_menu($nav_menu);?>
 
-                         <?php
-                              //Dynamic menu get                          
-                              mrs_nav_menu($nav_menu);
-                         ?>
                          <li class="nav-item login_btn pop-btn">
                               <button type="button" class="btn nav-link b-padding contact-btn" data-bs-toggle="modal"
                                    data-bs-target="#openPopup">

@@ -8,7 +8,7 @@
             "name": "footer_logo",
             "aria-label": "",
             "type": "image",
-            "instructions": "",
+            "instructions": "File Allowed : svg",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -24,11 +24,9 @@
             "max_width": "",
             "max_height": "",
             "max_size": "",
-            "mime_types": "",
+            "mime_types": "svg",
             "allow_in_bindings": 0,
             "preview_size": "medium"
-<<<<<<< HEAD
-=======
         },
         {
             "key": "field_67d977b53be96",
@@ -142,7 +140,7 @@
                     "name": "creater_logo",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "File allowed : svg, png",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -158,7 +156,7 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": "",
+                    "mime_types": "svg, png",
                     "allow_in_bindings": 0,
                     "preview_size": "medium"
                 },
@@ -180,7 +178,6 @@
                     "allow_in_bindings": 0
                 }
             ]
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
         }
     ],
     "location": [
@@ -201,9 +198,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-<<<<<<< HEAD
-    "modified": 1742301547
-=======
     "modified": 1742479244
->>>>>>> ffb8f57575442aba608d084bbdec6bcd941717a3
 }

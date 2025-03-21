@@ -12,7 +12,8 @@ endif;
 // Fetch ACF Field
 $title = get_field('section_title');
 $heading = get_field('heading');
-$description = get_field('description');
+$full_description = get_field('description');
+$description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
 $button = get_field('section_button');
 $button_url = $button['url'];
 $button_title = $button['title'];

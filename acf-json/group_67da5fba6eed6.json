@@ -30,7 +30,7 @@
                     "name": "background_image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "",
+                    "instructions": "File Allowed : png, jpg, jpeg",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -46,7 +46,7 @@
                     "max_width": "",
                     "max_height": "",
                     "max_size": "",
-                    "mime_types": "",
+                    "mime_types": "png, jpg, jpeg",
                     "allow_in_bindings": 0,
                     "preview_size": "medium",
                     "parent_repeater": "field_67da5fbbe33fa"
@@ -171,5 +171,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742479261
+    "modified": 1742531334
 }
