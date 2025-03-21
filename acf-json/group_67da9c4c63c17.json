@@ -1,6 +1,6 @@
 {
     "key": "group_67da9c4c63c17",
-    "title": "About us",
+    "title": "About Company",
     "fields": [
         {
             "key": "field_67da9c4cb8dd8",
@@ -49,7 +49,7 @@
             "label": "Description",
             "name": "description",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -59,11 +59,11 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
             "allow_in_bindings": 1,
-            "tabs": "all",
-            "toolbar": "basic",
-            "media_upload": 1,
-            "delay": 0
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
         },
         {
             "key": "field_67da9c8e0f71f",
@@ -101,5 +101,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742479886
+    "modified": 1742561010
 }
