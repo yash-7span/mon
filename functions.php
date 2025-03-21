@@ -894,54 +894,6 @@ function my_custom_blocks() {
 }
 add_action('init', 'my_custom_blocks');
 
-
-// Function to Set Nav menu in header Section 
-function mrs_nav_menu($navmenu, $menu_parent = 0) {
-    $menu_items = $navmenu;
-    foreach ($menu_items as $items) {
-        if ($items['menu_item_parent'] == $menu_parent) {
-            echo '<li class="nav-item dropdown">';
-            echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
-            echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-            mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
-            echo '</li>';
-        }
-    }
-}
-function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
-    $sub_items = array_filter($navmenu, function($item) use ($parent_id) {
-        return $item['menu_item_parent'] == $parent_id;
-    });
-
-    if (!empty($sub_items)) {
-        $sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
-        echo '<ul class="dropdown-menu">';
-
-        foreach ($sub_items as $sub_item) {
-            $has_children = array_filter($navmenu, function($item) use ($sub_item) {
-                return $item['menu_item_parent'] == $sub_item['id'];
-            });
-
-            if (($level === 2 || $level === 1) && !empty($has_children)) {
-
-                echo '<li class="nav-item ' . $sub_menu_class . '">';
-                echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
-                echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-            } else {
-                echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
-            }
-
-            // Recursive call for deeper levels, increasing the level
-            mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
-
-            echo '</li>';
-        }
-
-        echo '</ul>';
-    }
-}
-
-
 /**
  * Implement the Custom Header feature.
  */
