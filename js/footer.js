@@ -1,0 +1,232 @@
+class Footer extends HTMLElement {
+    constructor() {
+         super();
+    }
+
+    connectedCallback() {
+         this.innerHTML = `
+
+
+  <footer class="footer-wrapper bg-black overflow-hidden">
+          <div class="footer-main container-fluid">
+               <div class="row fd-row">
+                    <div class="col-xxl-3 col-xl-4 col-lg-5 col-md-5 col-mb one">
+                         <div class="title-of-footer">
+                              <a href="https://mrs-socialcup-website.pages.dev"><img src="./images/footer-logo.svg" alt="" class="img-fluid d-inline-block">
+                              <p class="text-title d-inline-block ms-2">Strength of the Stallion</p></a>
+                         </div>
+                         <div class="t-footer">
+                              <p class="text-title">Powering Your Journey</p>
+                         </div>
+                         <div class="social-icons">
+                              <a href="https://www.facebook.com/MrsOilNigeria" class="">
+                                   <li class="box-icons">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                             <path d="M11.6895 30.4016H17.8457V18.2601H23.3925L24.002 12.2272H17.8457V9.18051C17.8457 8.7785 18.0079 8.39295 18.2965 8.10869C18.5851 7.82442 18.9766 7.66472 19.3848 7.66472H24.002V1.60156H19.3848C17.3439 1.60156 15.3866 2.40006 13.9434 3.82138C12.5003 5.24271 11.6895 7.17045 11.6895 9.18051V12.2272H8.61142L8.00195 18.2601H11.6895V30.4016Z" fill="#555555" />
+                                        </svg>
+                                   </li>
+                              </a>
+                              <a href="https://twitter.com/MRSOilNigeria" class="">
+                                   <li class="box-icons">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                             <path d="M24.2725 3H28.6831L19.0471 14.0133L30.3831 29H21.5058L14.5538 19.9107L6.59914 29H2.18581L12.4925 17.22L1.61914 3H10.7191L17.0031 11.308L24.2698 3H24.2725ZM22.7245 26.36H25.1685L9.39247 5.50133H6.76981L22.7245 26.36Z" fill="#555555" />
+                                        </svg>
+                                   </li>
+                              </a>
+                              <a href="https://www.instagram.com/mrsoilnigeriaplc" class="">
+                                   <li class="box-icons">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                             <path d="M10.3993 2.66797H21.5993C25.866 2.66797 29.3327 6.13464 29.3327 10.4013V21.6013C29.3327 23.6523 28.5179 25.6193 27.0676 27.0696C25.6174 28.5199 23.6504 29.3346 21.5993 29.3346H10.3993C6.13268 29.3346 2.66602 25.868 2.66602 21.6013V10.4013C2.66602 8.35029 3.48078 6.38329 4.93106 4.93301C6.38134 3.48273 8.34834 2.66797 10.3993 2.66797ZM10.1327 5.33464C8.85964 5.33464 7.63874 5.84035 6.73857 6.74052C5.8384 7.6407 5.33268 8.8616 5.33268 10.1346V21.868C5.33268 24.5213 7.47935 26.668 10.1327 26.668H21.866C23.1391 26.668 24.36 26.1623 25.2601 25.2621C26.1603 24.3619 26.666 23.141 26.666 21.868V10.1346C26.666 7.4813 24.5193 5.33464 21.866 5.33464H10.1327ZM22.9993 7.33464C23.4414 7.33464 23.8653 7.51023 24.1779 7.82279C24.4904 8.13535 24.666 8.55927 24.666 9.0013C24.666 9.44333 24.4904 9.86725 24.1779 10.1798C23.8653 10.4924 23.4414 10.668 22.9993 10.668C22.5573 10.668 22.1334 10.4924 21.8208 10.1798C21.5083 9.86725 21.3327 9.44333 21.3327 9.0013C21.3327 8.55927 21.5083 8.13535 21.8208 7.82279C22.1334 7.51023 22.5573 7.33464 22.9993 7.33464ZM15.9993 9.33463C17.7675 9.33464 19.4632 10.037 20.7134 11.2873C21.9636 12.5375 22.666 14.2332 22.666 16.0013C22.666 17.7694 21.9636 19.4651 20.7134 20.7153C19.4632 21.9656 17.7675 22.668 15.9993 22.668C14.2312 22.668 12.5355 21.9656 11.2853 20.7153C10.0351 19.4651 9.33268 17.7694 9.33268 16.0013C9.33268 14.2332 10.0351 12.5375 11.2853 11.2873C12.5355 10.037 14.2312 9.33464 15.9993 9.33463ZM15.9993 12.0013C14.9385 12.0013 13.9211 12.4227 13.1709 13.1729C12.4208 13.923 11.9993 14.9404 11.9993 16.0013C11.9993 17.0622 12.4208 18.0796 13.1709 18.8297C13.9211 19.5799 14.9385 20.0013 15.9993 20.0013C17.0602 20.0013 18.0776 19.5799 18.8278 18.8297C19.5779 18.0796 19.9993 17.0622 19.9993 16.0013C19.9993 14.9404 19.5779 13.923 18.8278 13.1729C18.0776 12.4227 17.0602 12.0013 15.9993 12.0013Z" fill="#555555" />
+                                        </svg>
+                                   </li>
+                              </a>    
+                              <a href="https://www.linkedin.com/company/mrs-oil-nigeria-plc" class="">
+                                   <li class="box-icons">
+                                   
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                             <path d="M9.25716 6.668C9.25681 7.37524 8.97552 8.05338 8.47517 8.55323C7.97482 9.05307 7.29641 9.33369 6.58916 9.33333C5.88192 9.33298 5.20378 9.05169 4.70393 8.55134C4.20409 8.05099 3.92347 7.37258 3.92383 6.66533C3.92418 5.95809 4.20547 5.27995 4.70582 4.78011C5.20617 4.28026 5.88458 3.99965 6.59183 4C7.29907 4.00035 7.97721 4.28164 8.47706 4.78199C8.9769 5.28234 9.25752 5.96076 9.25716 6.668ZM9.33716 11.308H4.00383V28.0013H9.33716V11.308ZM17.7638 11.308H12.4572V28.0013H17.7105V19.2413C17.7105 14.3613 24.0705 13.908 24.0705 19.2413V28.0013H29.3372V17.428C29.3372 9.20133 19.9238 9.508 17.7105 13.548L17.7638 11.308Z" fill="#555555" />
+                                        </svg>
+                                 
+                                   </li>
+                              </a>
+                              <a href="https://www.instagram.com/mrsoilnigeriaplc" class="">
+                                   <li class="box-icons">
+                                        <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                             <path d="M15.5668 10.1966C15.4667 10.1512 15.365 10.1074 15.2619 10.0656C15.0825 6.93667 13.2759 5.14536 10.2424 5.12703C10.2287 5.12695 10.215 5.12695 10.2013 5.12695C8.38685 5.12695 6.87783 5.85989 5.94903 7.19362L7.61735 8.27668C8.3112 7.28043 9.40012 7.06805 10.2021 7.06805C10.2113 7.06805 10.2206 7.06805 10.2298 7.06813C11.2286 7.07416 11.9823 7.34899 12.4701 7.88494C12.8251 8.27513 13.0626 8.81432 13.1801 9.49481C12.2946 9.35237 11.3368 9.30858 10.313 9.36413C7.42892 9.52135 5.5748 11.1132 5.69932 13.3251C5.76251 14.4471 6.35315 15.4124 7.36237 16.0429C8.21565 16.576 9.31461 16.8366 10.4568 16.7776C11.9651 16.6994 13.1484 16.1548 13.9739 15.1589C14.6008 14.4027 14.9974 13.4226 15.1724 12.1878C15.8913 12.5983 16.424 13.1386 16.7182 13.788C17.2185 14.8921 17.2477 16.7062 15.6835 18.1853C14.313 19.481 12.6657 20.0415 10.176 20.0588C7.41433 20.0395 5.3257 19.2013 3.96774 17.5676C2.69612 16.0378 2.03893 13.8281 2.01442 11C2.03893 8.17183 2.69612 5.96218 3.96774 4.43239C5.3257 2.79869 7.4143 1.96052 10.176 1.9411C12.9577 1.96067 15.0827 2.80287 16.4927 4.44446C17.184 5.24948 17.7053 6.26184 18.0489 7.44222L20.0039 6.94859C19.5874 5.49567 18.932 4.24367 18.0402 3.20535C16.2326 1.10077 13.589 0.0223607 10.1828 0H10.1692C6.76989 0.022283 4.15589 1.10479 2.39982 3.21742C0.837147 5.0974 0.031076 7.71326 0.003991 10.9923L0.00390625 11L0.003991 11.0077C0.031076 14.2867 0.837147 16.9026 2.39982 18.7826C4.15589 20.8952 6.76989 21.9778 10.1692 22H10.1828C13.2049 21.9802 15.3352 21.2314 17.0901 19.5721C19.386 17.4013 19.3169 14.6803 18.5602 13.0099C18.0173 11.8121 16.9822 10.8391 15.5668 10.1966ZM10.3488 14.8393C9.08475 14.9067 7.77153 14.3698 7.70678 13.2197C7.65879 12.367 8.34803 11.4155 10.4264 11.3021C10.6644 11.2891 10.8979 11.2828 11.1274 11.2828C11.8823 11.2828 12.5885 11.3522 13.2306 11.485C12.9911 14.3155 11.5864 14.7751 10.3488 14.8393Z" fill="#555555" />
+                                        </svg>
+                                
+                                   </li>
+                              </a>
+                         </div>
+                    </div>
+
+                    <!-- <div class="row media-col-r">
+
+                         <div class="col-xl-2 col-lg-3 col-md-3 col-md-3 col-sm-6 col-xs-6 order_lg_2 media-min">
+                              <ul class="page-links media-ml">
+                                   <li class="mb_5">
+                                        <p class="title-page light-grey">Company</p>
+                                   </li>
+                                   <li><a href="about-us.html" class="white-text">About Us</a></li>
+                                   <li><a href="leadership.html" class="white-text">Board Members</a></li>
+                                   <li><a href="management-team.html" class="white-text">Management Team</a></li>
+                                   <li class="mb-sm-0"><a href="contact.html" class="white-text">Contact Us</a></li>
+                              </ul>
+                         </div>
+                         <div class="col-xl-2 col-lg-3 col-md-3 col-md-3 col-sm-6 col-xs-6 order_lg_3 media-max">
+                              <ul class="page-links">
+                                   <li class="mb_5">
+                                        <p class="title-page light-grey">What we do</p>
+                                   </li>
+                                   <li><a href="service.html" class="white-text">Products & Services</a></li>
+                                   <li class="mb-0"><a href="investor-relation.html" class="white-text">Investors Relations</a></li>
+                              </ul>
+                              <ul class="page-links other-links">
+                                   <li class="mb_5">
+                                        <p class="title-page light-grey">useful Links</p>
+                                   </li>
+                                   <li><a href="https://ngxgroup.com/" class="white-text" target="_blank">Nigerian Stock Exchange (NGX)</a></li>
+                                   <li><a href="https://www.cbn.gov.ng/" class="white-text" target="_blank">Central Bank of Nigeria (CBN)</a></li>
+                                   <li><a href="https://ppmc.com.ng/web/guest/home" class="white-text" target="_blank">NNPC Retail</a></li>
+                                   <li><a href="https://sec.gov.ng/" class="white-text" target="_blank">Securities & Exchange Commission (SEC)</a></li>
+                                   <li><a href="https://www.nmdpra.gov.ng/" class="white-text" target="_blank">NMDPRA</a></li>
+                                   <li class="mb-0"><a href="http://www.meman.eu/" class="white-text" target="_blank">MEMAN</a></li>
+
+                              </ul>
+                         </div>
+                    </div> -->
+
+                    <div class="col-xxl-3 col-xl-3 col-lg-5 col-md-5 col-sm-4 col-xs-6 order_lg_2 media-min two">
+                         <ul class="page-links media-ml asso-mr">
+                              <li class="mb_5">
+                                   <p class="title-page light-grey">PARTNERS</p>
+                              </li>
+                              <li><a href="https://quickmart.com/" class="white-text" target="_blank">Quick Mart</a></li>
+                              <!-- <li><a href="#" class="white-text" target="_blank">Quick Bank</a></li> -->
+                              <li><a href="https://quickbank.socialcup.co/" class="white-text" target="_blank">Quick Bank</a></li>
+                              <!-- <li><a href="https://bestafltd.com/index.html" class="white-text" target="_blank">Bestaf</a></li> -->
+
+                              <li><a href="https://bestafltd.com/subsidaries.technology.html" class="white-text" target="_blank">Bestaf Technology</a></li>
+                              <li><a href="https://bestafltd.com/subsidaries.trading.co.html" class="white-text" target="_blank">Bestaf Trading</a></li>
+                              <li><a href="https://bestafltd.com/subsidaries.paymentsolution.html" class="white-text" target="_blank">Bestaf Payment Solution</a></li>
+                              <li><a href="https://bestafltd.com/subsidiaries.construction.html" class="white-text" target="_blank">Bestaf Construction</a></li>
+                              <li><a href="https://bestafltd.com/maritime_service.html" class="white-text" target="_blank">Bestaf Marine</a></li>
+                              <li><a href="https://bestafltd.com/subsidiaries.terminal.html" class="white-text" target="_blank">Bestaf Terminal</a></li>
+                              <li class="mb-0"><a href="https://bestafltd.com/subsidaries.shipping.html" class="white-text" target="_blank">Bestaf Shipping</a></li>
+
+                         </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-4 col-xs-6 order_lg_3 media-max media_sm three">
+                         <ul class="page-links">
+                              <li class="mb_5">
+                                   <p class="title-page light-grey">What we do</p>
+                              </li>
+                              <li><a href="products.html" class="white-text">Products</a></li>
+                              <li><a href="service.html" class="white-text">Services</a></li>
+                              <li><a href="blogs.html" class="white-text">Blogs</a></li>
+                         </ul>
+
+                         <ul class="page-links other-links">
+                              <li class="mb_5">
+                                   <p class="title-page light-grey">useful Links</p>
+                              </li>
+                              <li><a href="https://ngxgroup.com/" class="white-text" target="_blank">Nigerian Stock Exchange (NGX)</a></li>
+                              <li><a href="https://www.cbn.gov.ng/" class="white-text" target="_blank">Central Bank of Nigeria (CBN)</a></li>
+                              <li><a href="https://ppmc.com.ng/web/guest/home" class="white-text" target="_blank">NNPC Retail</a></li>
+                              <li><a href="https://sec.gov.ng/" class="white-text" target="_blank">Securities & Exchange Commission (SEC)</a></li>
+                              <li><a href="https://www.nmdpra.gov.ng/" class="white-text" target="_blank">NMDPRA</a></li>
+                              <li><a href="http://www.meman.eu/" class="white-text" target="_blank">MEMAN</a></li>
+                              <li class="mb-0"><a href="https://frcnigeria.gov.ng/" class="white-text" target="_blank">Financial Reporting Council (FRC)</a></li>
+
+
+                         </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-5 col-sm-4 col-xs-6 order_lg_2 media-min media_sm four">
+                         <ul class="page-links media-ml">
+                              <li class="mb_5">
+                                   <p class="title-page light-grey">Company</p>
+                              </li>
+                              <li><a href="about-us.html" class="white-text">About Us</a></li>
+                               <li><a href="investor-relation.html" class="white-text">Investors Relations</a></li>
+                              <li><a href="leadership.html" class="white-text">Board of Directors</a></li>
+                              <li><a href="management-team.html" class="white-text">Management Team</a></li>
+                              <li class="mb-sm-0"><a href="contact.html" class="white-text">Contact Us</a></li>
+                         </ul>
+                    </div>
+
+                    <div class="col-xxl-2 col-xl-8 col-lg-7 col-md-7 five">
+
+                         <div class="contact-details mr-top desk-ele">
+                              <div class="c-link">
+                                   <p class="grey-text mb-4">
+                                        <!-- <span>Tel:</span> -->
+                                        <a href="tel: +234 (809) 030-0000" class="white-text">+234 (809) 030-0000</a>
+                                   </p>
+                                 
+                              </div>
+                              <div class="email-link">
+                                   <p class="grey-text mb-4">
+                                        <!-- <span>Mail:</span> -->
+                                        <a href="mailto: inquiries@mrsholdings.com" class="white-text">inquiries@mrsholdings.com</a>
+                                   </p>
+                                   <p class="grey-text mb-0">
+                                        <!-- <span>Add:</span> -->
+                                        <a href="https://maps.app.goo.gl/H5Mu6fBu5zFHxJUR6" target="_blank" class="white-text">
+                                             <span class="">2 TinCan Island Port Road Apapa, Lagos</span></a>
+                                   </p>
+                              </div>
+                         </div>
+
+                         <div class="contact-details media-ele row">
+                              <div class="c-link col-xxl-4 col_xl_4">
+                                   <p class="grey-text mb-4">
+                                        <!-- <span>Tel:</span> -->
+                                        <a href="tel: +234 (809) 030-0000" class="white-text">+234 (809) 030-0000</a>
+                                   </p>
+                                  
+                              </div>
+                              <div class="email-link col-xxl-8 col_xl_8">
+
+                                   <p class="grey-text mb-4">
+                                        <!-- <span>Mail:</span> -->
+                                        <a href="mailto: inquiries@mrsholdings.com" class="white-text">inquiries@mrsholdings.com</a>
+                                   </p>
+                                   <p class="grey-text mb-0">
+                                        <!-- <span>Add:</span> -->
+                                        <a href="https://maps.app.goo.gl/H5Mu6fBu5zFHxJUR6" target="_blank" class="white-text">
+                                             <span class="">2 TinCan Island Port Road Apapa, Lagos</span></a>
+                                   </p>
+
+                              </div>
+
+                         </div>
+                    </div>
+               </div>
+
+               <div class="row mr-top">
+                    <div class="col-lg-12">
+                         <div class="copy_rights border-t">
+                              <p class="fd-text mb-0">Copyright © 2025 MRS. All rights reserved</p>
+                              <ul class="page-links fd-flex">
+                                   <li><a href="privacy-policy.html" class="fd-text">Privacy Policy</a></li>
+                                   <li class="xs-mb"><a href="terms-condition.html" class="fd-text">Terms & Conditions</a></li>
+                              </ul>
+
+                              <div class="crafted">
+                                   <img src="./images/footer_sandcup.png" alt="" class="img-fluid">
+                                   <p class="fd-text mb-0">Crafted by <a href="https://sandcupstudio.com/" class="fd-text" target="_blank">Sandcup Design Studio</a></p>
+                              </div>
+                         </div>
+                    </div>
+
+               </div>
+
+          </div>
+     </footer>
+    `;
+    }
+}
+// Define the custom element
+customElements.define("footer-component", Footer);
