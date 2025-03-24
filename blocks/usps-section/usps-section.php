@@ -14,10 +14,16 @@ $heading = get_field('section_heading');
 ?>
 
 <div class="usps-section js-scroll" id="RedirectUSPs">
-    <div class="usps-title">
-        <h5 class="red-text text-uppercase mb-1">USP’s</h5>
-        <h2 class="mb-0 h-title">Standing Tall With Distinction</h2>
-    </div>
+    <?php if(!empty($title) && !empty($heading)):?>
+        <div class="usps-title">
+            <?php if(!empty($title)):?>
+                <h5 class="red-text text-uppercase mb-1"><?php echo $title;?></h5>
+            <?php endif;?>
+            <?php if(!empty($heading)):?>
+                <h2 class="mb-0 h-title"><?php echo $heading; ?></h2>
+            <?php endif;?>
+        </div>
+    <?php endif;?>
 
     <!-- Desktop Layout Start  -->
     <div class="usps-verticle-slider desktop">
@@ -29,7 +35,8 @@ $heading = get_field('section_heading');
                         the_row();
                         $i++;
                         $title = get_sub_field('title');
-                        $description = get_sub_field('description');
+                        $full_description = get_sub_field('description');
+                        $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
                         $image= get_sub_field('featured_image');
                         $image_url = $image['url'];
                         $image_title = $image['title'];

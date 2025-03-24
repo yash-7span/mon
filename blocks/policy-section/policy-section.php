@@ -9,16 +9,19 @@ if (!empty($block['data']['is_preview'])):
     return;
 endif;
 
-$title = get_field('section_title');
-$heading = get_field('section_heading');
+$section_title = get_field('section_title');
+$section_heading = get_field('section_heading');
 
 ?>
 <div class="responsibility-sec our-policies" id="RedirectResponsibility">
     <div class="aboutus-title respo-title">
-        <h5 class="red-text text-uppercase mb-4">OUR POLICIES</h5>
-        <h2 class="mb-4 h-title">
-        OUR  STANDARD POLICIES
-        </h2>
+        <?php if(!empty($section_title)):?>
+            <h5 class="red-text text-uppercase mb-4"><?php echo $section_title;?></h5>
+        <?php endif;?>
+
+        <?php if(!empty($section_heading)):?>
+            <h2 class="mb-4 h-title"><?php echo $section_heading;?></h2>
+        <?php endif;?>
     </div>
 
     <div class="swiper responsibility-carousel">
@@ -30,7 +33,8 @@ $heading = get_field('section_heading');
                         the_row();
                         $i++;
                         $title = get_sub_field('title');
-                        $description= get_sub_field('description');
+                        $full_description= get_sub_field('description');
+                        $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
                         $image = get_sub_field('featured_image');
                         $image_url = $image['url'];
                         $image_title = $image['title'];
