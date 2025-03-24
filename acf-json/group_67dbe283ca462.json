@@ -92,7 +92,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "row",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -231,7 +231,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/auto-carousel"
+                "value": "acf\/industry-section"
             }
         ]
     ],
@@ -244,5 +244,9 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
+<<<<<<< HEAD
     "modified": 1742550596
+=======
+    "modified": 1742562030
+>>>>>>> 3f33a1b9d1ff947cfce58364fd873b058541518a
 }
