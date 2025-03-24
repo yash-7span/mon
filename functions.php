@@ -686,36 +686,130 @@ function register_acf_block_types() {
 			),
 		),
 	));
+	
+	// Register a History block
+	acf_register_block_type(array(
+		'name'              => 'history', // Block name
+		'title'             => ('History'), // Title shown in the block editor
+		'description'       => ('A custom block For history Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/history/history.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'clock', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('history'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/history/history-imgs.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 
+	// Register a Responsibility block
+	acf_register_block_type(array(
+		'name'              => 'responsibility', // Block name
+		'title'             => ('Responsibility'), // Title shown in the block editor
+		'description'       => ('A custom block For Responsibility Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/responsibility/responsibility.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'feedback', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('responsibility'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/responsibility/responsibility-imgs.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 
-	// Register Auto Carousel Block
-    acf_register_block_type(array(
-        'name'              => 'auto-carousel', // Block name
-        'title'             => __('Auto Carousel'), // Title shown in the block editor
-        'description'       => __('A custom block for Auto Carousel content'), // Block description
-        'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
-        'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-        'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-        'keywords'          => array('home','Industry','build', 'image'),
-        'mode'                => 'preview',
-        'supports'      => array(
-            'align'      => true,
-            'color'      => array(
-                'text' => false,
-                'background' => true,
-            ),
-        ),
-        // Add example for the preview image
-        'example' => array(
-            'attributes' => array(
-                'mode' => 'preview',
-                'data' => array(
-                    'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
-                    'is_preview'    => true
-                ),
-            ),
-        ),
-    ));
+	// Register a Get In Touch block
+	acf_register_block_type(array(
+		'name'              => 'get-in-touch', // Block name
+		'title'             => ('Get In Touch'), // Title shown in the block editor
+		'description'       => ('A custom block For Get In Touch Section Contact Us page'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/get-in-touch/get-in-touch.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'editor-help', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('get in touch', 'Contact','inquiry','address'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/get-in-touch/get-in-touch-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a Our Locations block
+	acf_register_block_type(array(
+		'name'              => 'our-locations', // Block name
+		'title'             => ('Our Locations'), // Title shown in the block editor
+		'description'       => ('A custom block For Our Locations Contact Us page section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/our-locations/our-locations.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'location-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('locations', 'our locations','address','contact','offices'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => true  // Enables text color support
+			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-locations/our-locations-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 }
 add_action('acf/init', 'register_acf_block_types');
 
