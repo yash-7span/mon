@@ -3,37 +3,11 @@
     "title": "Page Footer",
     "fields": [
         {
-            "key": "field_67d955b568b39",
-            "label": "Site Logo",
-            "name": "site_logo",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "FIle Allowed : svg",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "svg",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
-        },
-        {
             "key": "field_67d95aef24501",
             "label": "Site Tagline",
             "name": "site_tagline",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -43,11 +17,32 @@
                 "id": ""
             },
             "default_value": "",
+            "maxlength": "",
             "allow_in_bindings": 1,
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "rows": "",
+            "placeholder": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_67e1039bc3ac6",
+            "label": "Footer Tagline",
+            "name": "footer_tagline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_67d956745393f",
@@ -188,11 +183,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "4": "Company",
-                        "13": "Header Menu",
-                        "2": "Partners",
-                        "5": "Usefull Links",
-                        "3": "What We Do"
+                        "10": "Company",
+                        "2": "Header Menu",
+                        "7": "Partners",
+                        "9": "Useful Links",
+                        "8": "What We Do"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -218,11 +213,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "4": "Company",
-                        "13": "Header Menu",
-                        "2": "Partners",
-                        "5": "Usefull Links",
-                        "3": "What We Do"
+                        "10": "Company",
+                        "2": "Header Menu",
+                        "7": "Partners",
+                        "9": "Useful Links",
+                        "8": "What We Do"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -248,11 +243,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "4": "Company",
-                        "13": "Header Menu",
-                        "2": "Partners",
-                        "5": "Usefull Links",
-                        "3": "What We Do"
+                        "10": "Company",
+                        "2": "Header Menu",
+                        "7": "Partners",
+                        "9": "Useful Links",
+                        "8": "What We Do"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -278,11 +273,11 @@
                         "id": ""
                     },
                     "choices": {
-                        "4": "Company",
-                        "13": "Header Menu",
-                        "2": "Partners",
-                        "5": "Usefull Links",
-                        "3": "What We Do"
+                        "10": "Company",
+                        "2": "Header Menu",
+                        "7": "Partners",
+                        "9": "Useful Links",
+                        "8": "What We Do"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -415,5 +410,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742531502
+    "modified": 1742799802
 }

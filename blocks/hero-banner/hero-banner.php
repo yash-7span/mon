@@ -3,7 +3,7 @@
 
 if (!empty($block['data']['is_preview'])):
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/page-banner/page-banner-img.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/hero-banner/hero-banner-img.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;
@@ -25,7 +25,7 @@ $background_image = get_field('background_image');
 <div class="about-us main-wrapper">
     <div class="main-hero-banner" style="background-image: url('<?php echo $background_image;?>');">
         <div class="hero-title">
-            <h5 class="yellow-text mb-4"><?php echo $page_title;?></h5>
+            <h5 class="yellow-text mb-4 text-uppercase"><?php echo $page_title;?></h5>
             <?php
             // Get Heading
             if(isset($heading)){ ?>
