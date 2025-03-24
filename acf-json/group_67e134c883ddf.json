@@ -96,6 +96,27 @@
             "max_size": "",
             "mime_types": ".pdf",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67e165e55deff",
+            "label": "Product Page Tagline",
+            "name": "product_page_tagline",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -116,5 +137,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742818391
+    "modified": 1742824953
 }

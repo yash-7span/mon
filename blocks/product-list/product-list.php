@@ -14,8 +14,10 @@ $selected_services = get_field('product_servcies');
 $download_catalogue = get_field('download_catalogue_title');
 $download_catelogue_icon = get_field('download_catelogue_icon');
 $download_catalogue_file = get_field('download_catalogue_file');
-// var_dump($selected_services);
-// echo '<br>';
+
+$full_description = get_field('product_page_tagline');
+$product_page_tagline = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
+
 $post_type = 'product';
 $taxonomy_slug = 'product-services'; // Replace with the *slug* of your taxonomy
 $taxonomy = get_taxonomy($taxonomy_slug);
@@ -24,6 +26,7 @@ if (!$taxonomy){
     echo "Taxonomy not found.";
     return;
 }
+
 $terms = array();
 if(empty($selected_services)):
     $terms = get_terms( array(
@@ -60,7 +63,6 @@ if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
 }
 $flag = 0;
 
-var_dump($services);
 ?>
 
 <div class="our_products">
@@ -173,8 +175,7 @@ var_dump($services);
                             endwhile;
                             wp_reset_postdata();
                         endif;
-?>
-                        
+                    ?>
                     </div>
                 </div>
             <?php endforeach;?>
@@ -182,3 +183,13 @@ var_dump($services);
 
     </div>
 </div>
+
+<div class="policy-sec pro-desk">
+    <div class="policy-content justify-content-center">
+        <h5 class="mb-0 white-text">
+            <?php echo $product_page_tagline;?>
+        </h5>
+    </div>
+</div>
+
+<!-- Product List Block Code End  -->
