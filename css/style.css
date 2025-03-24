@@ -2796,9 +2796,9 @@ svg.d-line {
      width: 31.33%;
 }
 
-.all-inspires .row {
+/* .all-inspires .row {
      column-gap: 41px;
-}
+} */
 
 h5.p-title {
      color: var(--greycolor);
@@ -4792,9 +4792,9 @@ a.file-btn::after {
      height: 0;
 }
 
-.all-inspires .lubricants_product .h-col .inspire-name {
+/* .all-inspires .lubricants_product .h-col .inspire-name {
      height: 170px;
-}
+} */
 
 .pagination_process.swiper-pagination {
      z-index: 8;

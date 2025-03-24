@@ -259,7 +259,7 @@ function admin_mrs_oil_scripts()
 		wp_enqueue_script('comment-reply');
 	}
 }
-add_action('admin_enqueue_scripts', 'admin_mrs_oil_scripts');
+// add_action('admin_enqueue_scripts', 'admin_mrs_oil_scripts');
 
 function allow_svg_uploads($mime_types)
 {
@@ -616,6 +616,33 @@ function register_acf_block_types()
 			),
 		),
 	));
+
+	// Register a Product List block
+	acf_register_block_type(array(
+		'name'              => 'product-list', // Block name
+		'title'             => ('Product List'), // Title shown in the block editor
+		'description'       => ('A custom block Product List content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/product-list/product-list.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'products', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('product', 'list', 'section', 'item', 'posts'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-list/product-list-img.svg', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	
 }
 add_action('acf/init', 'register_acf_block_types');
 
