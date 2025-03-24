@@ -458,7 +458,7 @@ function my_custom_block_category($categories, $post)
 				'title' => __('MRS', 'textdomain'),
 			),
 		) 
-	);
+	);  
 }
 function my_custom_blocks()
 {
