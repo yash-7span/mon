@@ -195,14 +195,14 @@ function mrs_oil_scripts() {
 	wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array(), time(), true);
 	
 	// Enqueue Script to index page only
-	if ( is_page( 79 ) ) {
+	// if ( is_page( 79 ) ) {
 		wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
-	}
+	// }
 
 	// Enqueue Script to about page
-	if ( is_page( 529 ) ) {
-		wp_enqueue_script('about-js', get_stylesheet_directory_uri() . '/js/about.js', array(), time(), true);
-	}
+	// if ( is_page( 529 ) ) {
+	// 	wp_enqueue_script('about-js', get_stylesheet_directory_uri() . '/js/about.js', array(), time(), true);
+	// }
 	// Enqueue JavaScript files
     wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
 	
@@ -227,8 +227,6 @@ function allow_svg_uploads($mime_types)
 	return $mime_types;
 }
 add_filter('upload_mimes', 'allow_svg_uploads');
-
-
 
 
 // Set the Menu Choices to ACf Field 
@@ -414,10 +412,7 @@ function register_acf_block_types() {
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
+			
 		),
 		// Add example for the preview image
 		'example' => array(
@@ -439,7 +434,7 @@ function register_acf_block_types() {
 		'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','Industry','build', 'image'),
+		'keywords'          => array('home','Auto', 'carousel','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
@@ -636,6 +631,7 @@ define('CUSTOM_COLOR_PALETTE',array(
     'cod-gray' => '#111111',
     'black' => '#000000'
 ));
+
 // Rewrite the Color Of Block Editor 
 function my_custom_block_editor_palette() {
     add_theme_support('editor-color-palette', array(

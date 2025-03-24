@@ -68,14 +68,18 @@ endif;
 <div class="our-offerings sec-padding container-fluid" id="RedirectOurOfferings" style="background-color:<?php echo $background_color;?>;">
     <div class="title-offerings">
         <div class="row align-items-center">
-            <div class="col-lg-4">
-                <h5 class="red-text text-uppercase mb-0">
-                    <span><?php echo $section_title;?></span>
-                </h5>
-            </div>
-            <div class="col-lg-8">
-                <h2 class="h-title mb-0"><?php echo $section_heading;?></h2>
-            </div>
+            <?php if(!empty($section_title)):?>
+                <div class="col-lg-4">
+                    <h5 class="red-text text-uppercase mb-0">
+                        <span><?php echo $section_title;?></span>
+                    </h5>
+                </div>
+            <?php endif;?>
+            <?php if(!empty($section_heading)):?>
+                <div class="col-lg-8">
+                    <h2 class="h-title mb-0"><?php echo $section_heading;?></h2>
+                </div>
+            <?php endif;?>
         </div>
     </div>
     

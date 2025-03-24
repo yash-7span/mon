@@ -1,15 +1,15 @@
 {
-    "key": "group_67dbdc677fd92",
-    "title": "CTA Banner",
+    "key": "group_67dbf8b5f2d93",
+    "title": "Blogs Section",
     "fields": [
         {
-            "key": "field_67dbdc684bcd3",
-            "label": "Banner Heading Text",
-            "name": "banner_heading_text",
+            "key": "field_67dbf8b681f71",
+            "label": "Section Title",
+            "name": "section_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -24,47 +24,54 @@
             "append": ""
         },
         {
-            "key": "field_67dbdcf3e75de",
-            "label": "Button Text & Link",
-            "name": "button_text_link",
+            "key": "field_67dbf98c81f72",
+            "label": "Section Heading",
+            "name": "section_heading",
             "aria-label": "",
-            "type": "link",
+            "type": "text",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "allow_in_bindings": 0
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
-            "key": "field_67dbdd48e75df",
-            "label": "Background Image",
-            "name": "background_image",
+            "key": "field_67dbf99681f73",
+            "label": "Select Blogs",
+            "name": "select_blogs",
             "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
+            "type": "post_object",
+            "instructions": "Select up to 2 Blog Posts and if selects more than only the first two selected will display",
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
+            "post_type": [
+                "post"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "object",
+            "multiple": 1,
+            "allow_null": 0,
             "allow_in_bindings": 0,
-            "preview_size": "medium"
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
         }
     ],
     "location": [
@@ -72,7 +79,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/cta-banner"
+                "value": "acf\/blogs-section"
             }
         ]
     ],
@@ -85,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742791534
+    "modified": 1742644040
 }

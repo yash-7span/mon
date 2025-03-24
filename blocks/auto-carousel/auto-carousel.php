@@ -1,5 +1,5 @@
 <?php
-// Industry Section Block Code Start
+// Auto Carousel Section Block Code Start
 
 if (!empty($block['data']['preview_image'])):
 ?>
@@ -18,8 +18,8 @@ else:
 endif;
 
 
-$title = get_field('section_title');
-$heading = get_field('section_heading');
+$section_title = get_field('section_title');
+$section_heading = get_field('section_heading');
 $selected_field = get_field('select_type');
 
 $post_data = array();
@@ -68,34 +68,16 @@ else:
     endif;
     $section_block_id = 'RedirectLeaders';
 endif;
-if($selected_field !== "Custom"):
-    // echo '<div class="leadership-sec" id="RedirectOurLeaders">';
-endif;
+
 ?>
-<style>
-    .all-inspires.products .box_width {
-            width: 25%;
-        }
 
-        .all-inspires.products .row {
-            column-gap: 0;
-        }
-
-        .leader-tabs.pro .leader-img {
-            width: auto;
-        }
-
-        .product_new h5 {
-            margin: 0 auto;
-        }
-</style>
 <div class="industry-sec sec-padding container-fluid overflow-hidden" id="<?php echo $section_block_id;?>" style="background-color:<?php echo esc_attr($background_color); ?>;">
     <div class="industry-title">
-        <?php if (!empty($title)): ?>
-            <h5 class="red-text text-uppercase mb-1"><?php echo esc_html($title); ?></h5>
+        <?php if (!empty($section_title)): ?>
+            <h5 class="red-text text-uppercase mb-1"><?php echo esc_html($section_title); ?></h5>
         <?php endif; ?>
-        <?php if (!empty($heading)): ?>
-            <h2 class="mb-0 h-title"><?php echo esc_html($heading); ?></h2>
+        <?php if (!empty($section_heading)): ?>
+            <h2 class="mb-0 h-title"><?php echo esc_html($section_heading); ?></h2>
         <?php endif; ?>
     </div>
     <div class="inner-height">
@@ -170,8 +152,6 @@ endif;
     </div>
 </div>
 <?php
-// if($selected_field !== "Custom"):
-//     echo '<div class="leadership-sec" id="RedirectOurLeaders">';
-// endif;
+
 ?>
-<!-- Industry Section Block Code End -->
+<!-- Auto Carousel Section Block Code End -->

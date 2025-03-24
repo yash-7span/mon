@@ -1,6 +1,6 @@
 {
     "key": "group_67da5fba6eed6",
-    "title": "Hero Slider",
+    "title": "Home - Hero Slider",
     "fields": [
         {
             "key": "field_67da5fbbe33fa",
@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "row",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -30,11 +30,11 @@
                     "name": "background_image",
                     "aria-label": "",
                     "type": "image",
-                    "instructions": "File Allowed : png, jpg, jpeg",
+                    "instructions": "File Allowed: png, jpg, jpeg",
                     "required": 1,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "38",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
@@ -61,11 +61,12 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "60",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
                     "layout": "block",
+                    "parent_repeater": "field_67da5fbbe33fa",
                     "sub_fields": [
                         {
                             "key": "field_67da6038e33fc",
@@ -128,10 +129,10 @@
                         },
                         {
                             "key": "field_67da61f9a819f",
-                            "label": "Description",
+                            "label": "Content",
                             "name": "description",
                             "aria-label": "",
-                            "type": "wysiwyg",
+                            "type": "textarea",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -141,14 +142,13 @@
                                 "id": ""
                             },
                             "default_value": "",
+                            "maxlength": "",
                             "allow_in_bindings": 1,
-                            "tabs": "all",
-                            "toolbar": "full",
-                            "media_upload": 1,
-                            "delay": 0
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
                         }
-                    ],
-                    "parent_repeater": "field_67da5fbbe33fa"
+                    ]
                 }
             ]
         }
@@ -171,5 +171,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742531334
+    "modified": 1742637236
 }
