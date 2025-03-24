@@ -1,10 +1,10 @@
 {
     "key": "group_67db9b948aa4d",
-    "title": "Star Image Section",
+    "title": "Top Rated Products images",
     "fields": [
         {
             "key": "field_67db9b9424449",
-            "label": "Product Image",
+            "label": "Product 1 Image",
             "name": "product_image",
             "aria-label": "",
             "type": "image",
@@ -30,7 +30,7 @@
         },
         {
             "key": "field_67db9bad284b0",
-            "label": "Product Image Url",
+            "label": "Product 1 Image Url",
             "name": "product_image_url",
             "aria-label": "",
             "type": "link",
@@ -47,7 +47,7 @@
         },
         {
             "key": "field_67db9bbb284b1",
-            "label": "Product Image 2",
+            "label": "Product 2 Image",
             "name": "product_image_2",
             "aria-label": "",
             "type": "image",
@@ -73,7 +73,7 @@
         },
         {
             "key": "field_67db9bbd284b2",
-            "label": "Product Image 2 Url",
+            "label": "Product 2 Image Url",
             "name": "product_image_2_url",
             "aria-label": "",
             "type": "link",
@@ -94,7 +94,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/star-image-section"
+                "value": "acf\/top-rated-product-images"
             }
         ]
     ],
@@ -107,5 +107,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742531586
+    "modified": 1742561600
 }

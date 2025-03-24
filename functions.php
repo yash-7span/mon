@@ -10,8 +10,32 @@
 
 if (! defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.0');
+	define( '_S_VERSION', '1.0.1' );
 }
+// define version
+define('THEME_VERSION', wp_get_theme(get_stylesheet())->get('Version'));
+
+// Fixed Container sized align
+add_theme_support( 'align-wide' );
+
+// Full Width Alignment
+add_theme_support( 'align-full' );
+
+// Register Blocks Category
+function mrs_block_category($categories)
+{
+	// Add the new category at the beginning of the array
+	array_unshift(
+		$categories,
+		[
+			'slug'  => 'mrs',
+			'title' => __('MRS', 'text-domain'),
+		]
+	);
+
+	return $categories;
+}
+add_filter('block_categories_all', 'mrs_block_category');
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -162,6 +186,24 @@ function mrs_oil_widgets_init()
 }
 add_action('widgets_init', 'mrs_oil_widgets_init');
 
+
+//svg mime type upload permission
+define('ALLOW_UNFILTERED_UPLOADS', true);
+function svg_mime_types_perm($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'svg_mime_types_perm');
+
+//permission of uploaded svg file display on media library
+function custom_admin_head_display_svg_perm() {
+  $css = '';
+  $css = 'td.media-icon img[src$=".svg"] { width: 100% !important; height: auto !important; }';
+  echo '<style type="text/css">'.$css.'</style>';
+}
+add_action('admin_head', 'custom_admin_head_display_svg_perm');
+//END - svg mime type upload permission
+
 /**
  * Enqueue scripts and styles.
  */
@@ -286,366 +328,6 @@ function set_menu_list_to_acf_footer($field)
 	return $field;
 }
 add_filter('acf/load_field', 'set_menu_list_to_acf_footer');
-
-
-// Register Custom Block
-function register_acf_block_types()
-{
-
-	// Register a Header block
-	acf_register_block_type(array(
-		'name'              => 'page-header', // Block name
-		'title'             => ('Page Header'), // Title shown in the block editor
-		'description'       => ('A custom block for page header content'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/page-header/page-header.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('header', 'page', 'title'),
-		'mode'				=> 'preview',
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/page-header/page-header.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register Page Footer Block
-	acf_register_block_type(array(
-		'name'              => 'page-footer', // Block name
-		'title'             => __('Page Footer'), // Title shown in the block editor
-		'description'       => __('A custom block for page Footer content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/page-footer/page-footer.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'admin-multisite', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('footer', 'page', 'foot'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/page-footer/page-footer.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-
-	));
-
-	// Register Hero Slider Block
-	acf_register_block_type(array(
-		'name'              => 'hero-slider', // Block name
-		'title'             => __('Hero Slider'), // Title shown in the block editor
-		'description'       => __('A custom block for Hero slider content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/hero-slider/hero-slider.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'slides', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('hero', 'banner', 'page', 'slider', 'slide'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-slider/hero-slider.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register About Us Block
-	acf_register_block_type(array(
-		'name'              => 'about-us', // Block name
-		'title'             => __('About Us'), // Title shown in the block editor
-		'description'       => __('A custom block for About Us content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/about-us/about-us.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'editor-insertmore', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'about', 'us', 'image', 'product'),
-		'supports'      => array(
-			'align'      => true,
-		),
-		'mode' => 'preview',
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/about-us/about-us.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register Star Image Product Block
-	acf_register_block_type(array(
-		'name'              => 'star-image-section', // Block name
-		'title'             => __('Star Image Product'), // Title shown in the block editor
-		'description'       => __('A custom block for Star Image Product content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/star-image-section/star-image-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'star-filled', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'Star', 'image', 'product', 'section'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/star-image-section/star-image-section.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register Product and Services Accordian Block
-	acf_register_block_type(array(
-		'name'              => 'product-and-services-accordian', // Block name
-		'title'             => __('Product and Services Accordian'), // Title shown in the block editor
-		'description'       => __('A custom block for Product and Services Accordian content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/product-and-services-accordian/product-and-services-accordian.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'insert', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'services', 'accordian', 'section', 'product'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-and-services-accordian/product-and-services-accordian.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register USPS Section Block
-	acf_register_block_type(array(
-		'name'              => 'usps-section', // Block name
-		'title'             => __('USPS Section'), // Title shown in the block editor
-		'description'       => __('A custom block for USPS Section content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/usps-section/usps-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'plus', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'usps', 'us', 'section'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/usps-section/usps-section.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register Auto Carousel Block
-	acf_register_block_type(array(
-		'name'              => 'auto-carousel', // Block name
-		'title'             => __('Auto Carousel'), // Title shown in the block editor
-		'description'       => __('A custom block for Auto Carousel content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'Auto', 'carousel', 'build', 'image'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	acf_register_block_type(array(
-		'name'              => 'industry-section', // Block name
-		'title'             => __('Industry Section'), // Title shown in the block editor
-		'description'       => __('A custom block for Industry Section content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/industry-section/industry-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'Industry', 'build', 'image'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/industry-section/industry-section.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register policy Section Block
-	acf_register_block_type(array(
-		'name'              => 'policy-section', // Block name
-		'title'             => __('Policy Section'), // Title shown in the block editor
-		'description'       => __('A custom block for policy Section content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/policy-section/policy-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'editor-ol', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'policy', 'build', 'image'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/policy-section/policy-section.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register blogs Section Block
-	acf_register_block_type(array(
-		'name'              => 'blogs-section', // Block name
-		'title'             => __('Blogs Section'), // Title shown in the block editor
-		'description'       => __('A custom block for blogs Section content'), // Block description
-		'render_template'   => get_template_directory() . '/blocks/blogs-section/blogs-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'grid-view', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home', 'blogs', 'build', 'image'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs-section/blogs-section.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register a CTA Banner block
-	acf_register_block_type(array(
-		'name'              => 'cta-banner', // Block name
-		'title'             => ('CTA Banner'), // Title shown in the block editor
-		'description'       => ('A custom block CTA Banner content'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/CTA-banner/cta-banner.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('CTA', 'banner', 'contact'),
-		'mode'				=> 'preview',
-		'supports' => array(
-			'align' => true,          // Allow alignment options
-			'anchor' => true,         // Enable anchor links
-			'customClassName' => true, // Allow custom CSS classes
-			'color'  => array(
-				'background' => true, // Enables background color support
-				'text'       => true  // Enables text color support
-			)
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/CTA-banner/CTA-banner-img.svg', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	// Register a Product List block
-	acf_register_block_type(array(
-		'name'              => 'product-list', // Block name
-		'title'             => ('Product List'), // Title shown in the block editor
-		'description'       => ('A custom block Product List content'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/product-list/product-list.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'products', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('product', 'list', 'section', 'item', 'posts'),
-		'mode'				=> 'preview',
-		'supports' => array(
-			'align' => true,          // Allow alignment options
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-list/product-list-img.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-
-	
-}
-add_action('acf/init', 'register_acf_block_types');
-
 
 // Fetch Acf field of Product services taxonomy
 function get_category_acf_field($field_name, $category_id = 0)
@@ -784,56 +466,6 @@ function my_custom_blocks()
 }
 add_action('init', 'my_custom_blocks');
 
-
-// Function to Set Nav menu in header Section 
-function mrs_nav_menu($navmenu, $menu_parent = 0)
-{
-	$menu_items = $navmenu;
-	foreach ($menu_items as $items) {
-		if ($items['menu_item_parent'] == $menu_parent) {
-			echo '<li class="nav-item dropdown">';
-			echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
-			echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-			mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
-			echo '</li>';
-		}
-	}
-}
-function mrs_nav_menu_sub_item($navmenu, $parent_id, $level)
-{
-	$sub_items = array_filter($navmenu, function ($item) use ($parent_id) {
-		return $item['menu_item_parent'] == $parent_id;
-	});
-
-	if (!empty($sub_items)) {
-		$sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
-		echo '<ul class="dropdown-menu">';
-
-		foreach ($sub_items as $sub_item) {
-			$has_children = array_filter($navmenu, function ($item) use ($sub_item) {
-				return $item['menu_item_parent'] == $sub_item['id'];
-			});
-
-			if (($level === 2 || $level === 1) && !empty($has_children)) {
-
-				echo '<li class="nav-item ' . $sub_menu_class . '">';
-				echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
-				echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-			} else {
-				echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
-			}
-
-			// Recursive call for deeper levels, increasing the level
-			mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
-
-			echo '</li>';
-		}
-
-		echo '</ul>';
-	}
-}
-
-
 /**
  * Implement the Custom Header feature.
  */
@@ -859,4 +491,101 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+/**
+ * Load TGM plugin file.
+ */
+require get_template_directory() . '/inc/tgm-plugins.php';
+
+require get_template_directory(). '/blocks/block-registration.php';
+
+function mrs_nav_menu($navmenu, $menu_parent = 0) {
+    $menu_items = $navmenu;
+    foreach ($menu_items as $items) {
+        if ($items['menu_item_parent'] == $menu_parent) {
+            echo '<li class="nav-item dropdown">';
+            echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
+            echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
+            echo '</li>';
+        }
+    }
+}
+
+function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
+    $sub_items = array_filter($navmenu, function($item) use ($parent_id) {
+        return $item['menu_item_parent'] == $parent_id;
+    });
+
+    if (!empty($sub_items)) {
+        $sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
+        echo '<ul class="dropdown-menu">';
+
+        foreach ($sub_items as $sub_item) {
+            $has_children = array_filter($navmenu, function($item) use ($sub_item) {
+                return $item['menu_item_parent'] == $sub_item['id'];
+            });
+
+            if (($level === 2 || $level === 1) && !empty($has_children)) {
+				
+                echo '<li class="nav-item ' . $sub_menu_class . '">';
+                echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
+                echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+            } else {
+                echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
+            }
+
+            // Recursive call for deeper levels, increasing the level
+            mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
+
+            echo '</li>';
+        }
+
+        echo '</ul>';
+    }
+}
+
+function mrs_mobile_nav_menu($navmenu, $menu_parent = 0, $level = 0) {
+    $menu_items = $navmenu;
+    $has_dropdown_class = ($level > 0) ? 'dropend' : 'dropdown';
+
+    echo '<ul class="navbar-nav">';
+
+    foreach ($menu_items as $item) {
+        if ($item['menu_item_parent'] == $menu_parent) {
+            $has_submenu = !empty(array_filter($menu_items, function($child) use ($item) {
+                return $child['menu_item_parent'] == $item['id'];
+            }));
+
+            $dropdown_toggle = $has_submenu ? 'dropdown-toggle' : '';
+            $aria_expanded = $has_submenu ? 'aria-expanded="false"' : '';
+            $data_toggle = $has_submenu ? 'data-bs-toggle="dropdown"' : '';
+            $nav_link_class = $has_submenu ? 'nav-link dt-none myElement' . ($level + 1) : 'nav-link';
+
+            echo '<li class="' . esc_attr($has_dropdown_class) . ' nav-item">';
+
+            echo '<a href="' . esc_url($item['url']) . '" class="' . esc_attr($nav_link_class) . '" ' . $data_toggle . ' ' . $aria_expanded . '>';
+            echo esc_html($item['title']);
+
+            if ($has_submenu) {
+                echo '<div class="arrow">
+                        <div class="arrow-line left"></div>
+                        <div class="arrow-line right"></div>
+                      </div>';
+            }
+
+            echo '</a>';
+
+            if ($has_submenu) {
+                echo '<ul class="dropdown-menu">';
+                mrs_mobile_nav_menu($menu_items, $item['id'], $level + 1);
+                echo '</ul>';
+            }
+
+            echo '</li>';
+        }
+    }
+
+    echo '</ul>';
 }
