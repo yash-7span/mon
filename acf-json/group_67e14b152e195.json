@@ -1,6 +1,6 @@
 {
     "key": "group_67e14b152e195",
-    "title": "Get In Touch",
+    "title": "Contact Details",
     "fields": [
         {
             "key": "field_67e14b15971fa",
@@ -92,7 +92,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/get-in-touch"
+                "value": "acf\/contact-us"
             }
         ]
     ],
@@ -105,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742818417
+    "modified": 1742909384
 }
