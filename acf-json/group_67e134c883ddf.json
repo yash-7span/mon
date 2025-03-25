@@ -8,7 +8,7 @@
             "name": "product_servcies",
             "aria-label": "",
             "type": "taxonomy",
-            "instructions": "",
+            "instructions": "Unchecked all category to display All Categories",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -48,33 +48,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_67e14af281b3f",
-            "label": "Download Catelogue Icon",
-            "name": "download_catelogue_icon",
-            "aria-label": "",
-            "type": "icon_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "tabs": [
-                "dashicons",
-                "media_library",
-                "url"
-            ],
-            "return_format": "string",
-            "allow_in_bindings": 0,
-            "library": "all",
-            "default_value": {
-                "type": null,
-                "value": null
-            }
         },
         {
             "key": "field_67e1361dd5cfc",
@@ -137,5 +110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742824953
+    "modified": 1742880168
 }
