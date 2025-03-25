@@ -47,15 +47,6 @@ $menu_item4_heading = wp_get_nav_menu_object($footer_menu_4);
 // Fetch Social Contact Details 
 $social_contact = get_field('social_contact');
 
-$contact_number = '';
-$c_number = $social_contact['contact_number'];
-
-// Set Pattern of Contact Number
-$c_number = preg_replace("/[^0-9]/", "", $c_number);
-if (!empty($c_number)) {
-    $formatted_c_number = substr($c_number, 0, 3) . " (" . substr($c_number, 3, 3) . ") " . substr($c_number, 6, 3) . "-" . substr($c_number, 9, 4);
-    $contact_number =  $formatted_c_number;
-} 
 
 $fax_number = '';
 $f_number = $social_contact['fax_number'];
@@ -67,11 +58,28 @@ if (!empty($f_number)) {
     $fax_number =  $formatted_f_number;
 }
 
+// Fetch Head Office detail from General Settings
+$head_office_address = get_field('head_office_address', 'option');
+$head_office_address_name = '';
+$head_office_address_url = '';
+$head_office_address_target = '_blank';
 
-$company_email = $social_contact['company_email'];
-$company_address_title = $social_contact['company_address']['title'];
-$company_address_url = $social_contact['company_address']['url'];
-$company_address_target = $social_contact['company_address']['target'] ?? '_self';
+if ($head_office_address) {
+    $head_office_address_name = $head_office_address['title'];
+    $head_office_address_url = $head_office_address['url'];
+    $head_office_address_target = $head_office_address['target'];
+}
+
+$head_office_number = get_field('telephone_number', 'option');
+
+//Format the Contact Numbers
+$c_number = preg_replace("/[^0-9]/", "", $head_office_number);
+if (!empty($c_number)) {
+    $formatted_c_number = substr($c_number, 0, 3) . " (" . substr($c_number, 3, 3) . ") " . substr($c_number, 6, 3) . "-" . substr($c_number, 9, 4);
+    $contact_number =  $formatted_c_number;
+}
+
+$company_email = get_field('head_office_email', 'option');
 
 // Fetch Copy right section setting from option page (General Settings)
 $copyright = get_field('copyright', 'option');
@@ -201,7 +209,7 @@ $creater_company_target= $copyright['created_by']['target'];
                 </div>
             <?php endif;?>
 
-            <?php if(!empty($company_email) && !empty($company_address_title)):?>
+            <?php if(!empty($company_email) && !empty($head_office_address)):?>
                 <div class="email-link">
                     <?php if(!empty($company_email)):?>
                         <p class="grey-text mb-4">
@@ -210,10 +218,10 @@ $creater_company_target= $copyright['created_by']['target'];
                         </p>
                     <?php endif;?>
                     
-                    <?php if(!empty($company_address_title)):?>
+                    <?php if(!empty($head_office_address_name)):?>
                         <p class="grey-text mb-0">
-                            <a href="<?php echo $company_address_url;?>" target="<?php echo $company_address_target;?>" class="white-text">
-                                    <span class=""><?php echo $company_address_title;?></span></a>
+                            <a href="<?php echo $head_office_address_url;?>" target="<?php echo $head_office_address_target;?>" class="white-text">
+                                    <span class=""><?php echo $head_office_address_name;?></span></a>
                         </p>
                     <?php endif;?>
                 </div>

@@ -601,12 +601,29 @@ function register_acf_block_types() {
 				'text'       => true  // Enables text color support
 			)
 		),
+
+	// Register Product List Block
+	acf_register_block_type(array(
+		'name'              => 'product-list', // Block name
+		'title'             => ('Product List'), // Title shown in the block editor
+		'description'       => ('A custom block Product List content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/product-list/product-list.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'products', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('product', 'list', 'section', 'item', 'posts'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+		),
+		'enqueue_assets' => function(){
+			wp_enqueue_style( 'product_lists_css', get_stylesheet_directory_uri() . '/blocks/product-list/block.css' );
+		},
 		// Add example for the preview image
 		'example' => array(
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/service-details/service-details-img.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-list/product-list-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

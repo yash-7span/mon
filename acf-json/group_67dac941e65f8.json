@@ -1,6 +1,6 @@
 {
     "key": "group_67dac941e65f8",
-    "title": "Products Taxonomy Field",
+    "title": "Taxonomy Field",
     "fields": [
         {
             "key": "field_67dac942be0d5",
@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
+            "return_format": "array",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -48,27 +48,6 @@
             "placeholder": "",
             "prepend": "",
             "append": ""
-        },
-        {
-            "key": "field_67e10e26154e0",
-            "label": "Heading Text",
-            "name": "heading_text",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         }
     ],
     "location": [
@@ -77,6 +56,13 @@
                 "param": "taxonomy",
                 "operator": "==",
                 "value": "product-services"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "leader-categories"
             }
         ]
     ],
@@ -89,5 +75,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742812511
+    "modified": 1742878975
 }
