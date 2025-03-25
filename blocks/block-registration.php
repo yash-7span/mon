@@ -9,7 +9,7 @@ function register_acf_block_types() {
 		'title'             => ('Page Header'), // Title shown in the block editor
 		'description'       => ('A custom block for page header content'), // Block description
 		'render_template'   => get_stylesheet_directory() . '/blocks/page-header/page-header.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'category'          => 'widgets', // Category where the block will appear (you can use your own category)
 		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('header', 'page', 'title'),
 		'mode'				=> 'preview',
@@ -31,7 +31,7 @@ function register_acf_block_types() {
 		'title'             => __('Page Footer'), // Title shown in the block editor
 		'description'       => __('A custom block for page Footer content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/page-footer/page-footer.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'category'          => 'widgets', // Category where the block will appear (you can use your own category)
 		'icon'              => 'admin-multisite', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('footer', 'page', 'foot'),
 		'mode'				=> 'preview',
@@ -104,10 +104,10 @@ function register_acf_block_types() {
 
 	// Register Star Image Product Block
 	acf_register_block_type(array(
-		'name'              => 'top-rated-product-images', // Block name
-		'title'             => __('Top Rated Product Images'), // Title shown in the block editor
+		'name'              => 'top-rated-products', // Block name
+		'title'             => __('Top Rated Products'), // Title shown in the block editor
 		'description'       => __('A custom block that displays top rated product images'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/top-rated-product-images/top-rated-product-images.php', // Path to HTML template file
+		'render_template'   => get_template_directory(). '/blocks/top-rated-products/top-rated-products.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'star-filled', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','Star', 'image', 'product', 'section'),
@@ -120,7 +120,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/star-image-section/star-image-section.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/top-rated-products/star-image-section.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -129,12 +129,12 @@ function register_acf_block_types() {
 
 	// Register Product and Services Accordian Block
 	acf_register_block_type(array(
-		'name'              => 'product-and-services-accordian', // Block name
-		'title'             => __('Product and Services Accordian'), // Title shown in the block editor
-		'description'       => __('A custom block for Product and Services Accordian content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/product-and-services-accordian/product-and-services-accordian.php', // Path to HTML template file
+		'name'              => 'products-and-services', // Block name
+		'title'             => __('Products and Services'), // Title shown in the block editor
+		'description'       => __('A custom block for Products and Services content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/products-and-services/products-and-services.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'insert', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'products', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','services','accordian', 'section', 'product'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -149,7 +149,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/product-and-services-accordian/product-and-services-accordian.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/products-and-services/product-and-services-accordian.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -159,11 +159,11 @@ function register_acf_block_types() {
 	// Register USPS Section Block
 	acf_register_block_type(array(
 		'name'              => 'usps-section', // Block name
-		'title'             => __('USPS Section'), // Title shown in the block editor
+		'title'             => __('Unique Selling Propositions'), // Title shown in the block editor
 		'description'       => __('A custom block for USPS Section content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/usps-section/usps-section.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'plus', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'chart-line', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','usps','us', 'section'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -192,7 +192,7 @@ function register_acf_block_types() {
 		'description'       => __('A custom block for Auto Carousel content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'slides', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','Industry','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -244,12 +244,12 @@ function register_acf_block_types() {
 
 	// Register policy Section Block
 	acf_register_block_type(array(
-		'name'              => 'policy-section', // Block name
-		'title'             => __('Policy Section'), // Title shown in the block editor
-		'description'       => __('A custom block for policy Section content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/policy-section/policy-section.php', // Path to HTML template file
+		'name'              => 'our-policies', // Block name
+		'title'             => __('Our Policies'), // Title shown in the block editor
+		'description'       => __('A custom block for our policies content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/our-policies/our-policies.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'editor-ol', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'welcome-write-blog', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','policy','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -264,7 +264,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/policy-section/policy-section.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-policies/policy-section.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -273,12 +273,12 @@ function register_acf_block_types() {
 
 	// Register blogs Section Block
 	acf_register_block_type(array(
-		'name'              => 'blogs-section', // Block name
-		'title'             => __('Blogs Section'), // Title shown in the block editor
-		'description'       => __('A custom block for blogs Section content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/blogs-section/blogs-section.php', // Path to HTML template file
+		'name'              => 'blogs', // Block name
+		'title'             => __('Blogs'), // Title shown in the block editor
+		'description'       => __('A custom block for blogs list'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/blogs/blogs.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'grid-view', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'format-aside', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','blogs','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -293,7 +293,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs-section/blogs-section.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs/blogs-section.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -302,12 +302,12 @@ function register_acf_block_types() {
 
 	// Register a CTA Banner block
 	acf_register_block_type(array(
-		'name'              => 'cta-banner', // Block name
-		'title'             => ('CTA Banner'), // Title shown in the block editor
-		'description'       => ('A custom block CTA Banner content'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/CTA-banner/cta-banner.php', // Path to HTML template file
+		'name'              => 'cta-footer', // Block name
+		'title'             => ('CTA Footer'), // Title shown in the block editor
+		'description'       => ('A custom block CTA footer content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/CTA-footer/CTA-footer.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'admin-home', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'button', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('CTA', 'banner', 'contact'),
 		'mode'				=> 'preview',
 		'supports' => array(
@@ -324,7 +324,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/CTA-banner/CTA-banner-img.svg', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/CTA-footer/CTA-banner-img.svg', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -333,13 +333,13 @@ function register_acf_block_types() {
 
 	// Register a Innner Hero Banner block
 	acf_register_block_type(array(
-		'name'              => 'hero-banner', // Block name
-		'title'             => ('Hero Banner'), // Title shown in the block editor
-		'description'       => ('A custom block Hero Banner Section'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/hero-banner/hero-banner.php', // Path to HTML template file
+		'name'              => 'page-hero', // Block name
+		'title'             => ('Page Hero'), // Title shown in the block editor
+		'description'       => ('A custom block Page Hero Section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/page-hero/page-hero.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'cover-image', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('hero banner', 'banner', 'hero','hero section'),
+		'icon'              => 'media-interactive', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('hero banner', 'banner', 'page hero','hero section'),
 		'mode'				=> 'preview',
 		'supports' => array(
 			'align' => true,          // Allow alignment options
@@ -355,7 +355,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/hero-banner/hero-banner-img.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/page-hero/hero-banner-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -364,10 +364,10 @@ function register_acf_block_types() {
 
 	// Register a Our Mission & Vision block
 	acf_register_block_type(array(
-		'name'              => 'our-mission-vision', // Block name
-		'title'             => ('Our Mission & Vision'), // Title shown in the block editor
+		'name'              => 'mission-vision', // Block name
+		'title'             => ('Mission & Vision'), // Title shown in the block editor
 		'description'       => ('A custom block For Our Misson & Vision'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/our-mission-and-vision/our-mission-and-vision.php', // Path to HTML template file
+		'render_template'   => get_stylesheet_directory() . '/blocks/mission-and-vision/mission-and-vision.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'lightbulb', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('our mission & vision', 'mission', 'vision','goal','target'),
@@ -386,7 +386,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-mission-and-vision/our-mission-and-vision-img.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/mission-and-vision/our-mission-and-vision-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -550,12 +550,12 @@ function register_acf_block_types() {
 
 	// Register a Get In Touch block
 	acf_register_block_type(array(
-		'name'              => 'get-in-touch', // Block name
-		'title'             => ('Get In Touch'), // Title shown in the block editor
-		'description'       => ('A custom block For Get In Touch Section Contact Us page'), // Block description
-		'render_template'   => get_stylesheet_directory() . '/blocks/get-in-touch/get-in-touch.php', // Path to HTML template file
+		'name'              => 'contact-us', // Block name
+		'title'             => ('Contact Us'), // Title shown in the block editor
+		'description'       => ('A custom block For Contact Us content'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/contact-us/contact-us.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'editor-help', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'phone', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('get in touch', 'Contact','inquiry','address'),
 		'mode'				=> 'preview',
 		'supports' => array(
@@ -572,7 +572,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/get-in-touch/get-in-touch-img.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/contact-us/get-in-touch-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

@@ -118,7 +118,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/our-mission-vision"
+                "value": "acf\/mission-vision"
             }
         ]
     ],
@@ -131,5 +131,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742538839
+    "modified": 1742909121
 }

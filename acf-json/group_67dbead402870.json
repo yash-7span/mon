@@ -46,7 +46,7 @@
         },
         {
             "key": "field_67dbeb1a54a19",
-            "label": "Policy",
+            "label": "Policies",
             "name": "policy",
             "aria-label": "",
             "type": "repeater",
@@ -58,7 +58,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -164,7 +164,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/policy-section"
+                "value": "acf\/our-policies"
             }
         ]
     ],
@@ -177,5 +177,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742560862
+    "modified": 1742906918
 }
