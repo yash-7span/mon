@@ -362,6 +362,20 @@ function get_term_link_by_slug_default($term_slug, $taxonomy = 'category')
 	return $term_link;
 }
 
+function get_taxonomy_acf_field( $field_name, $taxonomy, $term_id ) {
+
+	$term_id = absint( $term_id ); 
+  
+	if ( empty( $term_id ) || empty( $taxonomy ) || empty( $field_name )) {
+	  return null; 
+	}
+  
+	$field_key = $taxonomy . '_' . $term_id;
+	$value     = get_field( $field_name, $field_key );
+  
+	return $value;
+  }
+
 // Fetch Taxonomy using post ID
 function get_post_taxonomy_terms($post_id, $taxonomy = 'category')
 {
