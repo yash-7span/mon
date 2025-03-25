@@ -1,5 +1,5 @@
 <?php
-// About Us Block Code Start 
+// About Company Block Code Start 
 
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
