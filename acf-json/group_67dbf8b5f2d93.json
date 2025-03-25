@@ -79,7 +79,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/blogs-section"
+                "value": "acf\/blogs"
             }
         ]
     ],
@@ -92,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742644040
+    "modified": 1742907501
 }
