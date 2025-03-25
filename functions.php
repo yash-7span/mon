@@ -10,16 +10,16 @@
 
 if (! defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.1' );
+	define('_S_VERSION', '1.0.1');
 }
 // define version
 define('THEME_VERSION', wp_get_theme(get_stylesheet())->get('Version'));
 
 // Fixed Container sized align
-add_theme_support( 'align-wide' );
+add_theme_support('align-wide');
 
 // Full Width Alignment
-add_theme_support( 'align-full' );
+add_theme_support('align-full');
 
 // Register Blocks Category
 function mrs_block_category($categories)
@@ -189,17 +189,19 @@ add_action('widgets_init', 'mrs_oil_widgets_init');
 
 //svg mime type upload permission
 define('ALLOW_UNFILTERED_UPLOADS', true);
-function svg_mime_types_perm($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
+function svg_mime_types_perm($mimes)
+{
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
 }
 add_filter('upload_mimes', 'svg_mime_types_perm');
 
 //permission of uploaded svg file display on media library
-function custom_admin_head_display_svg_perm() {
-  $css = '';
-  $css = 'td.media-icon img[src$=".svg"] { width: 100% !important; height: auto !important; }';
-  echo '<style type="text/css">'.$css.'</style>';
+function custom_admin_head_display_svg_perm()
+{
+	$css = '';
+	$css = 'td.media-icon img[src$=".svg"] { width: 100% !important; height: auto !important; }';
+	echo '<style type="text/css">' . $css . '</style>';
 }
 add_action('admin_head', 'custom_admin_head_display_svg_perm');
 //END - svg mime type upload permission
@@ -223,6 +225,8 @@ function mrs_oil_scripts()
 	wp_enqueue_style('vanilla-calender', get_stylesheet_directory_uri() . '/css/vanilla-calendar.min.css', array(), time());
 	wp_enqueue_style('splitting-css', 'https://unpkg.com/splitting/dist/splitting.css', array(), time());
 	wp_enqueue_style('splitting-cells-css', 'https://unpkg.com/splitting/dist/splitting-cells.css', array(), time());
+	wp_enqueue_style('theme-custom-css', get_stylesheet_directory_uri() . '/css/theme-custom-style.css', array(), time());
+	
 
 	// // Enqueue External and Local Script File
 	wp_enqueue_script('header-js', get_stylesheet_directory_uri() . '/js/header.js', array(), time(), true);
@@ -241,7 +245,7 @@ function mrs_oil_scripts()
 	wp_enqueue_script('select2-js', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array(), time(), true);
 	wp_enqueue_script('custom-js', get_stylesheet_directory_uri() . '/js/custom.js', array(), time(), true);
 	wp_enqueue_script('index-js', get_stylesheet_directory_uri() . '/js/index.js', array(), time(), true);
-
+	wp_enqueue_script('theme-custom-js', get_stylesheet_directory_uri() . '/js/theme-custom.js', array(), time(), true);
 	wp_enqueue_script('mrs-oil-navigation', get_stylesheet_directory_uri() . '/js/navigation.js', array(), time(), true);
 
 
@@ -362,20 +366,6 @@ function get_term_link_by_slug_default($term_slug, $taxonomy = 'category')
 	return $term_link;
 }
 
-function get_taxonomy_acf_field( $field_name, $taxonomy, $term_id ) {
-
-	$term_id = absint( $term_id ); 
-  
-	if ( empty( $term_id ) || empty( $taxonomy ) || empty( $field_name )) {
-	  return null; 
-	}
-  
-	$field_key = $taxonomy . '_' . $term_id;
-	$value     = get_field( $field_name, $field_key );
-  
-	return $value;
-  }
-
 // Fetch Taxonomy using post ID
 function get_post_taxonomy_terms($post_id, $taxonomy = 'category')
 {
@@ -386,6 +376,8 @@ function get_post_taxonomy_terms($post_id, $taxonomy = 'category')
 	}
 	return $terms;
 }
+
+
 
 
 // Define Global Color to fetch color from  Block Editor
@@ -480,6 +472,41 @@ function my_custom_blocks()
 }
 add_action('init', 'my_custom_blocks');
 
+// Register Custom Field For Contact Form 7
+add_action('wpcf7_init', 'custom_add_form_tag_product');
+function custom_add_form_tag_product()
+{
+	wpcf7_add_form_tag('product', 'custom_product_form_tag_handler'); // "product" is the type of the form-tag
+}
+// Call Back Function of Contact Form 7 Custom field
+function custom_product_form_tag_handler($tag)
+{
+
+	$html = '<select id="products" class="form-control form-select" name="products">';
+	$args = array(
+		'post_type'      => 'product',
+		'posts_per_page' => -1,
+		'orderby'        => 'date',
+		'order'          => 'ASC',
+	);
+
+	$query = new WP_Query($args);
+
+	if ($query->have_posts()) {
+		$index = 1;
+		while ($query->have_posts()) {
+			$query->the_post();
+			$title = get_the_title();
+			$slug  = get_post_field('post_name', get_the_ID());
+			$id = get_the_id();
+			$html .= '<option value="' . esc_attr($slug) . '" id="'.esc_attr($slug).'">' . esc_html($title) . '</option>';
+		}
+	}
+	$html .= '</select>';
+
+	return $html;
+}
+
 /**
  * Implement the Custom Header feature.
  */
@@ -512,94 +539,97 @@ if (defined('JETPACK__VERSION')) {
  */
 require get_template_directory() . '/inc/tgm-plugins.php';
 
-require get_template_directory(). '/blocks/block-registration.php';
+require get_template_directory() . '/blocks/block-registration.php';
 
-function mrs_nav_menu($navmenu, $menu_parent = 0) {
-    $menu_items = $navmenu;
-    foreach ($menu_items as $items) {
-        if ($items['menu_item_parent'] == $menu_parent) {
-            echo '<li class="nav-item dropdown">';
-            echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
-            echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-            mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
-            echo '</li>';
-        }
-    }
+function mrs_nav_menu($navmenu, $menu_parent = 0)
+{
+	$menu_items = $navmenu;
+	foreach ($menu_items as $items) {
+		if ($items['menu_item_parent'] == $menu_parent) {
+			echo '<li class="nav-item dropdown">';
+			echo '<a href="' . esc_url($items['url']) . '" class="nav-link myElement dropdown-toggle dt-none" data-bs-hover="dropdown" aria-expanded="false">' . esc_html($items['title']);
+			echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+			mrs_nav_menu_sub_item($menu_items, $items['id'], 1); // Initial level set to 1
+			echo '</li>';
+		}
+	}
 }
 
-function mrs_nav_menu_sub_item($navmenu, $parent_id, $level) {
-    $sub_items = array_filter($navmenu, function($item) use ($parent_id) {
-        return $item['menu_item_parent'] == $parent_id;
-    });
+function mrs_nav_menu_sub_item($navmenu, $parent_id, $level)
+{
+	$sub_items = array_filter($navmenu, function ($item) use ($parent_id) {
+		return $item['menu_item_parent'] == $parent_id;
+	});
 
-    if (!empty($sub_items)) {
-        $sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
-        echo '<ul class="dropdown-menu">';
+	if (!empty($sub_items)) {
+		$sub_menu_class = ($level === 2 || $level === 1) ? 'dropend' : 'dropdown';
+		echo '<ul class="dropdown-menu">';
 
-        foreach ($sub_items as $sub_item) {
-            $has_children = array_filter($navmenu, function($item) use ($sub_item) {
-                return $item['menu_item_parent'] == $sub_item['id'];
-            });
+		foreach ($sub_items as $sub_item) {
+			$has_children = array_filter($navmenu, function ($item) use ($sub_item) {
+				return $item['menu_item_parent'] == $sub_item['id'];
+			});
 
-            if (($level === 2 || $level === 1) && !empty($has_children)) {
-				
-                echo '<li class="nav-item ' . $sub_menu_class . '">';
-                echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
-                echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
-            } else {
-                echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
-            }
+			if (($level === 2 || $level === 1) && !empty($has_children)) {
 
-            // Recursive call for deeper levels, increasing the level
-            mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
+				echo '<li class="nav-item ' . $sub_menu_class . '">';
+				echo '<a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']);
+				echo '<div class="arrow"><div class="arrow-line left"></div><div class="arrow-line right"></div></div></a>';
+			} else {
+				echo '<li class="nav-item dropdown"><a href="' . esc_url($sub_item['url']) . '" class="dropdown-item">' . esc_html($sub_item['title']) . '</a>';
+			}
 
-            echo '</li>';
-        }
+			// Recursive call for deeper levels, increasing the level
+			mrs_nav_menu_sub_item($navmenu, $sub_item['id'], $level + 1);
 
-        echo '</ul>';
-    }
+			echo '</li>';
+		}
+
+		echo '</ul>';
+	}
 }
 
-function mrs_mobile_nav_menu($navmenu, $menu_parent = 0, $level = 0) {
-    $menu_items = $navmenu;
-    $has_dropdown_class = ($level > 0) ? 'dropend' : 'dropdown';
+function mrs_mobile_nav_menu($navmenu, $menu_parent = 0, $level = 0)
+{
+	$menu_items = $navmenu;
+	$has_dropdown_class = ($level > 0) ? 'dropend' : 'dropdown';
 
-    echo '<ul class="navbar-nav">';
+	echo '<ul class="navbar-nav">';
 
-    foreach ($menu_items as $item) {
-        if ($item['menu_item_parent'] == $menu_parent) {
-            $has_submenu = !empty(array_filter($menu_items, function($child) use ($item) {
-                return $child['menu_item_parent'] == $item['id'];
-            }));
+	foreach ($menu_items as $item) {
+		if ($item['menu_item_parent'] == $menu_parent) {
+			$has_submenu = !empty(array_filter($menu_items, function ($child) use ($item) {
+				return $child['menu_item_parent'] == $item['id'];
+			}));
 
-            $dropdown_toggle = $has_submenu ? 'dropdown-toggle' : '';
-            $aria_expanded = $has_submenu ? 'aria-expanded="false"' : '';
-            $data_toggle = $has_submenu ? 'data-bs-toggle="dropdown"' : '';
-            $nav_link_class = $has_submenu ? 'nav-link dt-none myElement' . ($level + 1) : 'nav-link';
+			$dropdown_toggle = $has_submenu ? 'dropdown-toggle' : '';
+			$aria_expanded = $has_submenu ? 'aria-expanded="false"' : '';
+			$data_toggle = $has_submenu ? 'data-bs-toggle="dropdown"' : '';
+			$nav_link_class = $has_submenu ? 'nav-link dt-none myElement' . ($level + 1) : 'nav-link';
 
-            echo '<li class="' . esc_attr($has_dropdown_class) . ' nav-item">';
+			echo '<li class="' . esc_attr($has_dropdown_class) . ' nav-item">';
 
-            echo '<a href="' . esc_url($item['url']) . '" class="' . esc_attr($nav_link_class) . '" ' . $data_toggle . ' ' . $aria_expanded . '>';
-            echo esc_html($item['title']);
+			echo '<a href="' . esc_url($item['url']) . '" class="' . esc_attr($nav_link_class) . '" ' . $data_toggle . ' ' . $aria_expanded . '>';
+			echo esc_html($item['title']);
 
-            if ($has_submenu) {
-                echo '<div class="arrow">
+			if ($has_submenu) {
+				echo '<div class="arrow">
                         <div class="arrow-line left"></div>
                         <div class="arrow-line right"></div>
                       </div>';
-            }
+			}
 
-            echo '</a>';
+			echo '</a>';
 
-            if ($has_submenu) {
-                echo '<ul class="dropdown-menu">';
-                mrs_mobile_nav_menu($menu_items, $item['id'], $level + 1);
-                echo '</ul>';
-            }
+			if ($has_submenu) {
+				echo '<ul class="dropdown-menu">';
+				mrs_mobile_nav_menu($menu_items, $item['id'], $level + 1);
+				echo '</ul>';
+			}
 
-            echo '</li>';
-        }
-    }
+			echo '</li>';
+		}
+	}
 
-    echo '</ul>';
+	echo '</ul>';
 }

@@ -192,8 +192,8 @@ function register_acf_block_types() {
 		'description'       => __('A custom block for Auto Carousel content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','Industry','build', 'image'),
+		'icon'              => 'images-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','Industry', 'auto', 'carousel', 'build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
@@ -208,34 +208,6 @@ function register_acf_block_types() {
 				'mode' => 'preview',
 				'data' => array(
 					'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
-					'is_preview'    => true
-				),
-			),
-		),
-	));
-	
-	acf_register_block_type(array(
-		'name'              => 'industry-section', // Block name
-		'title'             => __('Industry Section'), // Title shown in the block editor
-		'description'       => __('A custom block for Industry Section content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/industry-section/industry-section.php', // Path to HTML template file
-		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','Industry','build', 'image'),
-		'mode'				=> 'preview',
-		'supports'      => array(
-			'align'      => true,
-			'color'      => array(
-				'text' => false,
-				'background' => true,
-			),
-		),
-		// Add example for the preview image
-		'example' => array(
-			'attributes' => array(
-				'mode' => 'preview',
-				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/industry-section/industry-section.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

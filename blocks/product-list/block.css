@@ -19,8 +19,8 @@
 .all-inspires .lubricants_product .inspire-name{
     height: auto;
 }
-.img-fluid{
-    width: 378px;
+.inspire-main .img-fluid{
+    width: 378px ;
     height:auto;
 }
 a.file-btn::before{
