@@ -65,7 +65,7 @@ $btn_link = get_field('view_more_btn_link');
                         if (!empty($what_service_offerings)) {
                             // Access the service offering heading inside the group
                             $service_heading_text = $what_service_offerings['service_offering_heading']; 
-
+                            $description = $what_service_offerings['description'];
                             if (!empty($service_heading_text)) {
                                 ?>
                                 <h5 class="mb-0 mt-3"><?php echo esc_html($service_heading_text); ?></h5>
@@ -94,7 +94,15 @@ $btn_link = get_field('view_more_btn_link');
                                     ?>
                                 </div>
                                 <?php 
+                            } 
+                            // after what service offer points show text
+                            if($description != ''){ ?>
+                                
+                                <p class="mb-0"><?php echo $description;?></p>
+                                
+                                <?php
                             }
+                            
                         }
                     ?>
 
