@@ -3,7 +3,7 @@
     border: 0;
 }
 
-input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase {
+/* input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase {
     color: #fff;
     justify-content: center;
     text-align: center;
@@ -16,7 +16,7 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase {
     background: #74252a;
     font-size: 18px;
     
-}
+} */
 .wpcf7-submit:hover::before{
     content : url(../images/arrow.svg);
 
