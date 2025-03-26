@@ -152,8 +152,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item1_heading->name;?></p>
             </li>
-            <?php foreach($menu_items1 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items1 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
     </div>
@@ -163,8 +166,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item2_heading->name;?></p>
             </li>
-            <?php foreach($menu_items2 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items2 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
 
@@ -172,8 +178,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item3_heading->name;?></p>
             </li>
-            <?php foreach($menu_items3 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items3 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
 
         </ul>
@@ -184,8 +193,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item4_heading->name;?></p>
             </li>
-            <?php foreach($menu_items4 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items4 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
     </div>

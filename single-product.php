@@ -70,7 +70,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb center_bd">
                         <li class="breadcrumb-item">
-                            <a href="<?php echo get_the_permalink(298); ?>" class="bd-title yellow-text"><?php echo get_the_title(298); ?></a>
+                            <a href="<?php echo home_url('/products'); ?>" class="bd-title yellow-text">Products</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
                             <a href="<?php echo get_permalink();?>" class="bd-title yellow-text"><?php echo $taxonomy_name; ?></a>
