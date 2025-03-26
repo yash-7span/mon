@@ -269,15 +269,15 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register blogs Section Block
+	// Register News blogs Section Block
 	acf_register_block_type(array(
-		'name'              => 'blogs', // Block name
-		'title'             => __('Blogs'), // Title shown in the block editor
+		'name'              => 'news-blogs', // Block name
+		'title'             => __('News Blogs'), // Title shown in the block editor
 		'description'       => __('A custom block for blogs list'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/blogs/blogs.php', // Path to HTML template file
+		'render_template'   => get_template_directory(). '/blocks/news-blogs/news-blogs.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'format-aside', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','blogs','build', 'image'),
+		'keywords'          => array('home','news', 'blogs','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
@@ -291,7 +291,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/blogs/blogs-section.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/news-blogs/news-blogs.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -656,5 +656,35 @@ function register_acf_block_types() {
 			),
 		),
 	));
+
+	// Register Latest blogs Section Block
+	acf_register_block_type(array(
+		'name'              => 'latest-blogs', // Block name
+		'title'             => __('Latest Blogs'), // Title shown in the block editor
+		'description'       => __('A custom block for latest blogs list'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/latest-blogs/latest-blogs.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'tickets-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','latest', 'blogs','build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/latest-blogs/latest-blogs.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 }
 add_action('acf/init', 'register_acf_block_types');
