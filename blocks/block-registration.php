@@ -51,6 +51,32 @@ function register_acf_block_types() {
 
 	));
 
+	// Register Flash Screen Block
+	acf_register_block_type(array(
+		'name'              => 'flash-screen', // Block name
+		'title'             => __('Flash Screen'), // Title shown in the block editor
+		'description'       => __('A custom block for Flash Screen content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/flash-screen/flash-screen.php', // Path to HTML template file
+		'category'          => 'widgets', // Category where the block will appear (you can use your own category)
+		'icon'              => 'fullscreen-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('flash', 'sreen', 'home', 'popup', 'up'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/flash-screen/flash-screen.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+
+	));
+
 	// Register Hero Slider Block
 	acf_register_block_type(array(
 		'name'              => 'hero-slider', // Block name
@@ -602,6 +628,7 @@ function register_acf_block_types() {
 			)
 		),
 	));
+
 	// Register Product List Block
 	acf_register_block_type(array(
 		'name'              => 'product-list', // Block name

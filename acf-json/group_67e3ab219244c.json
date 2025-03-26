@@ -1,40 +1,14 @@
 {
-    "key": "group_67e134c883ddf",
-    "title": "Product List",
+    "key": "group_67e3ab219244c",
+    "title": "Flash Screen Popup",
     "fields": [
         {
-            "key": "field_67e134ca6bc9d",
-            "label": "Product Servcies",
-            "name": "product_servcies",
+            "key": "field_67e3ab73c88c9",
+            "label": "Featured Image",
+            "name": "featured_image",
             "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "Unchecked all category to display All Categories",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "product-services",
-            "add_term": 0,
-            "save_terms": 1,
-            "load_terms": 0,
-            "return_format": "object",
-            "field_type": "checkbox",
-            "allow_in_bindings": 0,
-            "bidirectional": 0,
-            "multiple": 0,
-            "allow_null": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_67e1361dd5cfc",
-            "label": "Download Catalogue File",
-            "name": "download_catalogue_file",
-            "aria-label": "",
-            "type": "file",
-            "instructions": "File Allowed : pdf",
+            "type": "image",
+            "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -44,33 +18,31 @@
             },
             "return_format": "array",
             "library": "all",
+            "min_width": "",
+            "min_height": "",
             "min_size": "",
+            "max_width": "",
+            "max_height": "",
             "max_size": "",
-            "mime_types": ".pdf",
-            "allow_in_bindings": 0
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
         },
         {
-            "key": "field_67e135e4d5cfb",
-            "label": "Download Catalogue Title",
-            "name": "download_catalogue_title",
+            "key": "field_67e3ab21c88c6",
+            "label": "Title",
+            "name": "title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_67e1361dd5cfc",
-                        "operator": "!=empty"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
             },
-            "default_value": "Download Catalogue",
+            "default_value": "",
             "maxlength": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -78,9 +50,30 @@
             "append": ""
         },
         {
-            "key": "field_67e165e55deff",
-            "label": "Product Page Tagline",
-            "name": "product_page_tagline",
+            "key": "field_67e3ab4fc88c7",
+            "label": "Heading",
+            "name": "heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67e3ab61c88c8",
+            "label": "Description",
+            "name": "description",
             "aria-label": "",
             "type": "wysiwyg",
             "instructions": "",
@@ -97,6 +90,23 @@
             "toolbar": "full",
             "media_upload": 1,
             "delay": 0
+        },
+        {
+            "key": "field_67e3ab81c88ca",
+            "label": "Product Link",
+            "name": "product_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -104,7 +114,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/product-list"
+                "value": "acf\/flash-screen"
             }
         ]
     ],
@@ -117,5 +127,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742979404
+    "modified": 1742974636
 }
