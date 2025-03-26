@@ -11,10 +11,11 @@ if (!empty($block['data']['is_preview'])):
 endif;
 
 $selected_services = get_field('product_servcies');
-$download_catalogue = get_field('download_catalogue_title');
+$download_catalogue = '';
 $download_catalogue_file = get_field('download_catalogue_file');
 $download_catalogue_file_url = '';
 if($download_catalogue_file){
+    $download_catalogue = get_field('download_catalogue_title');
     $download_catalogue_file_url = $download_catalogue_file['url'];
 }
 $full_description = get_field('product_page_tagline');
@@ -79,16 +80,18 @@ $flag = 0;
                     <?php endforeach; ?>
                 <?php endif;?>
             </div>
-            <div class="annual-points export_pdf">
-                <h5 class="mb-0 fw-bold"><?php echo $download_catalogue;?></h5>
-                <div class="item-download">
-                    <a href="<?php echo $download_catalogue_file_url;?>" download="" class="file-btn">
-                    <svg class="d-line" width="20" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path id="Vector" d="M1 1.33871V2.66671C1 3.72757 1.47411 4.74499 2.31802 5.49513C3.16193 6.24528 4.30653 6.66671 5.5 6.66671H20.5C21.6935 6.66671 22.8381 6.24528 23.682 5.49513C24.5259 4.74499 25 3.72757 25 2.66671V1.33337" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </a>
+            <?php if(!empty($download_catalogue_file_url)):?>
+                <div class="annual-points export_pdf">
+                    <h5 class="mb-0 fw-bold"><?php echo $download_catalogue;?></h5>
+                    <div class="item-download">
+                        <a href="<?php echo $download_catalogue_file_url;?>" download="" class="file-btn">
+                        <svg class="d-line" width="20" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path id="Vector" d="M1 1.33871V2.66671C1 3.72757 1.47411 4.74499 2.31802 5.49513C3.16193 6.24528 4.30653 6.66671 5.5 6.66671H20.5C21.6935 6.66671 22.8381 6.24528 23.682 5.49513C24.5259 4.74499 25 3.72757 25 2.66671V1.33337" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php endif;?>
         </div>
 
         
@@ -135,18 +138,7 @@ $flag = 0;
                                 $permalink = get_the_permalink($post_id);
                                 $performance = get_field('performance', $post_id);
                                 $featured_image = get_the_post_thumbnail_url();
-                                // echo $index;
-                                // if($index == 1 || $index == 4):
-                                //     $product_class = 'h-col';
-                                // elseif($index === 2):
-                                //     $product_class = 'h-col pb-bottom';
-                                // elseif($index === 3):
-                                //     $product_class = 'h-col m-pb';
-                                // elseif($index ===5):
-                                //     $product_class = '';
-                                // else:
-                                //     $product_class = 'pb-bottom';
-                                // endif;
+                                
                                 $product_class = 'h-col pb-bottom';
                                 ?>
                                     <div class="col-lg-3 col-md-4 col-sm-6 <?php echo $product_class;?>">

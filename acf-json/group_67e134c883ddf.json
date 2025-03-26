@@ -29,27 +29,6 @@
             "bidirectional_target": []
         },
         {
-            "key": "field_67e135e4d5cfb",
-            "label": "Download Catalogue Title",
-            "name": "download_catalogue_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "Download Catalogue",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
             "key": "field_67e1361dd5cfc",
             "label": "Download Catalogue File",
             "name": "download_catalogue_file",
@@ -69,6 +48,34 @@
             "max_size": "",
             "mime_types": ".pdf",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67e135e4d5cfb",
+            "label": "Download Catalogue Title",
+            "name": "download_catalogue_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67e1361dd5cfc",
+                        "operator": "!=empty"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Download Catalogue",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         },
         {
             "key": "field_67e165e55deff",
@@ -110,5 +117,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742880168
+    "modified": 1742979404
 }

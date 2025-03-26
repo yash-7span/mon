@@ -4,7 +4,7 @@
 // set Preview for Block
 if (!empty($block['data']['is_preview'])):
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/blogs-section/blogs-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/news-blogs/news-blogs.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;

@@ -1,15 +1,15 @@
 {
-    "key": "group_67dbf8b5f2d93",
-    "title": "News Blogs Section",
+    "key": "group_67e3f24e1c9be",
+    "title": "Latest Blogs",
     "fields": [
         {
-            "key": "field_67dbf8b681f71",
+            "key": "field_67e3f24e57084",
             "label": "Section Title",
             "name": "section_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -24,34 +24,13 @@
             "append": ""
         },
         {
-            "key": "field_67dbf98c81f72",
-            "label": "Section Heading",
-            "name": "section_heading",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 1,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_67dbf99681f73",
+            "key": "field_67e3f2a757086",
             "label": "Select Blogs",
             "name": "select_blogs",
             "aria-label": "",
             "type": "post_object",
-            "instructions": "Select up to 2 Blog Posts and if selects more than only the first two selected will display",
-            "required": 1,
+            "instructions": "",
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -65,7 +44,7 @@
                 "publish"
             ],
             "taxonomy": "",
-            "return_format": "object",
+            "return_format": "id",
             "multiple": 1,
             "allow_null": 0,
             "allow_in_bindings": 0,
@@ -79,7 +58,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/news-blogs"
+                "value": "acf\/latest-blogs"
             }
         ]
     ],
@@ -92,5 +71,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742991524
+    "modified": 1742993926
 }
