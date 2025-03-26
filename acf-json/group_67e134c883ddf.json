@@ -8,7 +8,7 @@
             "name": "product_servcies",
             "aria-label": "",
             "type": "taxonomy",
-            "instructions": "",
+            "instructions": "Unchecked all category to display All Categories",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -50,33 +50,6 @@
             "append": ""
         },
         {
-            "key": "field_67e14af281b3f",
-            "label": "Download Catelogue Icon",
-            "name": "download_catelogue_icon",
-            "aria-label": "",
-            "type": "icon_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "tabs": [
-                "dashicons",
-                "media_library",
-                "url"
-            ],
-            "return_format": "string",
-            "allow_in_bindings": 0,
-            "library": "all",
-            "default_value": {
-                "type": null,
-                "value": null
-            }
-        },
-        {
             "key": "field_67e1361dd5cfc",
             "label": "Download Catalogue File",
             "name": "download_catalogue_file",
@@ -96,6 +69,27 @@
             "max_size": "",
             "mime_types": ".pdf",
             "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67e165e55deff",
+            "label": "Product Page Tagline",
+            "name": "product_page_tagline",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -116,5 +110,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742818391
+    "modified": 1742880168
 }

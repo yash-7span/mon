@@ -45,9 +45,9 @@
             "append": ""
         },
         {
-            "key": "field_67e14eb508e6d",
-            "label": "Locations",
-            "name": "locations",
+            "key": "field_67e14ed708e6e",
+            "label": "Location Type",
+            "name": "location_type",
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
@@ -63,107 +63,16 @@
             "min": 0,
             "max": 0,
             "collapsed": "",
-            "button_label": "Add Row",
+            "button_label": "Add Locations",
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_67e14ed708e6e",
-                    "label": "Location Type",
-                    "name": "location_type",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "depot": "Depot",
-                        "warehouse": "Warehouse"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "allow_in_bindings": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "parent_repeater": "field_67e14eb508e6d"
-                },
-                {
-                    "key": "field_67e153f74316a",
-                    "label": "Location Map URL",
-                    "name": "location_map_url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "parent_repeater": "field_67e14eb508e6d"
-                },
-                {
-                    "key": "field_67e14f0f08e6f",
-                    "label": "Office Name",
-                    "name": "office_name",
+                    "key": "field_67e25cebee818",
+                    "label": "Office Type",
+                    "name": "office_type_depot_warehouse",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_67e14eb508e6d"
-                },
-                {
-                    "key": "field_67e14f6408e70",
-                    "label": "Office Address",
-                    "name": "office_address",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 1,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_67e14eb508e6d"
-                },
-                {
-                    "key": "field_67e14f7108e71",
-                    "label": "Office Email Address",
-                    "name": "office_email_address",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
+                    "instructions": "Here you can define a Depot , Warehouse etc.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -177,15 +86,15 @@
                     "placeholder": "",
                     "prepend": "",
                     "append": "",
-                    "parent_repeater": "field_67e14eb508e6d"
+                    "parent_repeater": "field_67e14ed708e6e"
                 },
                 {
-                    "key": "field_67e14f8608e72",
-                    "label": "Office Telephone No.",
-                    "name": "office_telephone_no",
+                    "key": "field_67e25c10feca5",
+                    "label": "Office Locations",
+                    "name": "office_locations",
                     "aria-label": "",
-                    "type": "text",
-                    "instructions": "Enter Tel Number without +",
+                    "type": "repeater",
+                    "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -193,35 +102,144 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_67e14eb508e6d"
-                },
-                {
-                    "key": "field_67e14f9a08e73",
-                    "label": "Office Fax No.",
-                    "name": "office_fax_no",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Enter Fax Number without +",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_67e14eb508e6d"
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add Office Details",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_67e153f74316a",
+                            "label": "Location Map URL",
+                            "name": "location_map_url",
+                            "aria-label": "",
+                            "type": "url",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        },
+                        {
+                            "key": "field_67e14f0f08e6f",
+                            "label": "Office Name",
+                            "name": "office_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        },
+                        {
+                            "key": "field_67e14f6408e70",
+                            "label": "Office Address",
+                            "name": "office_address",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        },
+                        {
+                            "key": "field_67e14f7108e71",
+                            "label": "Office Email Address",
+                            "name": "office_email_address",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        },
+                        {
+                            "key": "field_67e14f8608e72",
+                            "label": "Office Telephone No.",
+                            "name": "office_telephone_no",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Enter Tel Number without +",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        },
+                        {
+                            "key": "field_67e14f9a08e73",
+                            "label": "Office Fax No.",
+                            "name": "office_fax_no",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Enter Fax Number without +",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_67e25c10feca5"
+                        }
+                    ],
+                    "parent_repeater": "field_67e14ed708e6e"
                 }
             ]
         }
@@ -244,5 +262,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742820845
+    "modified": 1742902613
 }

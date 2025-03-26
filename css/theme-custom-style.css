@@ -1,0 +1,32 @@
+a{
+    cursor: pointer;
+}
+
+.form-check-input {
+    background: transparent;
+    border: 0;
+}
+
+input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry-submit {
+    padding: 10px 0px !important;
+    width: fit-content !important;
+    background: transparent !important;
+}
+.wpcf7-submit:hover::before{
+    content : url(../images/arrow.svg);
+
+    position: absolute;
+}
+
+.contact-form .form-group{
+    margin:0px !important;
+}
+.inquiry-form .wpcf7-response-output{
+    text-align: center;
+    border: none !important;
+    font-weight: 700;
+}
+.inquiry-form .wpcf7-spinner{
+    left: -70% !important;
+
+}

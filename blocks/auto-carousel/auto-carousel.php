@@ -52,15 +52,16 @@ if($selected_field === "Custom"):
     $section_block_id = 'RedirectIndustry';
 else:
     $leader_data = get_field('select_leaders');
+    // var_dump($leader_data);
     if( $leader_data ):
         foreach($leader_data as $data_items):
-            $term_image = get_category_acf_field('featured_image', $data_items->term_id);
+            $term_image = get_field('featured_image','leader-categories_' . $data_items->term_id);
             $post_data[] = array(
                 'title' => isset($data_items->name) ? esc_html($data_items->name) : '',
                 'description' => isset($data_items->description) ? sanitize_textarea_field($data_items->description) : '',
                 'image_url' => isset($term_image['url']) ? esc_url($term_image['url']) : '',
                 'image_title' => isset($term_image['title']) ? esc_attr($term_image['title']) : '',
-                'button_title' => get_category_acf_field('button_title', $data_items->term_id) ? esc_html(get_category_acf_field('button_title', $data_items->term_id)) : '',
+                'button_title' => get_field('button_title','leader-categories_' . $data_items->term_id) ? esc_html(get_field('button_title','leader-categories_' . $data_items->term_id)) : '',
                 'button_url' => get_term_link_by_slug_default($data_items->slug, $data_items->taxonomy) ? esc_url(get_term_link_by_slug_default($data_items->slug, $data_items->taxonomy)) : '',
                 'button_target' => '_self',
             );
@@ -68,7 +69,7 @@ else:
     endif;
     $section_block_id = 'RedirectLeaders';
 endif;
-
+// var_dump($post_data);
 ?>
 
 <div class="industry-sec sec-padding container-fluid overflow-hidden" id="<?php echo $section_block_id;?>" style="background-color:<?php echo esc_attr($background_color); ?>;">

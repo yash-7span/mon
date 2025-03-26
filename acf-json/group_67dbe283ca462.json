@@ -92,7 +92,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "block",
+            "layout": "row",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -231,7 +231,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/industry-section"
+                "value": "acf\/auto-carousel"
             }
         ]
     ],
@@ -244,13 +244,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "modified": 1742550596
-=======
-    "modified": 1742562030
->>>>>>> 3f33a1b9d1ff947cfce58364fd873b058541518a
-=======
-    "modified": 1742560683
->>>>>>> e853621a4281920eb8df0859c065d0ad013a5a31
+    "modified": 1742968921
 }

@@ -67,7 +67,7 @@
                 <a href="<?php the_permalink(); ?>" class="tab-open">
                     <div class="inspire-main">
                         <?php if (has_post_thumbnail()) : ?>
-                            <img src="<?php the_post_thumbnail_url('medium'); ?>" class="img-fluid" alt="<?php the_title(); ?>">
+                            <img src="<?php the_post_thumbnail_url('full'); ?>" class="img-fluid" alt="<?php the_title(); ?>">
                         <?php else : ?>
                             <img src="<?php echo get_template_directory_uri(); ?>/images/default-leader.png" class="img-fluid" alt="<?php the_title(); ?>">
                         <?php endif; ?>

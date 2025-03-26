@@ -94,7 +94,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/top-rated-product-images"
+                "value": "acf\/top-rated-products"
             }
         ]
     ],
@@ -107,5 +107,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742561600
+    "modified": 1742969184
 }
