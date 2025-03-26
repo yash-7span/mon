@@ -73,7 +73,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
                             <a href="<?php echo get_the_permalink(298); ?>" class="bd-title yellow-text"><?php echo get_the_title(298); ?></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">
-                            <a href="<?php echo home_url();?>" class="bd-title yellow-text"><?php echo $taxonomy_name; ?></a>
+                            <a href="<?php echo get_permalink();?>" class="bd-title yellow-text"><?php echo $taxonomy_name; ?></a>
                         </li>
                     </ol>
                 </nav>
