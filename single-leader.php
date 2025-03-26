@@ -31,7 +31,7 @@ $description_text = $category ? get_field('team_member_details_page_text', 'cate
     });
 </script>
 <div class="about-us main-wrapper">
-    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo esc_url($image); ?>');">
+    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo esc_url($image['url']); ?>');">
         <div class="hero-title">
             <h5 class="yellow-text mb-4">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
