@@ -685,6 +685,7 @@ function register_acf_block_types() {
 			),
 		),
 	));
+	
 
 }
 add_action('acf/init', 'register_acf_block_types');
