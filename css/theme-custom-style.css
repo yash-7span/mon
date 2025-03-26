@@ -30,3 +30,9 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     left: -70% !important;
 
 }
+
+/* Header popup */
+.modal-backdrop.show {
+    opacity: 0;
+    z-index: -1;
+}
