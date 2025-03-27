@@ -21,7 +21,7 @@
 }
 .inspire-main .img-fluid{
     width: 378px ;
-    height:auto;
+    aspect-ratio: 1 / 1;
 }
 a.file-btn::before{
     background-image: url("./d-variant-arrow.svg");
@@ -29,3 +29,4 @@ a.file-btn::before{
 a.file-btn::after{
     background-image: url("./white-d-arrow-svg.svg");
 }
+

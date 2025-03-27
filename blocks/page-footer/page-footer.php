@@ -18,7 +18,7 @@ $site_tagline = get_field('site_tagline');
 $footer_tagline = get_field('footer_tagline');
 
 // Fetch Social Media Url 
-$social_links = get_field('social_links');
+$social_links = get_field('social_links', 'option');
 $facebook_url = $social_links['facebook_url'];
 $twitter_url = $social_links['twitter_url'];
 $instagram_url = $social_links['instagram_url'];
@@ -49,7 +49,7 @@ $social_contact = get_field('social_contact');
 
 
 $fax_number = '';
-$f_number = $social_contact['fax_number'];
+$f_number = get_field('fax_number', 'option');
 
 // Set Pattern Of Fax Number
 $f_number = preg_replace("/[^0-9]/", "", $f_number);
