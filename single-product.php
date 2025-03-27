@@ -60,9 +60,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
     }
 </style>
 
-
 </script>
-
 <div class="about-us main-wrapper product_new">
     <div class="main-hero-banner servie-img" style="background-image: url('<?php echo esc_url($taxonomy_image_url); ?>');">
         <div class="hero-title">
@@ -132,7 +130,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
                                 'title' => $product_title,
                                 'slug' => $product_slug
                             )
-                    ?>
+                            ?>
                             <a id="<?php echo $product_slug; ?>" href="#p<?php echo $index; ?>" class="nav-link <?php echo $class; ?>" data-bs-toggle="tab" data-bs-target="#p<?php echo $index; ?>" type="button" role="tab" aria-expanded="<?php echo $aria_selected . ' ' . $tab_index; ?>">
                                 <div class="item-leader">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="9" height="15" viewBox="0 0 9 15" fill="none">

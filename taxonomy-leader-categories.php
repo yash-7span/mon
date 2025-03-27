@@ -9,7 +9,7 @@
 
 ?>
 <div class="about-us main-wrapper">
-    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo $image;?>');">
+    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo $image['url'];?>');">
         <div class="hero-title">
             <h5 class="yellow-text mb-4">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -67,7 +67,7 @@
                 <a href="<?php the_permalink(); ?>" class="tab-open">
                     <div class="inspire-main">
                         <?php if (has_post_thumbnail()) : ?>
-                            <img src="<?php the_post_thumbnail_url('medium'); ?>" class="img-fluid" alt="<?php the_title(); ?>">
+                            <img src="<?php the_post_thumbnail_url('full'); ?>" class="img-fluid" alt="<?php the_title(); ?>">
                         <?php else : ?>
                             <img src="<?php echo get_template_directory_uri(); ?>/images/default-leader.png" class="img-fluid" alt="<?php the_title(); ?>">
                         <?php endif; ?>
