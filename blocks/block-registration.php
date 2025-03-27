@@ -453,7 +453,6 @@ function register_acf_block_types() {
 		),
 	));
 
-
 	// Register Auto Carousel Block
     acf_register_block_type(array(
         'name'              => 'auto-carousel', // Block name
@@ -483,7 +482,6 @@ function register_acf_block_types() {
         ),
     ));
 
-	
 	// Register a History block
 	acf_register_block_type(array(
 		'name'              => 'history', // Block name
@@ -657,6 +655,35 @@ function register_acf_block_types() {
 		),
 	));
 
+	// Register Investor Relations listing Section Block
+	acf_register_block_type(array(
+		'name'              => 'investor-relations-list', // Block name
+		'title'             => __('Investor Relations List'), // Title shown in the block editor
+		'description'       => __('A custom block for Investor Relations listing.'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/investor-relations-list/investor-relations-list.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'tickets-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('investor','relations', 'events','listing'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/investor-relations-list/investor-relations-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 	// Register Latest blogs Section Block
 	acf_register_block_type(array(
 		'name'              => 'latest-blogs', // Block name
@@ -671,7 +698,7 @@ function register_acf_block_types() {
 			'align'      => true,
 			'color'      => array(
 				'text' => false,
-				'background' => true,
+				'background' => false,
 			),
 		),
 		// Add example for the preview image
@@ -685,7 +712,64 @@ function register_acf_block_types() {
 			),
 		),
 	));
-	
+
+	// Register Company Activity Section Block
+	acf_register_block_type(array(
+		'name'              => 'company-activities', // Block name
+		'title'             => __('Company Activity'), // Title shown in the block editor
+		'description'       => __('A custom block for Company Activity list'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/company-activities/company-activities.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'tide', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('investor', 'relations', 'activity','company', 'blogs', 'build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => false,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/company-activities/company-activities.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register Upcoming Meeting Section Block
+	acf_register_block_type(array(
+		'name'              => 'upcoming-meeting', // Block name
+		'title'             => __('Upcoming Meeting'), // Title shown in the block editor
+		'description'       => __('A custom block for Upcoming Meeting list'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/upcoming-meeting/upcoming-meeting.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'video-alt2', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('investor', 'relations', 'activity','company', 'blogs', 'build', 'image'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/upcoming-meeting/upcoming-meeting.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 
 }
 add_action('acf/init', 'register_acf_block_types');

@@ -1,36 +1,15 @@
 {
-    "key": "group_67e3f24e1c9be",
-    "title": "Latest Blogs",
+    "key": "group_67e50395cdc77",
+    "title": "Investor Relations List",
     "fields": [
         {
-            "key": "field_67e3f24e57084",
-            "label": "Section Title",
-            "name": "section_title",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_67e3f2a757086",
-            "label": "Select Blogs",
-            "name": "select_blogs",
+            "key": "field_67e50397da267",
+            "label": "Select Investor Relations",
+            "name": "select_investor_relations",
             "aria-label": "",
             "type": "post_object",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -38,7 +17,7 @@
                 "id": ""
             },
             "post_type": [
-                "post"
+                "investor-relations"
             ],
             "post_status": [
                 "publish"
@@ -58,7 +37,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/latest-blogs"
+                "value": "acf\/investor-relations-list"
             }
         ]
     ],
@@ -71,5 +50,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743055366
+    "modified": 1743074053
 }

@@ -15,10 +15,14 @@ $heading = get_field('heading');
 $full_description = get_field('description');
 $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $full_description);
 $button = get_field('section_button');
-$button_url = $button['url'];
-$button_title = $button['title'];
-$button_target = $button['target'];
-
+$button_url = '';
+$button_title = '';
+$button_target = '';
+if(!empty($button)){
+    $button_url = $button['url'];
+    $button_title = $button['title'];
+    $button_target = $button['target'];
+}
 ?>
 
 <div class="aboutus-sec container-fluid overflow-hidden" id="RedirectAboutUs">

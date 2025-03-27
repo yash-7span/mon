@@ -18,7 +18,7 @@ $site_tagline = get_field('site_tagline');
 $footer_tagline = get_field('footer_tagline');
 
 // Fetch Social Media Url 
-$social_links = get_field('social_links');
+$social_links = get_field('social_links', 'option');
 $facebook_url = $social_links['facebook_url'];
 $twitter_url = $social_links['twitter_url'];
 $instagram_url = $social_links['instagram_url'];
@@ -49,7 +49,7 @@ $social_contact = get_field('social_contact');
 
 
 $fax_number = '';
-$f_number = $social_contact['fax_number'];
+$f_number = get_field('fax_number', 'option');
 
 // Set Pattern Of Fax Number
 $f_number = preg_replace("/[^0-9]/", "", $f_number);
@@ -152,8 +152,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item1_heading->name;?></p>
             </li>
-            <?php foreach($menu_items1 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items1 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
     </div>
@@ -163,8 +166,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item2_heading->name;?></p>
             </li>
-            <?php foreach($menu_items2 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items2 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
 
@@ -172,8 +178,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item3_heading->name;?></p>
             </li>
-            <?php foreach($menu_items3 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items3 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
 
         </ul>
@@ -184,8 +193,11 @@ $creater_company_target= $copyright['created_by']['target'];
             <li class="mb_5">
                 <p class="title-page light-grey"><?php echo $menu_item4_heading->name;?></p>
             </li>
-            <?php foreach($menu_items4 as $item):?>
-                <li><a href="<?php echo $item->url;?>" class="white-text" target="_blank"><?php echo $item->title;?></a></li>
+            <?php 
+            foreach($menu_items4 as $item):
+                $target = (get_field('open_in_new_tab', $item->ID ) == 1) ? '_blank' : '_self'; 
+            ?>
+                <li><a href="<?php echo $item->url;?>" class="white-text" target="<?php echo $target;?>"><?php echo $item->title;?></a></li>
             <?php endforeach;?>
         </ul>
     </div>

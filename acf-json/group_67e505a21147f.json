@@ -1,0 +1,46 @@
+{
+    "key": "group_67e505a21147f",
+    "title": "Investor Relations Post Fields",
+    "fields": [
+        {
+            "key": "field_67e505a28a3b2",
+            "label": "Upload Attachment",
+            "name": "upload_attachment",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "File Allowed : pdf",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf",
+            "allow_in_bindings": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "investor-relations"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1743070899
+}

@@ -1,8 +1,8 @@
 a{
     cursor: pointer;
 }
-
-.form-check-input {
+/* Contact Form CSS Start  */
+.inquiry-form .form-check-input {
     background: transparent;
     border: 0;
 }
@@ -21,18 +21,37 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 .contact-form .form-group{
     margin:0px !important;
 }
-.inquiry-form .wpcf7-response-output{
+.inquiry-form .wpcf7-response-output,
+.newsletter-btn .wpcf7-response-output
+{
     text-align: center;
     border: none !important;
     font-weight: 700;
 }
-.inquiry-form .wpcf7-spinner{
+.inquiry-form .wpcf7-spinner,
+.newsletter-btn .wpcf7-spinner{
     left: -70% !important;
 
 }
+
+/* Contact Form CSS Ends  */
 
 /* Header popup */
 .modal-backdrop.show {
     opacity: 0;
     z-index: -1;
+}
+
+/* Investor Page CSS  */
+.investor-relations-list{
+    padding-bottom: 0px !important;
+}
+
+.company-events{
+    padding-top:0px !important;
+}
+
+.upcoming-meetings .inner-upm {
+    height: auto;
+    max-height: 600px;
 }
