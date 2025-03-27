@@ -657,6 +657,35 @@ function register_acf_block_types() {
 		),
 	));
 
+	// Register Investor Relations listing Section Block
+	acf_register_block_type(array(
+		'name'              => 'investor-relations-list', // Block name
+		'title'             => __('Investor Relations List'), // Title shown in the block editor
+		'description'       => __('A custom block for Investor Relations listing.'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/investor-relations-list/investor-relations-list.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'tickets-alt', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('investor','relations', 'events','listing'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => true,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/investor-relations-list/investor-relations-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 	// Register Latest blogs Section Block
 	acf_register_block_type(array(
 		'name'              => 'latest-blogs', // Block name
