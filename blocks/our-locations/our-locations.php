@@ -83,16 +83,16 @@ $description = get_field('description_text');
                                                 </a>
                                                 <div class="details-lbox">
                                                     <p class="mb-0 hover_p">
-                                                        <?php 
-                                                        if($address){ ?>
-                                                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M4.50586 26.2539H25.1309M5.44336 3.75391H24.1934M6.38086 3.75391V26.2539M23.2559 3.75391V26.2539M11.0684 8.44141H12.9434M11.0684 12.1914H12.9434M11.0684 15.9414H12.9434M16.6934 8.44141H18.5684M16.6934 12.1914H18.5684M16.6934 15.9414H18.5684M11.0684 26.2539V22.0352C11.0684 21.2589 11.6984 20.6289 12.4746 20.6289H17.1621C17.9384 20.6289 18.5684 21.2589 18.5684 22.0352V26.2539" stroke="#F7A209" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
-                                                            </svg>
+                                                        <a href="<?php echo esc_url($location_map_url); ?>" class="title-lbox" target="_blank">
                                                             <?php 
-                                                            echo esc_html($address); 
-                                                        }
-                                                        
-                                                        ?>
+                                                            if($address){ ?>
+                                                                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M4.50586 26.2539H25.1309M5.44336 3.75391H24.1934M6.38086 3.75391V26.2539M23.2559 3.75391V26.2539M11.0684 8.44141H12.9434M11.0684 12.1914H12.9434M11.0684 15.9414H12.9434M16.6934 8.44141H18.5684M16.6934 12.1914H18.5684M16.6934 15.9414H18.5684M11.0684 26.2539V22.0352C11.0684 21.2589 11.6984 20.6289 12.4746 20.6289H17.1621C17.9384 20.6289 18.5684 21.2589 18.5684 22.0352V26.2539" stroke="#F7A209" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                                <?php 
+                                                                echo esc_html($address); 
+                                                            } ?>
+                                                        </a>
                                                     </p>
                                                     <?php if ($email): ?>
                                                         <a href="mailto:<?php echo esc_attr($email); ?>" class="items-lbox">
