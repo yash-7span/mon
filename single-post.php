@@ -212,6 +212,8 @@ $thread_url = $social_links['thread_url'];
         </div>
         <!-- Post You may Like Section End  -->
     </div>
+
+    <!-- Right Newsletter Form  -->
     <div class="right-sticky-layout">
         <div class="blog-sidebar">
             <div class="follow-us-container">
