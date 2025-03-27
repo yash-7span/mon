@@ -523,7 +523,7 @@ if($header_cta_button){
 <header class="head">
      <nav class="navbar navbar-expand-lg">
           <div class="navbar-logo position-relative">
-               <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
+               <a class="navbar-brand" >
                     <?php
                     // Site Logo
                     if ($site_logo) { ?>

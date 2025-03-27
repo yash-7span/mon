@@ -39,7 +39,7 @@ $section_title = get_field('section_title') ?? '';
                 $time = get_sub_field('meeting_time');
                 ?>
                     <div class="upm-content">
-                        <div class="upm-inner mt-0">
+                        <div class="upm-inner">
                             <h5 class="red-text upm-date mb-0">
                                 <?php echo esc_html($date);?>
                             </h5>
@@ -47,11 +47,15 @@ $section_title = get_field('section_title') ?? '';
                                 <?php echo esc_html($agenda);?>
                             </h5>
                             <h5 class="mb-0 red-text cal-hover upm_col_min">
-                                + Add to Calendar <img src="./images/cal-vector.svg" alt="" class="img-fluid">
+                                + Add to Calendar <img src="<?php echo get_stylesheet_directory_uri().'/blocks/upcoming-meeting/cal-vector.svg';?>" alt="" class="img-fluid">
                             </h5>
                             <h5 class="mb-0 upm_col_max">
-                                <span class="grey-text"><?php echo $time;?></span>
-                                <span class="red-text">Onwards</span>
+                                <?php if(!empty($time)):?>
+                                    <span class="grey-text"><?php echo $time;?></span>
+                                    <span class="red-text">Onwards</span>
+                                <?php else:?>
+                                    <span class="red-text">To be Announced</span>
+                                <?php endif;?>
                             </h5>
                         </div>
                     </div>
