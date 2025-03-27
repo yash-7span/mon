@@ -41,3 +41,12 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     opacity: 0;
     z-index: -1;
 }
+
+/* Investor Page CSS  */
+.investor-relations-list{
+    padding-bottom: 0px !important;
+}
+
+.company-events{
+    padding-top:0px !important;
+}

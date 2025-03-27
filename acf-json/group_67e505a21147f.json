@@ -4,11 +4,11 @@
     "fields": [
         {
             "key": "field_67e505a28a3b2",
-            "label": "",
-            "name": "",
+            "label": "Upload Attachment",
+            "name": "upload_attachment",
             "aria-label": "",
-            "type": "radio",
-            "instructions": "",
+            "type": "file",
+            "instructions": "File Allowed : pdf",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,14 +16,12 @@
                 "class": "",
                 "id": ""
             },
-            "choices": [],
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "other_choice": 0,
-            "allow_in_bindings": 0,
-            "layout": "vertical",
-            "save_other_choice": 0
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "pdf",
+            "allow_in_bindings": 1
         }
     ],
     "location": [
@@ -44,5 +42,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743062466
+    "modified": 1743070899
 }
