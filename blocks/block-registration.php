@@ -211,15 +211,15 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register Auto Carousel Block
+	// Register Our Leader Block
 	acf_register_block_type(array(
-		'name'              => 'auto-carousel', // Block name
-		'title'             => __('Auto Carousel'), // Title shown in the block editor
-		'description'       => __('A custom block for Auto Carousel content'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
+		'name'              => 'our-leader', // Block name
+		'title'             => __('Our Leader'), // Title shown in the block editor
+		'description'       => __('A custom block for Our Leader content'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/our-leader/our-leader.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'slides', // Block icon (you can use Dashicon or custom SVG)
-		'keywords'          => array('home','Industry','build', 'image'),
+		'icon'              => 'BuddyPress', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('home','leader', 'our','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
 			'align'      => true,
@@ -233,7 +233,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/our-leader/our-leader.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -453,12 +453,12 @@ function register_acf_block_types() {
 		),
 	));
 
-	// Register Auto Carousel Block
+	// Register Industry Section Block
     acf_register_block_type(array(
-        'name'              => 'auto-carousel', // Block name
-        'title'             => __('Auto Carousel'), // Title shown in the block editor
-        'description'       => __('A custom block for Auto Carousel content'), // Block description
-        'render_template'   => get_template_directory(). '/blocks/auto-carousel/auto-carousel.php', // Path to HTML template file
+        'name'              => 'industry-section', // Block name
+        'title'             => __('Industry Section'), // Title shown in the block editor
+        'description'       => __('A custom block for Industry Section content'), // Block description
+        'render_template'   => get_template_directory(). '/blocks/industry-section/industry-section.php', // Path to HTML template file
         'category'          => 'mrs', // Category where the block will appear (you can use your own category)
         'icon'              => 'building', // Block icon (you can use Dashicon or custom SVG)
         'keywords'          => array('home','Industry','build', 'image'),
@@ -475,7 +475,7 @@ function register_acf_block_types() {
             'attributes' => array(
                 'mode' => 'preview',
                 'data' => array(
-                    'preview_image' => get_stylesheet_directory_uri() . '/blocks/auto-carousel/auto-carousel.png', // Path to your preview image
+                    'preview_image' => get_stylesheet_directory_uri() . '/blocks/industry-section/industry-section.png', // Path to your preview image
                     'is_preview'    => true
                 ),
             ),
