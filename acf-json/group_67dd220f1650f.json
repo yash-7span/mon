@@ -28,7 +28,7 @@
             "label": "Select Leaders",
             "name": "select_leaders",
             "aria-label": "",
-            "type": "post_object",
+            "type": "taxonomy",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -37,19 +37,16 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "leader"
-            ],
-            "post_status": [
-                "publish"
-            ],
-            "taxonomy": "",
-            "return_format": "id",
-            "multiple": 0,
-            "allow_null": 0,
+            "taxonomy": "leader-categories",
+            "add_term": 1,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "object",
+            "field_type": "checkbox",
             "allow_in_bindings": 1,
             "bidirectional": 0,
-            "ui": 1,
+            "multiple": 0,
+            "allow_null": 0,
             "bidirectional_target": []
         }
     ],
@@ -71,5 +68,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742545673
+    "modified": 1743083843
 }
