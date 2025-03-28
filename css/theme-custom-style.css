@@ -2,9 +2,10 @@
 @media (max-width: 575px) {
     .header-menus .navbar-nav {
         padding-top: 0px;
-        margin-top: 65px;
     }
-
+    .mobile-block>.navbar-collapse>.navbar-nav{
+        margin-top: 65px;
+     }
 }
 .home .header-menus .nav-item.dropdown .active {
     color: #000;
