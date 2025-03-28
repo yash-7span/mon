@@ -218,7 +218,7 @@ function register_acf_block_types() {
 		'description'       => __('A custom block for Our Leader content'), // Block description
 		'render_template'   => get_template_directory(). '/blocks/our-leader/our-leader.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
-		'icon'              => 'BuddyPress', // Block icon (you can use Dashicon or custom SVG)
+		'icon'              => 'buddicons-buddypress-logo', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('home','leader', 'our','build', 'image'),
 		'mode'				=> 'preview',
 		'supports'      => array(
@@ -621,8 +621,8 @@ function register_acf_block_types() {
 			'anchor' => true,         // Enable anchor links
 			'customClassName' => true, // Allow custom CSS classes
 			'color'  => array(
-				'background' => true, // Enables background color support
-				'text'       => true  // Enables text color support
+				'background' => false, // Enables background color support
+				'text'       => false  // Enables text color support
 			)
 		),
 	));
