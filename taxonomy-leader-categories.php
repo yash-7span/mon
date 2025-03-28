@@ -4,7 +4,7 @@
     // Get the current category object
     $category = get_queried_object();
     $heading_text = get_field('heading_text', 'category_' . $category->term_id);
-    $hero_image = $category ? get_field('team_member_details_page_text', 'category_' . $category->term_id) : '';
+    $hero_image = $category ? get_field('detail_page_banner_image', 'category_' . $category->term_id) : '';
 ?>
 <div class="about-us main-wrapper">
     <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo $hero_image['url'];?>');">

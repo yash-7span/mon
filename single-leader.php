@@ -14,7 +14,7 @@ $category = $categories ? $categories[0] : null;
 
 // Fetch ACF fields of the category
 $image = $category ? get_field('featured_image', 'category_' . $category->term_id) : '';
-$hero_image = $category ? get_field('team_member_details_page_text', 'category_' . $category->term_id) : '';
+$hero_image = $category ? get_field('detail_page_banner_image', 'category_' . $category->term_id) : '';
 $heading_text = $category ? get_field('heading_text', 'category_' . $category->term_id) : '';
 $description_text = $category ? get_field('team_member_details_page_text', 'category_' . $category->term_id) : '';
 ?>
