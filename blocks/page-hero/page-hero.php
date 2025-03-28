@@ -23,7 +23,7 @@ $background_image = get_field('background_image');
 
 ?>
 <div class="about-us main-wrapper">
-    <div class="main-hero-banner" style="background-image: url('<?php echo $background_image;?>');">
+    <div class="main-hero-banner" style="background-image: url('<?php echo $background_image;?>');height: calc(700px - 120px);">
         <div class="hero-title">
             <h5 class="yellow-text mb-4 text-uppercase"><?php echo $page_title;?></h5>
             <?php
