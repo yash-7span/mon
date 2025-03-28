@@ -124,7 +124,7 @@ if ($service_source == "Custom Services") {
                                         <div class="column_8 col-p order-xs-2">
                                             <div class="custom-flex">
                                                     <div class="products-disc">
-                                                        <p class="mb-0 text-uppercase visible-m"><?php echo $data['title'];?></p>
+                                                        <p class="mb-0 text-uppercase visible-m"><?php echo $data['link']['title'];?></p>
                                                         <h5 class="grey-text"><?php echo $data['description'];?></h5>
                                                         <div class="hover-t custom-move">
                                                             <a href="<?php echo $data['link']['url'];?>" class="animate-text subscribe">

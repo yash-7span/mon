@@ -771,5 +771,34 @@ function register_acf_block_types() {
 		),
 	));
 
+	// Register a Shareholder Services block
+	acf_register_block_type(array(
+		'name'              => 'shareholder-services', // Block name
+		'title'             => ('Shareholder Services'), // Title shown in the block editor
+		'description'       => ('A custom block For Shareholder Services section in Service page'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/shareholder-services/shareholder-services.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'buddicons-groups', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('services', 'Shareholder Services','about services','details'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => true, // Enables background color support
+				'text'       => false  // Enables text color support
+			)
+		),
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/shareholder-services/shareholder-services.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 }
 add_action('acf/init', 'register_acf_block_types');

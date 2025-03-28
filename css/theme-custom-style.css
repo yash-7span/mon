@@ -1,11 +1,3 @@
-/* Header CSS Start  */
-@media (max-width: 575px) {
-    .header-menus .navbar-nav {
-        padding-top: 0px;
-    }
-}
-/* Header CSS End  */
-
 /* News Block CSS Start  */
 .blogs-sec .read-more{
     cursor: pointer;
@@ -67,3 +59,12 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     height: auto;
     max-height: 600px;
 }
+/* Investor Page CSS End */
+
+/* Shareholder Block CSS Start  */
+
+.shareholder_services .row:last-child{
+    border-bottom: none;
+}
+
+/* Shareholder Block CSS End  */
