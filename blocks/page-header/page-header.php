@@ -499,7 +499,7 @@ if($header_cta_button){
      </div>
      <div class="location-dropdown">
           <div class="loc-dropdown-inner">
-               <img src="http://localhost/mod/wp-content/uploads/2025/03/rl-vector.svg" alt="">
+               <img src="/wp-content/uploads/2025/03/rl-vector.svg" alt="">
                <div class="btn-group">
                     <button type="button" class="btn-city dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                          Lagos, Tanke Road

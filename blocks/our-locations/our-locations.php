@@ -83,7 +83,7 @@ $description = get_field('description_text');
                                                 </a>
                                                 <div class="details-lbox">
                                                     
-                                                        <a href="<?php echo esc_url($location_map_url); ?>" class="title-lbox" target="_blank">
+                                                        <a href="<?php echo esc_url($location_map_url); ?>" class="items-lbox" target="_blank">
                                                             <?php 
                                                             if($address){ ?>
                                                                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

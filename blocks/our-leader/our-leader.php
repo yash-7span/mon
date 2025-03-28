@@ -20,7 +20,6 @@ endif;
 
 $section_title = get_field('section_title');
 $leaders = get_field('select_leaders');
-var_dump($leaders);
 
 ?>
 <div class="leadership-sec" id="RedirectOurLeaders">
