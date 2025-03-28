@@ -6,6 +6,13 @@
     }
 
 }
+.home .header-menus .nav-item.dropdown .active {
+    color: #000;
+}
+
+.home .header-menus .nav-item.dropdown:first-child .active {
+    color: #74253a !important;
+}
 /* Header CSS End  */
 
 /* News Block CSS Start  */
