@@ -24,11 +24,11 @@ $section_title = get_field('section_title');
 $section_heading = get_field('section_heading');
 $service_source = get_field('services_source');
 
-if ($service_source == "Custom Services") :
-    // Store Repeater Field Data into Array
-    $services_data = array(); 
-    if (have_rows('products_and_services')) :
-        while (have_rows('products_and_services')) :
+$services_data = array(); // Ensure this is always initialized
+
+if ($service_source == "Custom Services") {
+    if (have_rows('products_and_services')) {
+        while (have_rows('products_and_services')) {
             the_row();
             $title = get_sub_field('title'); 
             $description = get_sub_field('description');
@@ -38,31 +38,33 @@ if ($service_source == "Custom Services") :
             if (!empty($title)) {
                 $services_data[] = array(
                     'title' => $title,
-                    'description' => $description,
+                    'description' => preg_replace('/^<p>(.*?)<\/p>/i', '$1', $description),
                     'link' => $link,
                     'image' => $image
                 );
             }
-        endwhile;
-    endif;
-else :
-    // Store Product Services Data into an array
+        }
+    }
+} else {
     $product_services = get_field('select_product_services');
-    foreach($product_services as $services):
-        $services_data[] = array(
-            'title' => $services->name,
-            'description' => $services->description,
-            'link' => array(
-                'url' => get_term_link_by_slug_default( $services -> slug, $services -> taxonomy ),
-                'title' => get_category_acf_field('button_title', $services->term_id),
-            ),
-            'image' => array(
-                'url' => get_category_acf_field('featured_image', $services->term_id)['url'],
-                'title' => get_category_acf_field('featured_image', $services->term_id)['title'],
-            )
-        );
-    endforeach;
-endif;
+
+    if (is_array($product_services) && !empty($product_services)) { // Ensure it's an array before looping
+        foreach ($product_services as $services) {
+            $services_data[] = array(
+                'title' => $services->name,
+                'description' => $services->description,
+                'link' => array(
+                    'url' => get_term_link_by_slug_default($services->slug, $services->taxonomy),
+                    'title' => get_category_acf_field('button_title', $services->term_id),
+                ),
+                'image' => array(
+                    'url' => get_category_acf_field('featured_image', $services->term_id)['url'],
+                    'title' => get_category_acf_field('featured_image', $services->term_id)['title'],
+                )
+            );
+        }
+    }
+}
 
 ?>
 <div class="our-offerings sec-padding container-fluid" id="RedirectOurOfferings" style="background-color:<?php echo $background_color;?>;">

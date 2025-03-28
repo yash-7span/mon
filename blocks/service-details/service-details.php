@@ -21,9 +21,10 @@ $service_image = get_field('service_image');
 $service_description = get_field('service_description');
 $btn_text = get_field('view_more_button_text');
 $btn_link = get_field('view_more_btn_link');
+$service_id = strtolower(str_replace(' ', '', $service_heading));
 ?>
 
-<div class="layout-service sec-padding container-fluid" style="background-color: <?php echo $background_color;?>;" id="Lubricants">
+<div class="layout-service sec-padding container-fluid" style="background-color: <?php echo $background_color;?>;" id="<?php echo $service_id;?>">
      <div class="row align-items-center">
           <div class="col-xxl-6">
                <div class="image-serivce">

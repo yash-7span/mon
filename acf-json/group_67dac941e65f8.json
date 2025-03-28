@@ -1,6 +1,6 @@
 {
     "key": "group_67dac941e65f8",
-    "title": "Taxonomy Field",
+    "title": "Product Taxonomy Field",
     "fields": [
         {
             "key": "field_67dac942be0d5",
@@ -57,13 +57,6 @@
                 "operator": "==",
                 "value": "product-services"
             }
-        ],
-        [
-            {
-                "param": "taxonomy",
-                "operator": "==",
-                "value": "leader-categories"
-            }
         ]
     ],
     "menu_order": 0,
@@ -75,5 +68,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742878975
+    "modified": 1743139386
 }
