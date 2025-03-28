@@ -23,7 +23,7 @@ $leaders = get_field('select_leaders');
 
 ?>
 <div class="leadership-sec" id="RedirectOurLeaders">
-    <div class="industry-sec sec-padding container-fluid bg-grey overflow-hidden" id="RedirectLeaders">
+    <div class="industry-sec sec-padding container-fluid overflow-hidden" id="RedirectLeaders" style="background-color:<?php echo $background_color;?>;">
         <div class="industry-title">
             <h2 class="mb-0 h-title"><?php echo esc_html($section_title);?></h2>
         </div>

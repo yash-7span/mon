@@ -353,7 +353,7 @@ $thread_url = $social_links['thread_url'];
                                 <p class="text-white latest-text sb-text mt-1 mb-2"><?php echo esc_html($title);?></p>
                                 <div class="latest-profile-info mb-0">
                                     <div class="post-profile-name">
-                                        <img src="<?php echo $image;?>" alt="<?php echo esc_html($author_name);?>">
+                                        <img src="<?php echo $author_image;?>" alt="<?php echo esc_html($author_name);?>">
                                         <h6 class="mb-0 text-white text-capitalize"><?php echo esc_html($author_name);?></h6>
                                     </div>
                                     <div class="post-profile-date">

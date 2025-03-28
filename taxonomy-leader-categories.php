@@ -3,13 +3,11 @@
 <?php 
     // Get the current category object
     $category = get_queried_object();
-    $image = get_field('featured_image', 'category_' . $category->term_id);
     $heading_text = get_field('heading_text', 'category_' . $category->term_id);
-    
-
+    $hero_image = $category ? get_field('team_member_details_page_text', 'category_' . $category->term_id) : '';
 ?>
 <div class="about-us main-wrapper">
-    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo $image['url'];?>');">
+    <div class="main-hero-banner leadership-main" style="background-image: url('<?php echo $hero_image['url'];?>');">
         <div class="hero-title">
             <h5 class="yellow-text mb-4">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
