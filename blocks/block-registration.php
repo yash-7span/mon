@@ -742,12 +742,40 @@ function register_acf_block_types() {
 		),
 	));
 
+	acf_register_block_type(array(
+		'name'              => 'gallery-image', // Block name
+		'title'             => __('Image Gallery'), // Title shown in the block editor
+		'description'       => __('A custom block for Company Event Gallery'), // Block description
+		'render_template'   => get_template_directory(). '/blocks/image-gallery/image-gallery.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'format-gallery', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('image', 'gallery', 'event','company', 'photo'),
+		'mode'				=> 'preview',
+		'supports'      => array(
+			'align'      => true,
+			'color'      => array(
+				'text' => false,
+				'background' => false,
+			),
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/image-gallery/image-gallery-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
 	// Register Upcoming Meeting Section Block
 	acf_register_block_type(array(
 		'name'              => 'upcoming-meeting', // Block name
 		'title'             => __('Upcoming Meeting'), // Title shown in the block editor
 		'description'       => __('A custom block for Upcoming Meeting list'), // Block description
-		'render_template'   => get_template_directory(). '/blocks/upcoming-meeting/upcoming-meeting.php', // Path to HTML template file
+		'render_template'   => get_stylesheet_directory_uri(). '/blocks/upcoming-meeting/upcoming-meeting.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'video-alt2', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('investor', 'relations', 'activity','company', 'blogs', 'build', 'image'),
