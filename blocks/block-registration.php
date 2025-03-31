@@ -800,5 +800,65 @@ function register_acf_block_types() {
 			),
 		),
 	));
+
+	// Register a Yearly Report block
+	acf_register_block_type(array(
+		'name'              => 'yearly-report', // Block name
+		'title'             => ('Yearly Report'), // Title shown in the block editor
+		'description'       => ('A custom block For Yearly Report section in Service page'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/yearly-report/yearly-report.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'calendar', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('services', 'Yearly Report','about services','details'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,          // Allow alignment options
+			'anchor' => true,         // Enable anchor links
+			'customClassName' => true, // Allow custom CSS classes
+			'color'  => array(
+				'background' => false, // Enables background color support
+				'text'       => false  // Enables text color support
+			)
+		),
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/yearly-report/yearly-report.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a Breadcrumb block
+	acf_register_block_type(array(
+		'name'              => 'breadcrumb-section', // Block name
+		'title'             => ('Breadcrumb'), // Title shown in the block editor
+		'description'       => ('A custom block For Breadcrumb section in Service page'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/breadcrumb/breadcrumb.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'controls-repeat', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('services', 'Breadcrumb','about services','details'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,
+			'anchor' => false,
+			'customClassName' => true, 
+			'color'  => array(
+				'background' => true, 
+				'text'       => true  
+			)
+		),
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/breadcrumb/breadcrumb.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
 }
 add_action('acf/init', 'register_acf_block_types');
