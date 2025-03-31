@@ -152,7 +152,7 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": "pdf, mp4, mkv, xls",
+                            "mime_types": "pdf, mp4, mkv, xls, jpg, png",
                             "allow_in_bindings": 0,
                             "parent_repeater": "field_67ea25b65db93"
                         }
@@ -230,7 +230,7 @@
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
-                    "mime_types": "pdf, mp4, mkv, xls",
+                    "mime_types": "pdf, mp4, mkv, xls, jpg, png",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ea6d8ae89e4"
                 }
@@ -255,5 +255,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743429380
+    "modified": 1743430105
 }
