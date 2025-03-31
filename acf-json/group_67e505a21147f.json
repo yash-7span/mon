@@ -1,6 +1,6 @@
 {
     "key": "group_67e505a21147f",
-    "title": "Investor Relations Post Fields",
+    "title": "Investor Relations Fields",
     "fields": [
         {
             "key": "field_67e505a28a3b2",
@@ -42,5 +42,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743070899
+    "modified": 1743425658
 }

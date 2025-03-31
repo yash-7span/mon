@@ -1,6 +1,6 @@
 {
     "key": "group_67dac941e65f8",
-    "title": "Product Taxonomy Field",
+    "title": "Product Service Fields",
     "fields": [
         {
             "key": "field_67dac942be0d5",
@@ -68,5 +68,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743139386
+    "modified": 1743425643
 }
