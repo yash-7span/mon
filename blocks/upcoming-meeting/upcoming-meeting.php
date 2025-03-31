@@ -5,7 +5,7 @@
 // Check if it's in preview mode
 if (!empty($block['data']['is_preview'])):
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/upcoming-meeting/investor-relations.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/upcoming-meeting/upcoming-meeting.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;
@@ -22,12 +22,18 @@ endif;
 
 // Fetch ACf Field 
 $section_title = get_field('section_title') ?? '';
+
+$year = date('Y');
+$select_year_type = get_field('select_year_type');
+if($select_year_type == 'Static Year'):
+    $year = get_field('enter_year');
+endif;
 ?>
 
 <div class="upcoming-meetings sec-padding overflow-hidden-x-hidden" style="background-color: <?php echo $background_color;?>;">
     <div class="title-upm title-calendar">
         <h3 class="fw-bold mb-0"><?php echo $section_title;?></h3>
-        <h3 class="red-text mb-0"><?php echo date('Y');?></h3>
+        <h3 class="red-text mb-0"><?php echo $year;?></h3>
     </div>
     <div class="inner-upm bg_white">
         <?php 
