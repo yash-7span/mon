@@ -1,6 +1,6 @@
 {
     "key": "group_67e3f3c6543fa",
-    "title": "Post Meta Field",
+    "title": "Blogs",
     "fields": [
         {
             "key": "field_67ea40741e19f",
@@ -98,5 +98,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743405201
+    "modified": 1743425608
 }

@@ -33,6 +33,9 @@ $classname = $block['className'] ?? '';
 
 
 $parent_id = wp_get_post_parent_id( get_the_ID() );
+if($parent_id == 0):
+    $parent_id = get_page_by_path('/home');
+endif;
 ?>
 <div class="inner-page-link breadcrumb <?php echo $classname;?>" style="background-color: <?php echo $background_color;?>">
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
