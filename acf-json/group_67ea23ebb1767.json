@@ -110,6 +110,7 @@
                     "collapsed": "",
                     "button_label": "Add Attachment",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_67ea257c5db92",
                     "sub_fields": [
                         {
                             "key": "field_67ea25d85db94",
@@ -151,12 +152,11 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": "pdf, mp4, mkv",
+                            "mime_types": "pdf, mp4, mkv, xls",
                             "allow_in_bindings": 0,
                             "parent_repeater": "field_67ea25b65db93"
                         }
-                    ],
-                    "parent_repeater": "field_67ea257c5db92"
+                    ]
                 }
             ]
         },
@@ -230,7 +230,7 @@
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
-                    "mime_types": "pdf, mp4, mkv",
+                    "mime_types": "pdf, mp4, mkv, xls",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ea6d8ae89e4"
                 }
@@ -255,5 +255,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743420289
+    "modified": 1743429380
 }
