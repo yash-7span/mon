@@ -24,7 +24,7 @@ if($select_investor_relations):
             $image = get_the_post_thumbnail_url($id) ?? '';
             $permalink = !empty($attachment) ?  $attachment : get_the_permalink($id);
 
-            $button_title =  !empty($attachment) ? 'Download' : 'View All';
+            $button_title =  !empty($attachment) ? 'Download' : 'Learn More';
             ?>
             <div class="col-lg-4 col-md-6 invest_mb">
                 <div class="investor-main">

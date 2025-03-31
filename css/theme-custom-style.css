@@ -77,3 +77,44 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     height: auto;
     max-height: 600px;
 }
+/* Investor Page CSS End */
+
+/* Shareholder Block CSS Start  */
+
+.shareholder_services .row:last-child{
+    border-bottom: none;
+}
+
+/* Shareholder Block CSS End  */
+
+/* Yearly Report Block CSS Start  */
+
+.yearly-report a.file-btn::before{
+    background-image : url('../images/d-variant-arrow.svg');
+}
+.yearly-report a.file-btn::after{
+    background-image : url('../images/white-d-arrow-svg.svg');
+}
+@media (max-width: 575px) {
+    .yearly-report .row .col-md-6:nth-child(2) .annual-points{
+        margin-top:20px;
+    }
+}
+
+/* Yearly Block CSS End  */
+
+/* Blog Page CSS Start  */
+.post-21 .main-hero-banner{
+    background-position:center;
+}
+.post-21 .main-hero-banner::before {
+    background-color: transparent;
+}
+/* Blog Page CSS End  */
+
+
+/* Breadcrumb Block CSS Start  */
+.breadcrumb .breadcrumb-nav{
+    --bs-breadcrumb-divider: '>';
+}
+/* BreadCrumb Block CSS End  */

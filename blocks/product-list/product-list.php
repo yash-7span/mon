@@ -1,5 +1,5 @@
 <?php
-// Prodict List  Block Start
+// Product List  Block Start
 
 
 // Check if it's in preview mode

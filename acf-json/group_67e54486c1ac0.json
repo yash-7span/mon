@@ -24,6 +24,63 @@
             "append": ""
         },
         {
+            "key": "field_67ea627241b0b",
+            "label": "Select Year Type",
+            "name": "select_year_type",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Current Year": "Current Year",
+                "Static Year": "Static Year"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "allow_in_bindings": 0,
+            "layout": "vertical",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_67ea629c41b0c",
+            "label": "Enter Year",
+            "name": "enter_year",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_67ea627241b0b",
+                        "operator": "==",
+                        "value": "Static Year"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 4,
+            "max": 4,
+            "allow_in_bindings": 0,
+            "placeholder": 2024,
+            "step": "01",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_67e5449b7041c",
             "label": "Meeting Schedule",
             "name": "meeting_schedule",
@@ -127,5 +184,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743080663
+    "modified": 1743414737
 }
