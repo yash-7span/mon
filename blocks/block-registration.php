@@ -775,7 +775,7 @@ function register_acf_block_types() {
 		'name'              => 'upcoming-meeting', // Block name
 		'title'             => __('Upcoming Meeting'), // Title shown in the block editor
 		'description'       => __('A custom block for Upcoming Meeting list'), // Block description
-		'render_template'   => get_stylesheet_directory_uri(). '/blocks/upcoming-meeting/upcoming-meeting.php', // Path to HTML template file
+		'render_template'   => get_stylesheet_directory(). '/blocks/upcoming-meeting/upcoming-meeting.php', // Path to HTML template file
 		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
 		'icon'              => 'video-alt2', // Block icon (you can use Dashicon or custom SVG)
 		'keywords'          => array('investor', 'relations', 'activity','company', 'blogs', 'build', 'image'),
