@@ -3,7 +3,7 @@
 
 if (!empty($block['data']['is_preview'])): 
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/our-mission-and-vision/our-mission-and-vision-img.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/mission-and-vision/our-mission-and-vision-img.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;
