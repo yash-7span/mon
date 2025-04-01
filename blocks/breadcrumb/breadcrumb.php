@@ -1,7 +1,6 @@
 <?php
 // BreadCrumb Block Code Start 
 
-
 // Check Block Preview is Exists or not
 if (!empty($block['data']['is_preview'])):
 ?>

@@ -119,3 +119,27 @@ function updateLastLangClass() {
 
 // Call the function to update the 'last-lang' class
 updateLastLangClass();
+
+
+
+//  Custom Js for Nav active class add issue
+jQuery(document).ready(function ($) {
+  const nav = $("nav");
+  if (!nav.length) return; // Exit if no nav exists
+
+  const links = nav.find("a");
+  const currentPath = window.location.pathname;
+
+  // Add 'active' class to matching links
+  links.each(function () {
+      if (this.href.endsWith(currentPath)) {
+          $(this).addClass("active");
+      }
+  });
+
+  // If body has class .home, remove .active from all links except the first one
+  if ($("body").hasClass("home")) {
+      const activeLinks = nav.find("a.active");
+      activeLinks.not(":first").removeClass("active");
+  }
+});

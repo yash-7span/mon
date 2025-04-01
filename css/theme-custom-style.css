@@ -1,3 +1,21 @@
+/* Header CSS Start  */
+@media (max-width: 575px) {
+    .header-menus .navbar-nav {
+        padding-top: 0px;
+    }
+    .mobile-block>.navbar-collapse>.navbar-nav{
+        margin-top: 65px;
+     }
+}
+.home .header-menus .nav-item.dropdown .active {
+    color: #000;
+}
+
+.home .header-menus .nav-item.dropdown:first-child .active {
+    color: #74253a !important;
+}
+/* Header CSS End  */
+
 /* News Block CSS Start  */
 .blogs-sec .read-more{
     cursor: pointer;
@@ -51,9 +69,6 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     padding-bottom: 0px !important;
 }
 
-.company-events{
-    padding-top:0px !important;
-}
 
 .upcoming-meetings .inner-upm {
     height: auto;
