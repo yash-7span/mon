@@ -4,7 +4,7 @@
 // Check if the block Preview is exits or not
 if (!empty($block['data']['is_preview'])):
 ?>
-    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/policy-section/policy-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
+    <img src="<?php echo esc_url(get_stylesheet_directory_uri() . '/blocks/our-policies/policy-section.png'); ?>" alt="Preview" style="width: 100%; height: auto;">
 <?php
     return;
 endif;
