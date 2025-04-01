@@ -46,494 +46,117 @@ if ($header_cta_button) {
      $mobile_quick_app_button_text = $header_cta_button['mobile_quick_app_button_text'];
 }
 
-// Quick Now Popup
+// Quick Now Popup 
 $quick_now_popup_tagline = get_field('pop_up_description', 'option') ?? '';
-if(!empty($quick_now_popup_tagline)):
+if (!empty($quick_now_popup_tagline)):
      $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $quick_now_popup_tagline);
      $quick_now_popup_button_text  = esc_html(get_field('quick_now_button_text', 'option')) ?? '';
-     ?>
+?>
      <div class="add-full-block" style="display: block;">
           <div class="inner-addfull">
                <p class="mb-0 text-black text-center">
-                    <?php echo $description;?>
-                    <button data-bs-toggle="modal" data-bs-target="#openPopup" class="head_btn link_re"><span class=""><?php echo $quick_now_popup_button_text;?></span></button>
+                    <?php echo $description; ?>
+                    <button data-bs-toggle="modal" data-bs-target="#openPopup" class="head_btn link_re"><span class=""><?php echo $quick_now_popup_button_text; ?></span></button>
                </p>
                <div class="close_add_btn">
-                    <img src="./images/add-close-v.svg" alt="" class="img-fluid">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/images/add-close-v.svg'; ?>" alt="" class="img-fluid">
                </div>
           </div>
      </div>
-<?php endif;?>
+<?php endif; ?>
+
+<!-- Marquee Section Start  -->
 <div class="header-container">
      <div class="create-marquee marquee-block">
           <div class="flex marquee-inner">
-               <div class="flex marquee-text">
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
+               <?php
+               $marquee_location = array();
+               $args = array(
+                    'post_type' => 'fuel-price',
+                    'posts_per_page' => -1,
+                    'order' => 'ASC',
+                    'order_by' => 'date',
+               );
+               $query = new WP_Query($args);
 
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
+               if ($query->have_posts()) :
+                    while ($query->have_posts()) :
+                         $query->the_post();
+                         $id = get_the_ID();
+                         $title = get_the_title();
+                         $slug = basename(get_permalink($id)) ?? '';
+                         $marquee_location[] = array(
+                              'id' => $id,
+                              'title' => $title,
+                              'slug' => $slug,
+                         );
+                         $prices = get_field('latest_prices', $id);
+                         if (!empty($prices)) :
+                              echo '<div class="flex marquee-text" id="' . $slug . '">';
+                              $i = 1; // Initialize $i INSIDE the first loop
+                              foreach ($prices as $price) :
+                                   $label = $price['label'] ?? '';
+                                   $value = $price['value'] ?? '';
+                                   $label_color = $price['label_color'] ?? '#fff';
+                                   ?>
+                                   <span class="flex m-item">
+                                        <span class="d-inline-block grand-bold title title-highlight">
+                                             <span style="color:<?php echo $label_color; ?>"><?php echo $label; ?>:</span>
+                                             <span class="hover_blue">₦<?php echo $value; ?></span>
+                                        </span>
+                                        <ul class="dropdown tooltip_btn">
+                                             <li class="text-black mb-0 option_text">
+                                                  <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re" target="_blank">Are you a retail customer?</a>
+                                                  OR
+                                                  <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
+                                             </li>
+                                             <div class="traingle-up"></div>
+                                        </ul>
+                                   </span>
 
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-               </div>
-               <div class="flex marquee-text">
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <div class="yellow_dot"></div>
-                         <span class="d-inline-block text_price title-highlight">Check out the
-                              latest prices!</span>
-                         <div class="yellow_dot"></div>
-
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_blue">PMS</span>
-                              <span class="hover_blue">₦26.75</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_green">AGO</span>
-                              <span class="hover_green">₦25.75</span>
-
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/2/automotive-gas-oil" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-                    <span class="flex m-item">
-                         <span class="d-inline-block grand-bold title title-highlight">
-                              <span class="t_yellow"> LPG</span>
-                              <span class="hover_yellow"> ₦25.78</span>
-                         </span>
-                         <ul class="dropdown tooltip_btn">
-                              <li class="text-black mb-0 option_text">
-                                   <a href="https://quickmart.com/product/3/dual-purpose-kerosene" class="link_re"
-                                        target="_blank">Are you a retail customer?</a>
-                                   OR
-                                   <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
-                              </li>
-                              <div class="traingle-up"></div>
-                         </ul>
-                    </span>
-
-               </div>
+                                   <?php
+                                   if ($i % 3 == 0) :
+                                        echo '
+                                             <span class="flex m-item">
+                                                  <div class="yellow_dot"></div>
+                                                  <span class="d-inline-block text_price title-highlight">Check out the
+                                                  latest prices!</span>
+                                                  <div class="yellow_dot"></div>
+                                             </span>
+                                        ';
+                                   endif;
+                                   $i++;
+                              endforeach;
+                              echo '</div>';
+                         endif;
+                    endwhile;
+                    wp_reset_postdata();
+               endif;
+               ?>
           </div>
      </div>
      <div class="location-dropdown">
           <div class="loc-dropdown-inner">
-               <img src="/wp-content/uploads/2025/03/rl-vector.svg" alt="">
-               <div class="btn-group">
-                    <button type="button" class="btn-city dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                         Lagos, Tanke Road
-                         <div class="arrow">
-                              <div class="arrow-line left"></div>
-                              <div class="arrow-line right"></div>
-                         </div>
-                    </button>
-
-                    <ul class="dropdown-menu">
-                         <li><a class="dropdown-item loc_text vr_padding" href="#">Ogosa Ajegunle</a></li>
-                         <li><a class="dropdown-item loc_text vr_padding" href="#">Church Bus Stop Ogijo</a></li>
-                         <li><a class="dropdown-item loc_text vr_padding" href="#">Shirash-Hauwa Bridge Station</a></li>
-                         <li><a class="dropdown-item loc_text vr_padding" href="#">MRS RORO - Absen Plaza Mishfat</a></li>
-                    </ul>
-               </div>
+          <img src="<?php echo get_stylesheet_directory_uri().'/images/rl-vector.svg';?>" alt="">
+              <div class="btn-group">
+                   <button type="button" class="btn-city dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select Location
+                        <div class="arrow">
+                             <div class="arrow-line left"></div>
+                             <div class="arrow-line right"></div>
+                        </div>
+                   </button>
+                   
+                   <ul class="dropdown-menu">
+                    <?php foreach($marquee_location as $location):?>
+                         <li><a class="dropdown-item loc_text vr_padding" href="#"><?php echo $location['title'];?></a></li>
+                    <?php endforeach;?>
+                   </ul>
+              </div>
           </div>
      </div>
 </div>
+<!-- Marquee Section End  -->
 
 <header class="head">
      <nav class="navbar navbar-expand-lg">

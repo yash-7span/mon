@@ -621,7 +621,7 @@ function register_acf_block_types() {
 			'anchor' => true,         // Enable anchor links
 			'customClassName' => true, // Allow custom CSS classes
 			'color'  => array(
-				'background' => false, // Enables background color support
+				'background' => true, // Enables background color support
 				'text'       => false  // Enables text color support
 			)
 		),
@@ -888,5 +888,6 @@ function register_acf_block_types() {
 			),
 		),
 	));
+	
 }
 add_action('acf/init', 'register_acf_block_types');

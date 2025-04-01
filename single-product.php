@@ -61,7 +61,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
 </style>
 
 </script>
-<div class="about-us main-wrapper product_new">
+<div class="about-us main-wrapper product_new single-product">
     <div class="main-hero-banner servie-img" style="background-image: url('<?php echo esc_url($taxonomy_image_url); ?>');">
         <div class="hero-title">
             <h5 class="yellow-text mb-4 mx-auto">
@@ -179,6 +179,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
                         $product_title = get_the_title();
                         $product_slug  = get_post_field('post_name', get_the_ID());
                         $image_url = get_the_post_thumbnail_url();
+                        $thumbnail = get_field('detail_page_thumbnail', $product_id);
                         $content = get_the_content();
                         $product_performance = get_field('performance', $product_id);
                         $permalink = get_the_permalink();
@@ -202,7 +203,11 @@ $head_office_address_email = get_field('head_office_email', 'option');
                         } else {
                             $class = '';
                         }
-                ?>
+
+                        if(!empty($thumbnail)):
+                            $image_url = $thumbnail;
+                        endif;
+                        ?>
                         <div class="tab-pane <?php echo $class; ?>" id="p<?php echo $index; ?>" role="tabpanel">
                             <div class="row">
                                 <div class="col-lg-6 col-sm-6 ">
@@ -220,7 +225,7 @@ $head_office_address_email = get_field('head_office_email', 'option');
                                         </div>
                                         <?php if (!empty($content)): ?>
                                             <div class="l-content">
-                                                <h5 class="mb-0 grey-text"><?php echo $content; ?></h5>
+                                                <h5 class="mb-0 grey-text remove-p"><?php echo $content; ?></h5>
                                             </div>
                                         <?php endif; ?>
                                         <?php if (!empty($external_link)): ?>

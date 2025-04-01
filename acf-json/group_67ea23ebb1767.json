@@ -140,7 +140,7 @@
                             "name": "upload_attachment",
                             "aria-label": "",
                             "type": "file",
-                            "instructions": "FIle Allowed : pdf, mp4, mkv, xls, xlsx, jpg, png",
+                            "instructions": "FIle Allowed : pdf, mp4, mkv ,xsl, xls, xlsx, jpg, png",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -152,8 +152,37 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": "pdf, mp4, mkv, xls, xlsx, jpg, png",
+                            "mime_types": "pdf, mp4, mkv ,xsl, xls, xlsx, jpg, png",
                             "allow_in_bindings": 0,
+                            "parent_repeater": "field_67ea25b65db93"
+                        },
+                        {
+                            "key": "field_67eb964ec2b7b",
+                            "label": "Allow Download",
+                            "name": "allow_download",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "Check this to allow download attachment",
+                            "required": 0,
+                            "conditional_logic": [
+                                [
+                                    {
+                                        "field": "field_67ea25e35db95",
+                                        "operator": "!=empty"
+                                    }
+                                ]
+                            ],
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
                             "parent_repeater": "field_67ea25b65db93"
                         }
                     ]
@@ -218,7 +247,7 @@
                     "name": "attachment_file",
                     "aria-label": "",
                     "type": "file",
-                    "instructions": "FIle Allowed : pdf, mp4, mkv, xls, xlsx, jpg, png",
+                    "instructions": "FIle Allowed : pdf, mp4, mkv ,xsl, xls, xlsx, jpg, png",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -230,8 +259,37 @@
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
-                    "mime_types": "pdf, mp4, mkv, xls, xlsx, jpg, png",
+                    "mime_types": "pdf, mp4, mkv ,xsl, xls, xlsx, jpg, png",
                     "allow_in_bindings": 0,
+                    "parent_repeater": "field_67ea6d8ae89e4"
+                },
+                {
+                    "key": "field_67eb96d87aa54",
+                    "label": "Allow Download",
+                    "name": "allow_download",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Check this to allow download attachment",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67ea6dd01a2ee",
+                                "operator": "!=empty"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
                     "parent_repeater": "field_67ea6d8ae89e4"
                 }
             ]
@@ -255,5 +313,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743489277
+    "modified": 1743492854
 }
