@@ -48,7 +48,19 @@ if($header_cta_button){
 
 
 ?>
-
+<div class="add-full-block">
+    <div class="inner-addfull">
+         <p class="mb-0 text-black text-center">
+         Log In and get up to<button class="head_btn cursor_def">
+              <span class="fw-bold link_re text-decoration-none cursor_def">1000 Reward Points</span></button>
+         on your first order.<button data-bs-toggle="modal" data-bs-target="#openPopup" class="head_btn link_re">
+              <span class="">Download QuickMart Now!</span></button>
+         </p>
+         <div class="close_add_btn">
+              <img src="./images/add-close-v.svg" alt="" class="img-fluid">
+         </div>
+    </div>
+</div>
 <div class="header-container">
      <div class="create-marquee marquee-block">
           <div class="flex marquee-inner">

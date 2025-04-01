@@ -1,0 +1,336 @@
+{
+    "key": "group_67eb8ed015131",
+    "title": "Retail Stations",
+    "fields": [
+        {
+            "key": "field_67eb8ed1e4b21",
+            "label": "Select Cardinal Direction",
+            "name": "select_direction",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "north": "North",
+                "east": "East",
+                "west": "West",
+                "south": "South"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67eb8f45e4b22",
+            "label": "Select States",
+            "name": "select_status",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Adamawa": "Adamawa",
+                "Akwa Ibom": "Akwa Ibom",
+                "Anambra": "Anambra",
+                "Bauchi": "Bauchi",
+                "Bayelsa": "Bayelsa",
+                "Benue": "Benue",
+                "Borno": "Borno",
+                "Cross River": "Cross River",
+                "Delta": "Delta",
+                "Ebonyi": "Ebonyi",
+                "Edo": "Edo",
+                "Ekiti": "Ekiti",
+                "Enugu": "Enugu",
+                "Gombe": "Gombe",
+                "Imo": "Imo",
+                "Jigawa": "Jigawa",
+                "Kaduna": "Kaduna",
+                "Kano": "Kano",
+                "Katsina": "Katsina",
+                "Kebbi": "Kebbi",
+                "kogi": "kogi",
+                "Kwara": "Kwara",
+                "Lagos": "Lagos",
+                "Nasarawa": "Nasarawa",
+                "Niger": "Niger",
+                "Ogun": "Ogun",
+                "Ondo": "Ondo",
+                "Osun": "Osun",
+                "Oyo": "Oyo",
+                "Plateau": "Plateau",
+                "Rivers": "Rivers",
+                "Sokoto": "Sokoto",
+                "Taraba": "Taraba",
+                "Yobe": "Yobe",
+                "Zamfara": "Zamfara"
+            },
+            "default_value": false,
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67eb909e6ebb6",
+            "label": "Station Name",
+            "name": "station_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67eb90a86ebb7",
+            "label": "Station Address",
+            "name": "station_address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_67eb90c36ebb8",
+            "label": "Available Fuels",
+            "name": "available_fuels",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_67eb90cc6ebb9",
+                    "label": "Fuels Name",
+                    "name": "fuels_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_67eb90c36ebb8"
+                },
+                {
+                    "key": "field_67eb90de6ebba",
+                    "label": "Fuels Price",
+                    "name": "fuels_price",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "₦",
+                    "append": "",
+                    "parent_repeater": "field_67eb90c36ebb8"
+                }
+            ]
+        },
+        {
+            "key": "field_67eb917322540",
+            "label": "Station Weekdays Timing",
+            "name": "station_weekdays_timing",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67eb91df22541",
+            "label": "Station Weekend Timing",
+            "name": "station_weekend_timing",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67eb9219186c7",
+            "label": "Direction Link",
+            "name": "direction_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67eb941e03004",
+            "label": "Quick Mart Available",
+            "name": "quick_mart_available",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_67eb94ee03005",
+            "label": "Quick Mart Weekdays Timing",
+            "name": "quick_mart_weekdays_timing",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_67eb950e03006",
+            "label": "Quick Mart Weekend Timing",
+            "name": "quick_mart_weekend_timing",
+            "aria-label": "",
+            "type": "time_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "H:i",
+            "return_format": "H:i",
+            "allow_in_bindings": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/retail-station"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1743492449
+}
