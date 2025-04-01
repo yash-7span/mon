@@ -140,7 +140,7 @@
                             "name": "upload_attachment",
                             "aria-label": "",
                             "type": "file",
-                            "instructions": "FIle Allowed : pdf, mp4, mkv",
+                            "instructions": "FIle Allowed : pdf, mp4, mkv, xls, xlsx, jpg, png",
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
@@ -152,7 +152,7 @@
                             "library": "all",
                             "min_size": "",
                             "max_size": "",
-                            "mime_types": "pdf, mp4, mkv, xls, jpg, png",
+                            "mime_types": "pdf, mp4, mkv, xls, xlsx, jpg, png",
                             "allow_in_bindings": 0,
                             "parent_repeater": "field_67ea25b65db93"
                         }
@@ -218,7 +218,7 @@
                     "name": "attachment_file",
                     "aria-label": "",
                     "type": "file",
-                    "instructions": "FIle Allowed : pdf, mp4, mkv",
+                    "instructions": "FIle Allowed : pdf, mp4, mkv, xls, xlsx, jpg, png",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -230,7 +230,7 @@
                     "library": "all",
                     "min_size": "",
                     "max_size": "",
-                    "mime_types": "pdf, mp4, mkv, xls, jpg, png",
+                    "mime_types": "pdf, mp4, mkv, xls, xlsx, jpg, png",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ea6d8ae89e4"
                 }
@@ -255,5 +255,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743430105
+    "modified": 1743489277
 }
