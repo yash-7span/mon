@@ -23,11 +23,19 @@ if($select_investor_relations):
             $attachment = get_field('upload_attachment', $id) ?? '';
             $image = get_the_post_thumbnail_url($id) ?? '';
             $permalink = !empty($attachment) ?  $attachment : get_the_permalink($id);
-
-            $button_title =  !empty($attachment) ? 'Download' : 'Learn More';
+            $slug = basename(get_permalink($id)) ?? '';
+            $button = get_field('button_text', $id);
+            if(!empty($button)):
+                $button_title = $button;
+            elseif(!empty($attachment)):
+                $button_title = 'Download';
+            else:
+                $button_title = "Learn More";
+            endif;
+            
             ?>
             <div class="col-lg-4 col-md-6 invest_mb">
-                <div class="investor-main">
+                <div class="investor-main" id="<?php echo esc_html($slug);?>">
                     <?php if(!empty($image)):?>
                         <div class="inner-img">
                             <img src="<?php echo $image;?>" class="img-fluid image-scale" alt="<?php echo esc_html($title);?>">
