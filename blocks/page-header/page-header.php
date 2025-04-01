@@ -18,12 +18,12 @@ $menu_term_id = get_field('select_header_menu');
 $menu_items = wp_get_nav_menu_items($menu_term_id);
 
 $nav_menu = array();
-foreach($menu_items as $items):
+foreach ($menu_items as $items):
      $nav_menu[] = array(
-          'id' => $items -> ID,
-          'title' => $items-> title,
-          'url' => $items-> url,
-          'menu_item_parent' => $items-> menu_item_parent,
+          'id' => $items->ID,
+          'title' => $items->title,
+          'url' => $items->url,
+          'menu_item_parent' => $items->menu_item_parent,
      );
 endforeach;
 
@@ -36,7 +36,7 @@ if ($contact_button) {
 
 $header_cta_button = get_field('header_buttons');
 
-if($header_cta_button){
+if ($header_cta_button) {
 
      $quick_app_button_text = $header_cta_button['quick_app_text'];
      $quick_app_icon = $header_cta_button['quick_app_icon'];
@@ -46,9 +46,24 @@ if($header_cta_button){
      $mobile_quick_app_button_text = $header_cta_button['mobile_quick_app_button_text'];
 }
 
-
-?>
-
+// Quick Now Popup
+$quick_now_popup_tagline = get_field('pop_up_description', 'option') ?? '';
+if(!empty($quick_now_popup_tagline)):
+     $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $quick_now_popup_tagline);
+     $quick_now_popup_button_text  = esc_html(get_field('quick_now_button_text', 'option')) ?? '';
+     ?>
+     <div class="add-full-block" style="display: block;">
+          <div class="inner-addfull">
+               <p class="mb-0 text-black text-center">
+                    <?php echo $description;?>
+                    <button data-bs-toggle="modal" data-bs-target="#openPopup" class="head_btn link_re"><span class=""><?php echo $quick_now_popup_button_text;?></span></button>
+               </p>
+               <div class="close_add_btn">
+                    <img src="./images/add-close-v.svg" alt="" class="img-fluid">
+               </div>
+          </div>
+     </div>
+<?php endif;?>
 <div class="header-container">
      <div class="create-marquee marquee-block">
           <div class="flex marquee-inner">
@@ -523,17 +538,17 @@ if($header_cta_button){
 <header class="head">
      <nav class="navbar navbar-expand-lg">
           <div class="navbar-logo position-relative">
-               <a class="navbar-brand" >
+               <a class="navbar-brand">
                     <?php
                     // Site Logo
                     if ($site_logo) { ?>
                          <img src="<?php echo $site_logo; ?>" class="img-fluid logo-img" alt="Logo">
-                         <?php 
+                    <?php
                     }
                     //Mobile Logo
                     if ($mobile_header_logo) { ?>
                          <img src="<?php echo $mobile_header_logo; ?>" class="img-fluid logo-img device" alt="Logo Mobile">
-                         <?php
+                    <?php
                     }
                     ?>
                </a>
@@ -544,40 +559,40 @@ if($header_cta_button){
                     <span></span>
                </button>
           </div>
-          
+
           <!-- Nav Menu  -->
           <div class="desk-block header-menus">
                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                         
+
                          <!-- Set Nav Menu  -->
-                         <?php mrs_nav_menu($nav_menu);?>
+                         <?php mrs_nav_menu($nav_menu); ?>
 
                          <li class="nav-item login_btn pop-btn">
                               <button type="button" class="btn nav-link b-padding contact-btn" data-bs-toggle="modal"
                                    data-bs-target="#openPopup">
-                                   <?php 
-                                        //Quick app button icon
-                                        if(isset($quick_app_icon)){ ?>
-                                             <img src="<?php echo $quick_app_icon;?>" alt="Quick app Icon">
-                                        <?php }
+                                   <?php
+                                   //Quick app button icon
+                                   if (isset($quick_app_icon)) { ?>
+                                        <img src="<?php echo $quick_app_icon; ?>" alt="Quick app Icon">
+                                   <?php }
 
-                                        // Get Button Text
-                                        if($quick_app_button_text){ ?>
-                                             <div class="join-us white-text"><?php echo $quick_app_button_text;?></div>
-                                        <?php }
+                                   // Get Button Text
+                                   if ($quick_app_button_text) { ?>
+                                        <div class="join-us white-text"><?php echo $quick_app_button_text; ?></div>
+                                   <?php }
                                    ?>
                               </button>
                          </li>
                          <li class="nav-item login_btn">
-                              <a href="<?php echo $contact_button_link['url'];?>" target="<?php echo $contact_button_link['target']?>"  class="nav-link b-padding contact-btn join-us-btn red-btn">
-                                   <?php 
-                                   
-                                        // Get Contact Button Text
-                                        if(isset($contact_button_text)){ ?>
-                                             <div class="join-us white-text"><?php echo $contact_button_text; ?></div>
-                                             <?php 
-                                        }
+                              <a href="<?php echo $contact_button_link['url']; ?>" target="<?php echo $contact_button_link['target'] ?>" class="nav-link b-padding contact-btn join-us-btn red-btn">
+                                   <?php
+
+                                   // Get Contact Button Text
+                                   if (isset($contact_button_text)) { ?>
+                                        <div class="join-us white-text"><?php echo $contact_button_text; ?></div>
+                                   <?php
+                                   }
                                    ?>
                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
                                         viewBox="0 0 21 12" fill="none">
@@ -589,13 +604,13 @@ if($header_cta_button){
                          <li class="nav-item login_btn">
                               <a class="nav-link b-padding contact-btn join-us-btn red-btn" data-bs-toggle="modal"
                                    data-bs-target="#LoginPopup">
-                                   <?php 
-                                   
-                                        // Get Login Button Text
-                                        if(isset($login_button_text)){ ?>
-                                             <div class="join-us white-text"><?php echo $login_button_text; ?></div>
-                                             <?php 
-                                        }
+                                   <?php
+
+                                   // Get Login Button Text
+                                   if (isset($login_button_text)) { ?>
+                                        <div class="join-us white-text"><?php echo $login_button_text; ?></div>
+                                   <?php
+                                   }
                                    ?>
                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
                                         viewBox="0 0 21 12" fill="none">
@@ -612,35 +627,35 @@ if($header_cta_button){
           <!-- Mobile Menu  -->
           <div class="header-menus mobile-block">
                <div class="collapse navbar-collapse" id="navbarNav">
-                    <?php 
-                        mrs_mobile_nav_menu($nav_menu);
+                    <?php
+                    mrs_mobile_nav_menu($nav_menu);
                     ?>
                     <div class="mobile-menu">
                          <li class="nav-item login_btn pop-btn">
                               <button type="button" class="btn nav-link b-padding contact-btn" data-bs-toggle="modal"
                                    data-bs-target="#openPopup">
-                                   <?php 
-                                        //Quick app button icon
-                                        if(isset($quick_app_icon)){ ?>
-                                             <img src="<?php echo $quick_app_icon;?>" alt="Quick app Icon">
-                                        <?php }
+                                   <?php
+                                   //Quick app button icon
+                                   if (isset($quick_app_icon)) { ?>
+                                        <img src="<?php echo $quick_app_icon; ?>" alt="Quick app Icon">
+                                   <?php }
 
-                                        // Get Button Text
-                                        if($mobile_quick_app_button_text){ ?>
-                                             <div class="join-us white-text"><?php echo $mobile_quick_app_button_text;?></div>
-                                        <?php }
+                                   // Get Button Text
+                                   if ($mobile_quick_app_button_text) { ?>
+                                        <div class="join-us white-text"><?php echo $mobile_quick_app_button_text; ?></div>
+                                   <?php }
                                    ?>
                               </button>
                          </li>
                          <div class="fix-menu-btn">
                               <li class="nav-item login_btn">
-                                   <a  href="<?php echo $contact_button_link['url'];?>" target="<?php echo $contact_button_link['target']?>"  class="nav-link b-padding contact-btn join-us-btn red-btn">
-                                        <?php 
-                                   
+                                   <a href="<?php echo $contact_button_link['url']; ?>" target="<?php echo $contact_button_link['target'] ?>" class="nav-link b-padding contact-btn join-us-btn red-btn">
+                                        <?php
+
                                         // Get Contact Button Text
-                                        if(isset($contact_button_text)){ ?>
+                                        if (isset($contact_button_text)) { ?>
                                              <div class="join-us white-text"><?php echo $contact_button_text; ?></div>
-                                             <?php 
+                                        <?php
                                         }
                                         ?>
                                         <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
@@ -653,12 +668,12 @@ if($header_cta_button){
                               <li class="nav-item login_btn">
                                    <a class="nav-link b-padding contact-btn join-us-btn red-btn" data-bs-toggle="modal"
                                         data-bs-target="#LoginPopup">
-                                        <?php 
-                                   
+                                        <?php
+
                                         // Get Login Button Text
-                                        if(isset($login_button_text)){ ?>
+                                        if (isset($login_button_text)) { ?>
                                              <div class="join-us white-text"><?php echo $login_button_text; ?></div>
-                                             <?php 
+                                        <?php
                                         }
                                         ?>
                                         <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12"
@@ -795,7 +810,7 @@ $login_buttons = $login_popup['login_buttons'] ?? [];
                                              $class = "staff_login";
                                         }
                                    ?>
-                                        <div class="<?php echo $class;?> ">
+                                        <div class="<?php echo $class; ?> ">
                                              <div class="nav-item login_btn">
                                                   <a href="<?php echo esc_url($button_url); ?>" target="<?php echo $new_tab; ?>" class="nav-link b-padding contact-btn join-us-btn max_width red-btn">
                                                        <div class="join-us white-text"><?php echo esc_html($button_text); ?></div>
