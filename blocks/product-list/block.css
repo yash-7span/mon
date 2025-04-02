@@ -26,10 +26,26 @@ a.file-btn::before{
 a.file-btn::after{
     background-image: url("./white-d-arrow-svg.svg");
 }
-
 .product-grid{
-    display: grid;
-    grid-template-rows: subgrid;
-    grid-row: 1 / 3;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:20px;
+   
 }
 
+.product-grid-item{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+@media (max-width: 992px) {
+    .product-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (max-width: 575px) {
+    .product-grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

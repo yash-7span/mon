@@ -99,7 +99,11 @@ $flag = 0;
         <?php $flag = 0;?>
         <?php foreach($services as $service): $flag++;?>
                 <div class="tab-pane fade <?php if($flag == 1){echo 'show active';}?>" id="<?php echo $service['slug'];?>" role="tabpanel">
+<<<<<<< HEAD
                     <div class="d-grid">
+=======
+                    <div class="d-grid product-grid">
+>>>>>>> a3a68b55bf93b875fbcaa183dc232bcb031ab380
                     <?php
 
                         $args = array(
@@ -141,7 +145,7 @@ $flag = 0;
                                 
                                 $product_class = 'h-col pb-bottom';
                                 ?>
-                                    <div class="product-grid <?php echo $product_class;?>">
+                                    <div class="product-grid-item <?php echo $product_class;?>">
                                         <a href="<?php echo esc_url($permalink);?>" class="tab-open">
                                             <div class="inspire-main">
                                                 <img src="<?php echo esc_url($featured_image);?>" class="img-fluid" alt="<?php echo esc_attr($title);?>">
