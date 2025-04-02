@@ -45,6 +45,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize Select2 for the dropdown
+    var dropdown = document.querySelector(".searching-dropdown");
+    if (dropdown) {
+        $(dropdown).select2({
+            placeholder: "Search here...",
+        });
+
+        // Set the placeholder text when Select2 opens
+        dropdown.addEventListener("select2:open", function () {
+            let searchField = document.querySelector(".select2-search__field");
+            if (searchField) {
+                searchField.placeholder = "Search here...";
+            }
+        }, { once: true }); // Ensures this event runs only once
+    }
+});
 // Remove P tag from description Start
 function removePTags() {
   const elements = document.querySelectorAll(".remove-p");
