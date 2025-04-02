@@ -813,3 +813,14 @@ jQuery(document).ready(function ($) {
      }
  });
  
+// retail stations
+ jQuery(document).ready(function() {
+     jQuery('.searching-dropdown').select2({     
+          searchInputPlaceholder: 'Search here...'
+     });
+
+     jQuery('.searching-dropdown').one('select2:open', function(e) {
+          jQuery('input.select2-search__field').prop('placeholder', 'Search here...');
+     });
+
+});
