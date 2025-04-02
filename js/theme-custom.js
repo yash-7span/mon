@@ -1,4 +1,4 @@
-// Change Number of Rows of text area in contact form 7
+// Change Number of Rows of text area in contact form 7 Code Start
 document.addEventListener("DOMContentLoaded", function () {
   const textarea = document.querySelector('textarea[name="message"]');
 
@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     textarea.rows = "5";
   }
 });
+// Change Number of Rows of text area in contact form 7 Code End
 
 // Select the field value based on active post
 document.addEventListener("DOMContentLoaded", function () {
@@ -43,10 +44,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Remove P tag from description
+
+// Remove P tag from description Start
 function removePTags() {
-    const elements = document.querySelectorAll(".remove-p");
-    elements.forEach((element) => {
+  const elements = document.querySelectorAll(".remove-p");
+  elements.forEach((element) => {
     const pTags = element.querySelectorAll("p");
     pTags.forEach((p) => {
       const textNode = document.createTextNode(p.textContent);
@@ -56,4 +58,30 @@ function removePTags() {
     element.normalize();
   });
 }
-document.addEventListener('DOMContentLoaded', removePTags);
+document.addEventListener("DOMContentLoaded", removePTags);
+// Remove P tag from description End
+
+
+// Marquee Slider Start
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownMenu = document.querySelector(".dropdown-menu_marquee");
+  const marqueeInner = document.querySelector('.flex.marquee-inner');
+  if (dropdownMenu) {
+    dropdownMenu.addEventListener("click", function (event) {
+      const listItem = event.target.closest("li");
+      if (listItem) {
+        const listItemId = listItem.id;
+        const marqueeItems = marqueeInner.querySelectorAll('.marquee_items'); 
+
+        marqueeItems.forEach(item => {
+            if (item.id === listItemId) {
+              item.style.display = "flex"; 
+            } else {
+              item.style.display = "none"; 
+            }
+        });
+      }
+    });
+  }
+});
+// Marquee Slider Start

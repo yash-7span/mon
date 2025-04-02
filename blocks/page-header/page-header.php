@@ -46,12 +46,12 @@ if ($header_cta_button) {
      $mobile_quick_app_button_text = $header_cta_button['mobile_quick_app_button_text'];
 }
 
-// Quick Now Popup 
+// Quick Now Popup Section Start
 $quick_now_popup_tagline = get_field('pop_up_description', 'option') ?? '';
 if (!empty($quick_now_popup_tagline)):
      $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $quick_now_popup_tagline);
      $quick_now_popup_button_text  = esc_html(get_field('quick_now_button_text', 'option')) ?? '';
-?>
+     ?>
      <div class="add-full-block" style="display: block;">
           <div class="inner-addfull">
                <p class="mb-0 text-black text-center">
@@ -59,31 +59,37 @@ if (!empty($quick_now_popup_tagline)):
                     <button data-bs-toggle="modal" data-bs-target="#openPopup" class="head_btn link_re"><span class=""><?php echo $quick_now_popup_button_text; ?></span></button>
                </p>
                <div class="close_add_btn">
-                    <img src="<?php echo get_stylesheet_directory_uri() . '/images/add-close-v.svg'; ?>" alt="" class="img-fluid">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/images/add-close-v.svg'; ?>" alt="Close" class="img-fluid">
                </div>
           </div>
      </div>
 <?php endif; ?>
+<!-- Quick Now Popup Section End -->
 
-<!-- Marquee Section Start  -->
-<div class="header-container">
-     <div class="create-marquee marquee-block">
-          <div class="flex marquee-inner">
-               <?php
-               $marquee_location = array();
-               $args = array(
-                    'post_type' => 'fuel-price',
-                    'posts_per_page' => -1,
-                    'order' => 'ASC',
-                    'order_by' => 'date',
-               );
-               $query = new WP_Query($args);
 
-               if ($query->have_posts()) :
+<!-- Marquee Slider Section Start  -->
+<?php
+$marquee_location = array();
+$args = array(
+     'post_type' => 'fuel-price',
+     'posts_per_page' => -1,
+     'order' => 'ASC',
+     'order_by' => 'date',
+);
+$query = new WP_Query($args);
+
+if ($query->have_posts()) :
+     $flag = true;
+     ?>
+     <div class="header-container">
+          <div class="create-marquee marquee-block">
+               <!-- Display Latest Fuel Prices  -->
+               <div class="flex marquee-inner">
+                    <?php
                     while ($query->have_posts()) :
                          $query->the_post();
-                         $id = get_the_ID();
-                         $title = get_the_title();
+                         $id = get_the_ID() ?? '';
+                         $title = get_the_title() ?? '';
                          $slug = basename(get_permalink($id)) ?? '';
                          $marquee_location[] = array(
                               'id' => $id,
@@ -91,8 +97,9 @@ if (!empty($quick_now_popup_tagline)):
                               'slug' => $slug,
                          );
                          $prices = get_field('latest_prices', $id);
+                         $style = ($flag == true) ? 'style="display:flex;"' : 'style="display:none"';
                          if (!empty($prices)) :
-                              echo '<div class="flex marquee-text" id="' . $slug . '">';
+                              echo '<div class="flex marquee-text marquee_items" id="p' . $id . '" ' . $style . '>';
                               $i = 1; // Initialize $i INSIDE the first loop
                               foreach ($prices as $price) :
                                    $label = $price['label'] ?? '';
@@ -108,7 +115,7 @@ if (!empty($quick_now_popup_tagline)):
                                              <li class="text-black mb-0 option_text">
                                                   <a href="https://quickmart.com/product/1/premium-motor-spirit" class="link_re" target="_blank">Are you a retail customer?</a>
                                                   OR
-                                                  <a href="contact-us.html#redirect_sec" class="link_re">corporate customer?</a>
+                                                  <a href="https://mon.span10.com/contact-us/#redirect_sec" class="link_re">corporate customer?</a>
                                              </li>
                                              <div class="traingle-up"></div>
                                         </ul>
@@ -129,34 +136,43 @@ if (!empty($quick_now_popup_tagline)):
                               endforeach;
                               echo '</div>';
                          endif;
+                         $flag = false;
                     endwhile;
                     wp_reset_postdata();
-               endif;
-               ?>
+                    ?>
+               </div>
+          </div>
+
+          <!-- Display Location  -->
+          <div class="location-dropdown marquee_dropdown">
+               <div class="loc-dropdown-inner">
+                    <img src="<?php echo get_stylesheet_directory_uri() . '/images/rl-vector.svg'; ?>" alt="Fuel Price">
+                    <div class="btn-group">
+                         <button type="button" class="btn-city dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              Lagos, Tanke Road
+                              <div class="arrow">
+                                   <div class="arrow-line left"></div>
+                                   <div class="arrow-line right"></div>
+                              </div>
+                         </button>
+
+                         <ul class="dropdown-menu dropdown-menu_marquee">
+                              <?php foreach ($marquee_location as $location):
+                                   $title = $location['title'];
+                                   if (strlen($title) > 20) {
+                                        $title = substr($title, 0, 20) . "..";
+                                   }
+                                   ?>
+                                   <li id="<?php echo 'p' . $location['id']; ?>"><a class="dropdown-item loc_text vr_padding" href="#"><?php echo $title; ?></a></li>
+                              <?php endforeach; ?>
+                         </ul>
+                    </div>
+               </div>
           </div>
      </div>
-     <div class="location-dropdown">
-          <div class="loc-dropdown-inner">
-          <img src="<?php echo get_stylesheet_directory_uri().'/images/rl-vector.svg';?>" alt="">
-              <div class="btn-group">
-                   <button type="button" class="btn-city dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select Location
-                        <div class="arrow">
-                             <div class="arrow-line left"></div>
-                             <div class="arrow-line right"></div>
-                        </div>
-                   </button>
-                   
-                   <ul class="dropdown-menu">
-                    <?php foreach($marquee_location as $location):?>
-                         <li><a class="dropdown-item loc_text vr_padding" href="#"><?php echo $location['title'];?></a></li>
-                    <?php endforeach;?>
-                   </ul>
-              </div>
-          </div>
-     </div>
-</div>
-<!-- Marquee Section End  -->
+<?php endif; ?>
+<!-- Marquee Sider Section End  -->
+
 
 <header class="head">
      <nav class="navbar navbar-expand-lg">
