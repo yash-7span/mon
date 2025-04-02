@@ -641,7 +641,7 @@ function register_acf_block_types() {
 			'align' => true,          // Allow alignment options
 		),
 		'enqueue_assets' => function(){
-			wp_enqueue_style( 'product_lists_css', get_stylesheet_directory_uri() . '/blocks/product-list/block.css' );
+			wp_enqueue_style( 'product_lists_css', get_stylesheet_directory_uri() . '/blocks/product-list/block.css',arrat(), time() );
 		},
 		// Add example for the preview image
 		'example' => array(
