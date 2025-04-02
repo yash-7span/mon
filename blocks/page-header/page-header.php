@@ -52,7 +52,7 @@ if (!empty($quick_now_popup_tagline)):
      $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $quick_now_popup_tagline);
      $quick_now_popup_button_text  = esc_html(get_field('quick_now_button_text', 'option')) ?? '';
      ?>
-     <div class="add-full-block" style="display: block;">
+     <div class="add-full-block">
           <div class="inner-addfull">
                <p class="mb-0 text-black text-center">
                     <?php echo $description; ?>
