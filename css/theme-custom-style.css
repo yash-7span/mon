@@ -134,7 +134,7 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 }
 
 .single-product .leader-tabs.pro .leader-img {
-    height: 530px;
+    height: auto;
     width: auto;
 }
 
