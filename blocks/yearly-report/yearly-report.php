@@ -64,6 +64,8 @@ endif;
                                         if(!empty($upload_attachment)):
                                             $attachment_url = $upload_attachment['url'];
                                             $attachment_name = $upload_attachment['filename'];
+                                            $allow = get_sub_field('allow_download');
+                                            $button_type = ($allow == 1) ? 'download' : 'title';
                                         endif;
                                         $class = ($i > 2) ? 'space-top' : '';
                                         $mobile_class = ($m == true) ? '' : 'm-space-top';
@@ -73,7 +75,7 @@ endif;
                                                     <h5 class="mb-0 fw-bold"><?php echo esc_html($attachment_title);?></h5>
                                                     <?php if(!empty($upload_attachment)):?>
                                                         <div class="item-download">
-                                                            <a href="<?php echo $attachment_url;?>" title="<?php echo esc_html($attachment_name);?>" class="file-btn">
+                                                            <a href="<?php echo $attachment_url;?>" <?php echo $button_type .'='.esc_html($attachment_name);?> class="file-btn">
                                                                 <svg class="d-line" width="26" height="8" viewBox="0 0 26 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path id="Vector" d="M1 1.33871V2.66671C1 3.72757 1.47411 4.74499 2.31802 5.49513C3.16193 6.24528 4.30653 6.66671 5.5 6.66671H20.5C21.6935 6.66671 22.8381 6.24528 23.682 5.49513C24.5259 4.74499 25 3.72757 25 2.66671V1.33337" stroke="#555555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                                                 </svg>

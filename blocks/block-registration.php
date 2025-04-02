@@ -621,7 +621,7 @@ function register_acf_block_types() {
 			'anchor' => true,         // Enable anchor links
 			'customClassName' => true, // Allow custom CSS classes
 			'color'  => array(
-				'background' => false, // Enables background color support
+				'background' => true, // Enables background color support
 				'text'       => false  // Enables text color support
 			)
 		),
@@ -883,6 +883,36 @@ function register_acf_block_types() {
 				'mode' => 'preview',
 				'data' => array(
 					'preview_image' => get_stylesheet_directory_uri() . '/blocks/breadcrumb/breadcrumb.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
+		),
+	));
+
+	// Register a Retail Stations block
+	acf_register_block_type(array(
+		'name'              => 'retail-station', // Block name
+		'title'             => ('Retail Stations'), // Title shown in the block editor
+		'description'       => ('A custom block For Retail Stations section'), // Block description
+		'render_template'   => get_stylesheet_directory() . '/blocks/retail-stations/retail-stations.php', // Path to HTML template file
+		'category'          => 'mrs', // Category where the block will appear (you can use your own category)
+		'icon'              => 'location', // Block icon (you can use Dashicon or custom SVG)
+		'keywords'          => array('services', 'stations','retail','locations','retail stations'),
+		'mode'				=> 'preview',
+		'supports' => array(
+			'align' => true,
+			'anchor' => false,
+			'customClassName' => true, 
+			'color'  => array(
+				'background' => true, 
+				'text'       => true  
+			)
+		),
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/retail-stations/retail-station-img.png', // Path to your preview image
 					'is_preview'    => true
 				),
 			),

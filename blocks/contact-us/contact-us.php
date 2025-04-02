@@ -22,7 +22,7 @@ $email_address = get_field('email_address');
 $telephone_number = get_field('telephone_number');
 ?>
 
-<div class="contact-sec sec-padding container-fluid update_section">
+<div class="contact-sec sec-padding container-fluid update_section" id="get-in-touch">
      <div class="row">
           <div class="col-12">
 
