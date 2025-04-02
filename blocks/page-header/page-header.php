@@ -52,7 +52,7 @@ if (!empty($quick_now_popup_tagline)):
      $description = preg_replace('/^<p>(.*?)<\/p>/i', '$1', $quick_now_popup_tagline);
      $quick_now_popup_button_text  = esc_html(get_field('quick_now_button_text', 'option')) ?? '';
      ?>
-     <div class="add-full-block" style="display: block;">
+     <div class="add-full-block">
           <div class="inner-addfull">
                <p class="mb-0 text-black text-center">
                     <?php echo $description; ?>
@@ -86,20 +86,24 @@ if ($query->have_posts()) :
                <!-- Display Latest Fuel Prices  -->
                <div class="flex marquee-inner">
                     <?php
+                    $j= 1;
+                    for($j=1; $j<=2; $j++):
                     while ($query->have_posts()) :
                          $query->the_post();
                          $id = get_the_ID() ?? '';
                          $title = get_the_title() ?? '';
                          $slug = basename(get_permalink($id)) ?? '';
-                         $marquee_location[] = array(
-                              'id' => $id,
-                              'title' => $title,
-                              'slug' => $slug,
-                         );
+                         if($j === 1):
+                              $marquee_location[] = array(
+                                   'id' => $id,
+                                   'title' => $title,
+                                   'slug' => $slug,
+                              );
+                         endif;
                          $prices = get_field('latest_prices', $id);
-                         $style = ($flag == true) ? 'style="display:flex;"' : 'style="display:none"';
+                         // $style = ($flag == true) ? 'style="display:flex;"' : 'style="display:none"';
                          if (!empty($prices)) :
-                              echo '<div class="flex marquee-text marquee_items" id="p' . $id . '" ' . $style . '>';
+                              echo '<div class="flex marquee-text marquee_items" id="p' . $id . '" >';
                               $i = 1; // Initialize $i INSIDE the first loop
                               foreach ($prices as $price) :
                                    $label = $price['label'] ?? '';
@@ -138,6 +142,7 @@ if ($query->have_posts()) :
                          endif;
                          $flag = false;
                     endwhile;
+               endfor;
                     wp_reset_postdata();
                     ?>
                </div>
