@@ -99,11 +99,7 @@ $flag = 0;
         <?php $flag = 0;?>
         <?php foreach($services as $service): $flag++;?>
                 <div class="tab-pane fade <?php if($flag == 1){echo 'show active';}?>" id="<?php echo $service['slug'];?>" role="tabpanel">
-<<<<<<< HEAD
-                    <div class="d-grid">
-=======
                     <div class="d-grid product-grid">
->>>>>>> a3a68b55bf93b875fbcaa183dc232bcb031ab380
                     <?php
 
                         $args = array(
