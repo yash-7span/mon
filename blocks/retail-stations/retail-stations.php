@@ -60,8 +60,10 @@ endif;
             <div class="accordion" id="RetailStation">
                 <?php 
                     if (have_rows('retail_stations_information')):
+                        $count = 1; // Initialize counter
                         while (have_rows('retail_stations_information')):
                             the_row();
+                            
                             $selected_direction = get_sub_field('select_direction');
                             $selected_states = get_sub_field('select_states');
                             $station_name = get_sub_field('station_name');
@@ -75,7 +77,13 @@ endif;
                                         <div class="row width_rt">
                                             <div class="col-md-1">
                                                 <div class="loc-number">
-                                                    <h3 class="mb-0 light-grey">001</h3>
+                                                    <h3 class="mb-0 light-grey">
+                                                        <?php
+                                                            $formatted_count = str_pad($count, 3, '0', STR_PAD_LEFT);
+                                                            echo $formatted_count . "<br>"; // Output the formatted count
+                                                            $count++; // Increment counter
+                                                        ?>
+                                                    </h3>
                                                 </div>
                                             </div>
                                             <div class="col-md-11">

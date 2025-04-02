@@ -347,13 +347,48 @@
                 },
                 {
                     "key": "field_67eb94ee03005",
-                    "label": "Quick Mart Weekdays Timing",
-                    "name": "quick_mart_weekdays_timing",
+                    "label": "Quick Mart Weekdays Start Timing",
+                    "name": "quick_mart_weekdays_start_timing",
                     "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67eb941e03004",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "H A",
+                    "return_format": "H A",
+                    "allow_in_bindings": 0,
+                    "parent_repeater": "field_67ebb0882570b"
+                },
+                {
+                    "key": "field_67ece8c631c5c",
+                    "label": "Quick Mart Weekdays End Timing",
+                    "name": "quick_mart_weekdays_end_timing",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67eb941e03004",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -366,13 +401,48 @@
                 },
                 {
                     "key": "field_67eb950e03006",
-                    "label": "Quick Mart Weekend Timing",
-                    "name": "quick_mart_weekend_timing",
+                    "label": "Quick Mart Weekend Start Timing",
+                    "name": "quick_mart_weekend_start_timing",
                     "aria-label": "",
                     "type": "time_picker",
                     "instructions": "",
                     "required": 0,
-                    "conditional_logic": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67eb941e03004",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "H A",
+                    "return_format": "H A",
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_67ebb0882570b"
+                },
+                {
+                    "key": "field_67ece8ed31c5d",
+                    "label": "Quick Mart Weekend End Timing",
+                    "name": "quick_mart_weekend_end_timing",
+                    "aria-label": "",
+                    "type": "time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_67eb941e03004",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
                     "wrapper": {
                         "width": "",
                         "class": "",
@@ -404,5 +474,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743512654
+    "modified": 1743579449
 }
