@@ -80,7 +80,7 @@ endif;
                                                     <h3 class="mb-0 light-grey">
                                                         <?php
                                                             $formatted_count = str_pad($count, 3, '0', STR_PAD_LEFT);
-                                                            echo $formatted_count . "<br>"; // Output the formatted count
+                                                            echo $formatted_count;// Output the formatted count
                                                             $count++; // Increment counter
                                                         ?>
                                                     </h3>
