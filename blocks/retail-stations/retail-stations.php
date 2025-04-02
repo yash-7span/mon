@@ -81,7 +81,7 @@ endif;
                                                         <?php
                                                             $formatted_count = str_pad($count, 3, '0', STR_PAD_LEFT);
                                                             echo $formatted_count;// Output the formatted count
-                                                            $count++; // Increment counter
+                                                           
                                                         ?>
                                                     </h3>
                                                 </div>
@@ -237,6 +237,7 @@ endif;
                                 </div>
                             </div>
                         <?php
+                         $count++; // Increment counter
                         endwhile; 
                     endif;
                 ?>
