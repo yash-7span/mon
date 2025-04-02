@@ -27,3 +27,9 @@ a.file-btn::after{
     background-image: url("./white-d-arrow-svg.svg");
 }
 
+.product-grid{
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: 1 / 3;
+}
+
