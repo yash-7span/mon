@@ -1,6 +1,6 @@
 {
     "key": "group_67ebb80ee7293",
-    "title": "Fuel Prices Meta Field",
+    "title": "Fuel Prices",
     "fields": [
         {
             "key": "field_67ebb83f43879",
@@ -111,5 +111,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743662870
+    "modified": 1743688510
 }
