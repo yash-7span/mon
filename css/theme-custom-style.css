@@ -118,6 +118,9 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 
 
 /* Hero Banner */
+.one-slide .join-us-btn{
+    width:19em;
+}
 /* @media (max-width: 1600px) {
     .main-hero-banner{
         height: calc(600px - 120px) !important;
