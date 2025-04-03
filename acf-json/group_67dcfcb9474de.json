@@ -1,6 +1,6 @@
 {
     "key": "group_67dcfcb9474de",
-    "title": "Hero Banner",
+    "title": "Page Hero Section",
     "fields": [
         {
             "key": "field_67dcfcba468df",
@@ -92,7 +92,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "all"
+                "value": "acf\/page-hero"
             }
         ]
     ],
@@ -105,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743663300
+    "modified": 1743680435
 }
