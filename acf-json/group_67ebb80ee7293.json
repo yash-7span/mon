@@ -1,6 +1,6 @@
 {
     "key": "group_67ebb80ee7293",
-    "title": "Fuel Prices Per Location",
+    "title": "Fuel Prices Meta Field",
     "fields": [
         {
             "key": "field_67ebb83f43879",
@@ -66,7 +66,7 @@
                     "allow_in_bindings": 0,
                     "placeholder": "",
                     "step": "",
-                    "prepend": "",
+                    "prepend": "₦",
                     "append": "",
                     "parent_repeater": "field_67ebb83f43879"
                 },
@@ -111,5 +111,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743511432
+    "modified": 1743662870
 }

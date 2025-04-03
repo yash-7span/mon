@@ -1,6 +1,6 @@
 {
     "key": "group_67dcfcb9474de",
-    "title": "Page Hero Section",
+    "title": "Hero Banner",
     "fields": [
         {
             "key": "field_67dcfcba468df",
@@ -28,9 +28,9 @@
             "label": "Description",
             "name": "description",
             "aria-label": "",
-            "type": "wysiwyg",
+            "type": "textarea",
             "instructions": "",
-            "required": 0,
+            "required": false,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -38,11 +38,10 @@
                 "id": ""
             },
             "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": "",
+            "rows": ""
         },
         {
             "key": "field_67dcfcfe468e1",
@@ -69,6 +68,23 @@
             "mime_types": "",
             "allow_in_bindings": 0,
             "preview_size": "medium"
+        },
+        {
+            "key": "field_67ee30b0efbaf",
+            "label": "Hero Button",
+            "name": "hero_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
         }
     ],
     "location": [
@@ -76,7 +92,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/page-hero"
+                "value": "all"
             }
         ]
     ],
@@ -89,5 +105,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742908946
+    "modified": 1743663300
 }

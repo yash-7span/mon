@@ -17,7 +17,7 @@
 /* Header CSS End  */
 
 /* News Block CSS Start  */
-.blogs-sec .read-more{
+.blogs-sec .read-more .read-more-btn{
     cursor: pointer;
 }
 
@@ -114,6 +114,13 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 .breadcrumb .breadcrumb-nav{
     --bs-breadcrumb-divider: '>';
 }
+@media (min-width: 768px)
+{
+    .breadcrumb .breadcrumb-nav{
+        --bs-breadcrumb-divider: '>';
+        font-size: 21px;
+    }  
+}
 /* BreadCrumb Block CSS End  */
 
 
@@ -121,6 +128,21 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 .one-slide .join-us-btn{
     width:19em;
 }
+.page-hero .rslocation-btn{
+    margin:0;
+}
+.page-hero .hero_button{
+    max-width: fit-content;
+}
+.page-hero .hero_button .join-us-btn{
+    margin:auto;
+}
+.hero-title .heading_top{
+    margin-top: -20px;
+}
+/* #post-958 .page-hero .main-hero-banner {
+    height: calc(600px - 120px);
+} */
 /* @media (max-width: 1600px) {
     .main-hero-banner{
         height: calc(600px - 120px) !important;
