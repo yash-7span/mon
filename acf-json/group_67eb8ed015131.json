@@ -179,6 +179,7 @@
                     "collapsed": "",
                     "button_label": "Add Available Fuels data",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_67ebb0882570b",
                     "sub_fields": [
                         {
                             "key": "field_67eb90cc6ebb9",
@@ -226,8 +227,7 @@
                             "append": "",
                             "parent_repeater": "field_67eb90c36ebb8"
                         }
-                    ],
-                    "parent_repeater": "field_67ebb0882570b"
+                    ]
                 },
                 {
                     "key": "field_67eb917322540",
@@ -243,8 +243,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -262,8 +262,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -300,8 +300,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -367,8 +367,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -394,8 +394,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 0,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -421,8 +421,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 1,
                     "parent_repeater": "field_67ebb0882570b"
                 },
@@ -448,8 +448,8 @@
                         "class": "",
                         "id": ""
                     },
-                    "display_format": "H A",
-                    "return_format": "H A",
+                    "display_format": "h A",
+                    "return_format": "h A",
                     "allow_in_bindings": 1,
                     "parent_repeater": "field_67ebb0882570b"
                 }
@@ -474,5 +474,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1743579449
+    "modified": 1743744470
 }

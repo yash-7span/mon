@@ -72,7 +72,7 @@ $className = $block['className'] ?? '';
                             $station_name = get_sub_field('station_name');
                             $station_address = get_sub_field('station_address');
                             $direction_link = get_sub_field('direction_link');
-
+                            // echo '<pre>';print_r($direction_link);
                             // Station Timing ACF Field
                             $station_weekdays_starting_time = get_sub_field('station_weekdays_starting_time');
                             $station_weekdays_closing_time = get_sub_field('station_weekdays_closing_time');
@@ -215,8 +215,8 @@ $className = $block['className'] ?? '';
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <?php if(!empty($quick_mart_available)):?>
-                                                        <div class="col_rs_5 rs_flex">
+                                                    <div class="col_rs_5 rs_flex">
+                                                        <?php if(!empty($quick_mart_available)):?>
                                                             <div class="rs-available rs-timing">
                                                                 <div class="list-produce align-items-center">
                                                                     <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -238,18 +238,23 @@ $className = $block['className'] ?? '';
                                                                     <p class="mb-0"><?php echo esc_html($quick_mart_weekend_start_timing) .' to '. esc_html($quick_mart_weekend_end_timing);?></p>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    <?php endif;?>
-
-                                                    <div class="direction-btn">
-                                                        <a href="service.html#retailNetwork" class="join-us-btn red-btn">
-                                                            <div class="join-us">Get Directions</div>
-                                                            <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                                <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                                            </svg>
-
-                                                        </a>
+                                                        <?php endif;?>
                                                     </div>
+
+                                                    <?php 
+                                                        if($direction_link['title'] != ''){ ?>
+                                                            <div class="direction-btn">
+                                                                <a href="<?php echo $direction_link['url']; ?>" class="join-us-btn red-btn">
+                                                                    <div class="join-us"><?php echo $direction_link['title']; ?></div>
+                                                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                                        <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                                    </svg>
+
+                                                                </a>
+                                                            </div>
+                                                            <?php  
+                                                        }
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -430,8 +435,8 @@ $className = $block['className'] ?? '';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php if(!empty($quick_mart_available)):?>
-                                                            <div class="col_rs_5 rs_flex">
+                                                        <div class="col_rs_5 rs_flex">
+                                                            <?php if(!empty($quick_mart_available)):?>
                                                                 <div class="rs-available rs-timing">
                                                                     <div class="list-produce align-items-center">
                                                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -453,18 +458,23 @@ $className = $block['className'] ?? '';
                                                                         <p class="mb-0"><?php echo esc_html($quick_mart_weekend_start_timing) .' to '. esc_html($quick_mart_weekend_end_timing);?></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        <?php endif;?>
-
-                                                        <div class="direction-btn">
-                                                            <a href="service.html#retailNetwork" class="join-us-btn red-btn">
-                                                                <div class="join-us">Get Directions</div>
-                                                                <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                                    <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                                                </svg>
-
-                                                            </a>
+                                                            <?php endif;?>
                                                         </div>
+
+                                                        <?php 
+                                                        if($direction_link['title'] != ''){ ?>
+                                                            <div class="direction-btn">
+                                                                <a href="<?php echo $direction_link['url']; ?>" class="join-us-btn red-btn">
+                                                                    <div class="join-us"><?php echo $direction_link['title']; ?></div>
+                                                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                                        <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                                    </svg>
+
+                                                                </a>
+                                                            </div>
+                                                            <?php  
+                                                        }
+                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -646,8 +656,8 @@ $className = $block['className'] ?? '';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php if(!empty($quick_mart_available)):?>
-                                                            <div class="col_rs_5 rs_flex">
+                                                        <div class="col_rs_5 rs_flex">
+                                                            <?php if(!empty($quick_mart_available)):?>
                                                                 <div class="rs-available rs-timing">
                                                                     <div class="list-produce align-items-center">
                                                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -669,18 +679,23 @@ $className = $block['className'] ?? '';
                                                                         <p class="mb-0"><?php echo esc_html($quick_mart_weekend_start_timing) .' to '. esc_html($quick_mart_weekend_end_timing);?></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        <?php endif;?>
-
-                                                        <div class="direction-btn">
-                                                            <a href="service.html#retailNetwork" class="join-us-btn red-btn">
-                                                                <div class="join-us">Get Directions</div>
-                                                                <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                                    <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                                                </svg>
-
-                                                            </a>
+                                                            <?php endif;?>
                                                         </div>
+
+                                                        <?php 
+                                                        if($direction_link['title'] != ''){ ?>
+                                                            <div class="direction-btn">
+                                                                <a href="<?php echo $direction_link['url']; ?>" class="join-us-btn red-btn">
+                                                                    <div class="join-us"><?php echo $direction_link['title']; ?></div>
+                                                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                                        <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                                    </svg>
+
+                                                                </a>
+                                                            </div>
+                                                            <?php  
+                                                        }
+                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -863,8 +878,8 @@ $className = $block['className'] ?? '';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php if(!empty($quick_mart_available)):?>
-                                                            <div class="col_rs_5 rs_flex">
+                                                        <div class="col_rs_5 rs_flex">
+                                                            <?php if(!empty($quick_mart_available)):?>
                                                                 <div class="rs-available rs-timing">
                                                                     <div class="list-produce align-items-center">
                                                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -886,18 +901,23 @@ $className = $block['className'] ?? '';
                                                                         <p class="mb-0"><?php echo esc_html($quick_mart_weekend_start_timing) .' to '. esc_html($quick_mart_weekend_end_timing);?></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        <?php endif;?>
-
-                                                        <div class="direction-btn">
-                                                            <a href="service.html#retailNetwork" class="join-us-btn red-btn">
-                                                                <div class="join-us">Get Directions</div>
-                                                                <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                                    <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                                                </svg>
-
-                                                            </a>
+                                                            <?php endif;?>
                                                         </div>
+
+                                                        <?php 
+                                                        if($direction_link['title'] != ''){ ?>
+                                                            <div class="direction-btn">
+                                                                <a href="<?php echo $direction_link['url']; ?>" class="join-us-btn red-btn">
+                                                                    <div class="join-us"><?php echo $direction_link['title']; ?></div>
+                                                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                                        <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                                    </svg>
+
+                                                                </a>
+                                                            </div>
+                                                            <?php  
+                                                        }
+                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1079,8 +1099,8 @@ $className = $block['className'] ?? '';
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <?php if(!empty($quick_mart_available)):?>
-                                                            <div class="col_rs_5 rs_flex">
+                                                        <div class="col_rs_5 rs_flex">
+                                                            <?php if(!empty($quick_mart_available)):?>
                                                                 <div class="rs-available rs-timing">
                                                                     <div class="list-produce align-items-center">
                                                                         <svg width="30" height="24" viewBox="0 0 30 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1102,18 +1122,23 @@ $className = $block['className'] ?? '';
                                                                         <p class="mb-0"><?php echo esc_html($quick_mart_weekend_start_timing) .' to '. esc_html($quick_mart_weekend_end_timing);?></p>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        <?php endif;?>
-
-                                                        <div class="direction-btn">
-                                                            <a href="service.html#retailNetwork" class="join-us-btn red-btn">
-                                                                <div class="join-us">Get Directions</div>
-                                                                <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
-                                                                    <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
-                                                                </svg>
-
-                                                            </a>
+                                                            <?php endif;?>
                                                         </div>
+
+                                                        <?php 
+                                                        if($direction_link['title'] != ''){ ?>
+                                                            <div class="direction-btn">
+                                                                <a href="<?php echo $direction_link['url']; ?>" class="join-us-btn red-btn">
+                                                                    <div class="join-us"><?php echo $direction_link['title']; ?></div>
+                                                                    <svg class="svg-sub" xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+                                                                        <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75H20V5.25H0V6.75Z" fill="white" />
+                                                                    </svg>
+
+                                                                </a>
+                                                            </div>
+                                                            <?php  
+                                                        }
+                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
