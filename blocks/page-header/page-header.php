@@ -164,9 +164,7 @@ if ($query->have_posts()) :
                          <ul class="dropdown-menu dropdown-menu_marquee">
                               <?php foreach ($marquee_location as $location):
                                    $title = $location['title'];
-                                   if (strlen($title) > 20) {
-                                        $title = substr($title, 0, 20) . "..";
-                                   }
+                                   
                                    ?>
                                    <li id="<?php echo 'p' . $location['id']; ?>"><a class="dropdown-item loc_text vr_padding" href="#"><?php echo $title; ?></a></li>
                               <?php endforeach; ?>
