@@ -77,10 +77,10 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 /* Contact Form CSS Ends  */
 
 /* Header popup */
-.modal-backdrop.show {
+/* .modal-backdrop.show {
     opacity: 0;
     z-index: -1;
-}
+} */
 
 /* Investor Page CSS  */
 .investor-relations-list{
