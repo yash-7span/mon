@@ -1,11 +1,31 @@
 /* Header CSS Start  */
-@media (max-width: 575px) {
-    .header-menus .navbar-nav {
-        padding-top: 0px;
+@media (max-width: 992px) {
+    .header-widget-area {
+        position: sticky;
+        top: -56px;
+        z-index: 9999;
     }
+}
+@media (max-width: 575px) {
+    /* .header-menus .navbar-nav {
+        padding: 80px 15px 0px !important;
+    } */
     .mobile-block>.navbar-collapse>.navbar-nav{
-        margin-top: 65px;
-     }
+        padding: 80px 15px 0px !important;
+    }
+    .dropend {
+        padding: 12px;
+    }
+    .dropend .nav-link{
+        padding: 0px !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+    .header-widget-area {
+        position: sticky;
+        top: -101px;
+        z-index: 9999;
+    }
 }
 .home .header-menus .nav-item.dropdown .active {
     color: #000;
@@ -116,7 +136,11 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     .yearly-report .row .col-md-6:nth-child(2) .annual-points{
         margin-top:20px;
     }
+    .navbar-open>header {
+        padding: 20px 15px 0;
+    }
 }
+
 
 /* Yearly Block CSS End  */
 
