@@ -44,23 +44,26 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Select2 for the dropdown
-    var dropdown = document.querySelector(".searching-dropdown");
-    if (dropdown) {
-        $(dropdown).select2({
-            placeholder: "Search here...",
-        });
+  // Initialize Select2 for the dropdown
+  var dropdown = document.querySelector(".searching-dropdown");
+  if (dropdown) {
+    $(dropdown).select2({
+      placeholder: "Search here...",
+    });
 
-        // Set the placeholder text when Select2 opens
-        dropdown.addEventListener("select2:open", function () {
-            let searchField = document.querySelector(".select2-search__field");
-            if (searchField) {
-                searchField.placeholder = "Search here...";
-            }
-        }, { once: true }); // Ensures this event runs only once
-    }
+    // Set the placeholder text when Select2 opens
+    dropdown.addEventListener(
+      "select2:open",
+      function () {
+        let searchField = document.querySelector(".select2-search__field");
+        if (searchField) {
+          searchField.placeholder = "Search here...";
+        }
+      },
+      { once: true }
+    ); // Ensures this event runs only once
+  }
 });
 // Remove P tag from description Start
 function removePTags() {
@@ -78,27 +81,58 @@ function removePTags() {
 document.addEventListener("DOMContentLoaded", removePTags);
 // Remove P tag from description End
 
-
 // Marquee Slider Start
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownMenu = document.querySelector(".dropdown-menu_marquee");
-  const marqueeInner = document.querySelector('.flex.marquee-inner');
+  const marqueeInner = document.querySelector(".flex.marquee-inner");
   if (dropdownMenu) {
     dropdownMenu.addEventListener("click", function (event) {
       const listItem = event.target.closest("li");
       if (listItem) {
         const listItemId = listItem.id;
-        const marqueeItems = marqueeInner.querySelectorAll('.marquee_items'); 
+        const marqueeItems = marqueeInner.querySelectorAll(".marquee_items");
 
-        marqueeItems.forEach(item => {
-            if (item.id === listItemId) {
-              item.style.display = "flex"; 
-            } else {
-              item.style.display = "none"; 
-            }
+        marqueeItems.forEach((item) => {
+          if (item.id === listItemId) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
         });
       }
     });
   }
 });
 // Marquee Slider Start
+
+// Switch Product Category Tab Start on Product Page Start
+
+function switch_product_category_tab() {
+  let urlhash = window.location.hash;
+  let hashValue = urlhash.substring(1);
+  
+  let product_category_tabs = Array.from(document.querySelectorAll(".our_products .financial-tabs .nav-link"));
+  let product_slugs = Array.from(document.querySelectorAll(".tab-content [id]")).map(el => el.id);
+  if (!hashValue || !product_slugs.includes(hashValue)) {
+    hashValue = product_slugs[0]; 
+  }
+
+  document.querySelectorAll(".tab-pane").forEach(tab => {
+    tab.classList.remove("active", "show");
+  });
+
+  let activeTab = document.getElementById(hashValue);
+  if (activeTab) {
+    activeTab.classList.add("active", "show");
+  }
+  product_category_tabs.forEach(tab => tab.classList.remove("active"));
+
+  let active_category = product_category_tabs.find(tab => tab.getAttribute("data-bs-target") === `#${hashValue}`);
+  if (active_category) {
+    active_category.classList.add("active");
+  }
+}
+window.addEventListener("load", switch_product_category_tab);
+window.addEventListener("hashchange", switch_product_category_tab);
+
+// Switch Product Category Tab on Product Page End 

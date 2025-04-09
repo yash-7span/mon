@@ -43,6 +43,24 @@
 
 /* News Block CSS End  */
 
+/* Marquee Slider CSS Start  */
+.marquee_dropdown {
+    min-width:500px ;
+}
+@media (max-width: 1024px) {
+    .marquee_dropdown{
+        min-width:400px;
+    }
+}
+@media (max-width: 575px) {
+    .marquee_dropdown{
+        min-width:100%;
+    }
+}
+
+/* Marquee Slider CSS Start  */
+
+
 /* Contact Form CSS Start  */
 .inquiry-form .form-check-input {
     background: transparent;
@@ -79,16 +97,18 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
 /* Contact Form CSS Ends  */
 
 /* Header popup */
-.modal-backdrop.show {
+/* .modal-backdrop.show {
     opacity: 0;
     z-index: -1;
-}
+} */
 
 /* Investor Page CSS  */
 .investor-relations-list{
     padding-bottom: 0px !important;
 }
-
+.company-events{
+    padding-top: 0px;
+}
 
 .upcoming-meetings .inner-upm {
     height: auto;
@@ -172,6 +192,7 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
         height: calc(600px - 120px) !important;
     }
 } */
+
 /* Product Detail page CSS Start */
 
 .single-product .all-inspires.products .box_width {
