@@ -1,14 +1,17 @@
 /* Header CSS Start  */
-
-form.contact-us.LoginForm{
-    padding-top:15px;
+.staff_login .login_btn{
+	margin-top:0px !important;
 }
 @media (max-width: 992px) {
-    .header-widget-area {
+    .header-widget {
         position: sticky;
         top: -56px;
-        z-index: 9999;
+        z-index:12;
     }
+    .navbar-open > .header-widget{
+        position: static;
+    }
+    
 }
 @media (max-width: 575px) {
     /* .header-menus .navbar-nav {
@@ -25,11 +28,9 @@ form.contact-us.LoginForm{
         font-size: 14px !important;
         font-weight: 400 !important;
     }
-    .header-widget-area {
-        position: sticky;
+    /* .header-widget-area {
         top: -101px;
-        z-index: 9999;
-    }
+    } */
 }
 .home .header-menus .nav-item.dropdown .active {
     color: #000;

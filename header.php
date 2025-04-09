@@ -25,10 +25,10 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<?php if (is_active_sidebar('header_widget')) : ?>
-		<div class="header-widget-area">
+		<!-- <div class="header-widget-area"> -->
 			<?php dynamic_sidebar('header-widget'); ?>
 			<div class="submenu-overlay"></div>
-		</div>
+		<!-- </div> -->
 	<?php endif; ?>
 	<div id="page" class="site">
 	
