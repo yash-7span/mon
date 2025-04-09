@@ -57,7 +57,7 @@ endif;
             <?php
             // Get Heading
             if(isset($heading)){ ?>
-                <h1 class="mb-3 white-text text-uppercase"><?php echo $heading;?></h1>
+                <h1 class="mb-3 white-text text-capitalize"><?php echo $heading;?></h1>
             <?php }?>
 
             <?php

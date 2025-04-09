@@ -67,7 +67,7 @@ endif;
                                 if(!empty($email_value)):
                                     echo '<h5>';
                                     if(!empty($tel_value)):
-                                        echo '<span class="black-text">'.esc_html($tel_label).' </span><a href="tel: 01-2799" class="grey-text">'.substr($tel_value, 0, 2) . '-' . substr($tel_value, 2).', </a>';
+                                        echo '<span class="black-text">'.esc_html($tel_label).' </span><a href="tel: '.substr($tel_value, 0, 2) . '-' . substr($tel_value, 2).'" class="grey-text">'.substr($tel_value, 0, 2) . '-' . substr($tel_value, 2).', </a>';
                                     endif;
                                     if(!empty($email_value)):
                                         echo '<span class="black-text">'.esc_html($email_label).'</span><a href="mailto: '.$email_value.'" class="grey-text">'.$email_value.'</a>';
