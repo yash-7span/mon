@@ -537,7 +537,7 @@ function register_acf_block_types() {
 			'attributes' => array(
 				'mode' => 'preview',
 				'data' => array(
-					'preview_image' => get_stylesheet_directory_uri() . '/blocks/responsibility/responsibility-imgs.png', // Path to your preview image
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/responsibility/responsibility-img.svg', // Path to your preview image
 					'is_preview'    => true
 				),
 			),
@@ -624,6 +624,16 @@ function register_acf_block_types() {
 				'background' => true, // Enables background color support
 				'text'       => false  // Enables text color support
 			)
+		),
+		// Add example for the preview image
+		'example' => array(
+			'attributes' => array(
+				'mode' => 'preview',
+				'data' => array(
+					'preview_image' => get_stylesheet_directory_uri() . '/blocks/service-details/service-details-img.png', // Path to your preview image
+					'is_preview'    => true
+				),
+			),
 		),
 	));
 
@@ -918,5 +928,6 @@ function register_acf_block_types() {
 			),
 		),
 	));
+
 }
 add_action('acf/init', 'register_acf_block_types');
