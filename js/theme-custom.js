@@ -132,7 +132,7 @@ function switch_product_category_tab() {
     active_category.classList.add("active");
   }
 }
-window.addEventListener("load", switch_product_category_tab);
+// window.addEventListener("load", switch_product_category_tab);
 window.addEventListener("hashchange", switch_product_category_tab);
 
 // Switch Product Category Tab on Product Page End 
