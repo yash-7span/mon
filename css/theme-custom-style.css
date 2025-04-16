@@ -217,3 +217,11 @@ input.wpcf7-form-control.wpcf7-submit.has-spinner.join-us.text-uppercase.enquiry
     margin: 0 auto;
 }
 /* Product Detail Page CSS End */
+
+
+/* Quick App CSS Start  */
+
+.modal-dialog .popup-title h1.title_text{
+	padding-top:15px;
+}
+/* Quick App CSS End  */
