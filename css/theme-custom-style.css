@@ -45,6 +45,13 @@
 .blogs-sec .read-more .read-more-btn{
     cursor: pointer;
 }
+.blog-sec .row .img-fluid {
+    max-width: 100%;
+    height: 375px;
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
 
 /* News Block CSS End  */
 

@@ -62,7 +62,7 @@ if (is_array($blogs) && !empty($blogs)) {
                 $text_content = strip_tags( $data-> post_content);
                 $text_content = html_entity_decode( $text_content );
                 $text_content = trim( $text_content );
-                
+                $text_content = mb_strimwidth($text_content, 0, '185', '...');
                 ?>
                 <div class="col-lg-6">
                     <img src="<?php echo get_the_post_thumbnail_url($post_id); ?>" class="img-fluid" alt="" />
