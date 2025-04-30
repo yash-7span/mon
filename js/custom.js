@@ -443,11 +443,11 @@ var historySlider = new Swiper('.historyslider', {
      },
 
      speed: 1500,
-     pagination: {
-          el: ".swiper-pagination",
-          type: "progressbar",
-          dynamicBullets: true,
-     },
+     // pagination: {
+     //      el: ".swiper-pagination",
+     //      type: "progressbar",
+     //      dynamicBullets: true,
+     // },
 
 
      breakpoints: {
